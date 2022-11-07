@@ -10,7 +10,7 @@ Since thse are smaller and of lesser interest, you're welcome to add these littl
 
 HOW IT WORKS:
 
-Download GR-BREAKPOINT-OPERATION-GENERATOR.zip and extract to a folder, then start 'GR-BREAKPOINT-OPERATION-GENERATOR.ps1' (Right-click, Run with PowerShell).
+Download https://github.com/RGJP/GRBreakpointOpGenerator/raw/main/GR-BREAKPOINT-OPERATION-GENERATOR.zip and extract to a folder, then start 'GR-BREAKPOINT-OPERATION-GENERATOR.ps1' (Right-click, Run with PowerShell).
 
 You will then be asked :
 
