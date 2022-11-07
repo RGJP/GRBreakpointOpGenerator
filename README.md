@@ -28,6 +28,5 @@ Enjoy running your unique operation!
 The code is as basic as possible to keep it simple, it's all there for anyone to improve upon. I'm willing to improve it a bit based on suggestions but I won't make this a full blown project. Anyone is free to do anything they wish with it, I made this mostly for my own group and chose to make it public so the Ghost Recon Breakpoint community can benefit from it as I'm sure a lot of people will enjoy this generator.
 
 Feel free to tell me if you have any comments or if any major base/location is missing from the files. 
-Contact me on Reddit, user : RAKHA589
 
 Files are clean if you're worried (also you can check the code, it's simple): https://www.virustotal.com/gui/file/5111da58b19d2c1c0f1a49e0a987363e284c3106b6334690fc3df1d14feaebc9?nocache=1
