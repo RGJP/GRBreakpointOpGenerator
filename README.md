@@ -6,7 +6,7 @@ This is the PowerShell (WINDOWS OS) 'Ghost Recon: Breakpoint Operation Generator
 Included within the files is a list of all major locations per province. (Main bases and locations, if anything major is missing, let me know).
 
 *The list excludes little sites like Skell Technology Location, Abandoned Site, Drone patrols, Caves, etc.
-Since thse are smaller and of lesser interest, you're welcome to add these little spots in the operation after it's generated, if you so desire.
+Since these are smaller/optional and of lesser interest, you're welcome to add these little spots to the operation after it's generated, if you so desire.
 
 HOW IT WORKS:
 
