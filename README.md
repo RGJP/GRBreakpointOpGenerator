@@ -21,6 +21,7 @@ You will then be asked :
 ![image](https://user-images.githubusercontent.com/115826702/200396216-d3597015-7d06-442d-8095-303170b41923.png)
 
 A random roll is then offered, if satisfied with it you input 'y' and it then creates a basic operation template based on selections (if you want to re-roll, input 'n')
+
 ![image](https://user-images.githubusercontent.com/115826702/200396284-18a50a5f-878b-472a-95db-b60d8fe1fe4c.png)
 
 Pretty cool huh :) ? Enjoy running your unique operation! 
