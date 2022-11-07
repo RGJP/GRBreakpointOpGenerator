@@ -1,7 +1,7 @@
 # GRBreakpointOpGenerator
 Ghost Recon: Breakpoint Operation Generator
 
-This is the PowerShell (WINDOWS OS) 'Ghost Recon: Breakpoint Operation Generator', aimed mostly at MILSIMS who would like to have the ability to generate infinite, truly randomized operations. It also helps to stimulate creativity / what to do with the game.
+This is the PowerShell (WINDOWS OS) 'Ghost Recon: Breakpoint Operation Generator', aimed mostly at MILSIMS who would like to have the ability to generate infinite, truly randomized operations. It also helps to stimulate creativity / generate a unique mission to do in the game.
 
 Included within the files is a list of all major locations per province. (Main bases and locations, if anything major is missing, let me know).
 
