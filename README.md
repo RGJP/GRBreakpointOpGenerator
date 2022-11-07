@@ -23,4 +23,4 @@ Enjoy!
 
 P.S.: The code is as basic as possible to keep it simple, it's all there for anyone to improve upon. I'm willing to improve it a bit based on suggestions but I won't make this a full blown project. Anyone is free to do anything they wish with it, I made this mostly for my own group but chose to make it public so the GR community can benefit as I'm sure a lot of people will enjoy this generator.
 
-Tell me if you have any comments or if any major base/location is missing from the files.
+Feel free to tell me if you have any comments or if any major base/location is missing from the files.
