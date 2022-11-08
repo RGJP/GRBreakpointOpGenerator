@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 
 <html>
-<title>Ghost Recon Breakpoint Operation Generator</title>
-<body>
 
-<h2 style="font-family:arial" > Ghost Recon Breakpoint Operation Generator </h2>
-<hr>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<title>Ghost Recon Breakpoint Operation Generator</title>
+<body style="background-color:black" text="ffffff"  link="ffffff" vlink="ffffff" alink="ffffff">
+
+
+<img src="title.png" alt="Ghost Recon Breakpoint Operation Generator" style="width:300px;height:148px;">
 
 <h3 style="font-family:arial"> 1- Select one or more provinces</h3>
 
-<select name="provinces" size='22' style="width: 270px;font-family:arial" id="provinces" multiple>
+<select name="provinces" size='22' style="width: 286px;font-family:arial" id="provinces" multiple>
 	<option value="Golem Island Sector 1">Golem Island Sector 1</option>
 	<option value="Golem Island Sector 2">Golem Island Sector 2</option>
 	<option value="Golem Island Sector 3">Golem Island Sector 3</option>
@@ -34,13 +39,15 @@
 	<option value="Windy Islands">Windy Islands</option>
 </select>
 <br>
-
+<br>
 <h3 style="font-family:arial"> 2- Number of locations desired</h3>
 
 <form id="formNbrLocs" action="">
-  <input type="text" style="width: 270px" name="inputNumberOfLoc"><br><br>
-  <input type="button" style="width: 270px;font-family:arial;font-size:100%" onclick="generateOp()" value="Generate random operation">
+  <input type="text" style="width: 278px;font-family:arial;font-size:120%" name="inputNumberOfLoc"><br><br><br>
+  <input type="button" style="width: 285px;height:50px;font-family:arial;font-size:120%" onclick="generateOp()" value="Generate random operation">
 </form>
+<br>
+<hr>
 
 <script>
 	function generateOp() {
@@ -306,7 +313,7 @@
 		
 		//LOCATION HELP LINK
 		const mapURL = document.createElement('a');
-		var linkText = document.createTextNode("Interactive Map");
+		var linkText = document.createTextNode("Ghost Recon Breakpoint Interactive Map");
 		mapURL.appendChild(linkText);
 		mapURL.target = "_blank";
 		mapURL.href = "https://swissgameguides.com/maps/ghost_recon_breakpoint/auroa/interactive_map.html";
@@ -319,11 +326,14 @@
 		//BLANK LINE
 		var br = document.createElement("br")
 		opordBox.appendChild(br);	
+		
+		//BLANK LINE
+		var br = document.createElement("br")
+		opordBox.appendChild(br);	
 	}
 </script>
 
 <br>
-<hr>
 <div id="opordBox"></div>
 
 </body>
