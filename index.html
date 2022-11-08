@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+
+<html>
+<title>Ghost Recon Breakpoint Operation Generator</title>
+<body>
+
+<h2 style="font-family:arial" > Ghost Recon Breakpoint Operation Generator </h2>
+<hr>
+
+<h3 style="font-family:arial"> 1- Select one or more provinces</h3>
+
+<select name="provinces" size='22' style="width: 270px;font-family:arial" id="provinces" multiple>
+	<option value="Golem Island Sector 1">Golem Island Sector 1</option>
+	<option value="Golem Island Sector 2">Golem Island Sector 2</option>
+	<option value="Golem Island Sector 3">Golem Island Sector 3</option>
+	<option value="Cape North">Cape North</option>
+	<option value="Driftwood Islets">Driftwood Islets</option>
+	<option value="Wild Coast">Wild Coast</option>
+	<option value="Smugglers Coves">Smugglers Coves</option>
+	<option value="Sinking Country">Sinking Country</option>
+	<option value="Whalers Bay">Whalers Bay</option>
+	<option value="Mount Hodgson">Mount Hodgson</option>
+	<option value="Fen Bog">Fen Bog</option>
+	<option value="Good Hope Mountain">Good Hope Mountain</option>
+	<option value="Silent Mountain">Silent Mountain</option>
+	<option value="New Argyll">New Argyll</option>
+	<option value="Infinity">Infinity</option>
+	<option value="Channels">Channels</option>
+	<option value="Restricted Area 01">Restricted Area 01</option>
+	<option value="Lake Country">Lake Country</option>
+	<option value="New Stirling">New Stirling</option>
+	<option value="Seal Islands">Seal Islands</option>
+	<option value="Liberty">Liberty</option>
+	<option value="Windy Islands">Windy Islands</option>
+</select>
+<br>
+
+<h3 style="font-family:arial"> 2- Number of locations desired</h3>
+
+<form id="formNbrLocs" action="">
+  <input type="text" style="width: 270px" name="inputNumberOfLoc"><br><br>
+  <input type="button" style="width: 270px;font-family:arial;font-size:100%" onclick="generateOp()" value="Generate random operation">
+</form>
+
+<script>
+	function generateOp() {
+		//Clean OPORD values
+		const opordBoxClear = document.getElementById('opordBox');
+		opordBoxClear.innerHTML = ''
+		
+		//Grab which provinces are selected
+		var provincesSelected = [];
+		for (var option of document.getElementById('provinces').options) {
+		if (option.selected) {
+		provincesSelected.push(option.value);
+		}
+		}
+		
+		//Stop if no provinces selected
+		if (provincesSelected.length < 1) {
+		alert('No provinces selected. Select one or more provinces.');
+		return;
+		}
+	
+		//Grab the 'Number of locations desired'
+		let numberOfLoc = document.getElementById("formNbrLocs").elements["inputNumberOfLoc"].value;
+
+		//Stop if no number provided
+		if (numberOfLoc.length < 1) {
+		alert('No number of locations desired provided. Provide a number.');
+		return;
+		}
+		
+		//Stop if number provided is not a number
+		if (isNaN(numberOfLoc)) {
+		alert(numberOfLoc + ' is not a valid number, provide a number.');
+		return;
+		}
+		
+		//Create arrays for provinces locations
+		const Golem1 = ['Ancient Harbor','Golem Island Sattelite Dish','Golem Island Heliport','Chemical Pipeline','Chemical Refinery'];  
+		const Golem2 = ["Golem Island Testing Zone ","Missile Site Ruins","Camp Phoenix","Camp Salamander","Forgotten Sanctuary"];
+		const Golem3 = ["Red Phoenix Outpost","Lava Shield","Lavaduct","Scandium Mine","No Man's Land","Prototype Workshop"];
+		const CapeNorth = ["Skell Foundation Campus","Darkwood Island Port","Bat SAM Site","Construction Site","Campus Data Farm","Underwater Cable Station","Campus Relay Station","A.I Experimental Center"];
+		const DriftwoodIslets = ["Driftwood Islets Testing Zone","Camp Kodiak","Ancient Sanctuary"];
+		const WildCoast = ["Electric Engine Factory","Outpost Blue Tiger","Toxic Storage Depot","Anchor Point Station","Drone Station W031","Engine R&D Center","Shark Bank Station","Control Station Tiger 01","Youth Spring","Wind Farm W03","Hybrid Engine Factory","Wild Coast Freight Yard","Storage Depot","Checkpoint Tiger Foxtrot","Ancient Harbor"];
+		const SmugglersCoves = ["Maunga Nui Port","Freeport","Smuggler Coves Freight Yard","Spanish Fortress","Drone Station W011","Wind Farm W01","Foxglove Station","Auroa Materials Deposit","Oleander Station","Polymorph Modeling","Outpost Red Tiger","Checkpoint Tiger Bravo","Checkpoint Tiger Charlie","Checkpoint Tiger Delta","Composite Factory","Emergency Center"];
+		const SinkingCountry = ["Ancient Harbor (Tobacco Point) ","Howard Airfield","Howard Port","Radar Station North","Anti-Aircraft Ruins","Harrier SAM Site","Osprey SAM Site","Sparrowhawk SAM Site","Sentinel Corp. Land Base","Equipment Depot","Ammunition Depot","Checkpoint Tiger Kilo","Checkpoint Tiger Golf","Checkpoint Tiger India","Checkpoint Tiger Juliet","Bunker Edgehod North","Bunker Edgehod South","Camp Tiger"];
+		const WhalersBay = ["Checkpoint Weasel Charlie","Checkpoint Weasel Delta","Storage Depot","Mechanical R&D Center","Fanny Bay Port","Land Chassis Factory","Whalers Bay Airfield","Wind Farm W02","Drone Station W061","Blue Cove Station","Ancient Harbor","Construction Site","Checkpoint Weasel Echo","Air Chassis Factory"];
+		const MountHodgson = ["Bald Peak Mine","Chem-Extraction Complex","Silent Valley Mine","Drone Station W041","Checkpoint Tiger Echo","Mining Control Center"];
+		const FenBog = ["BlueCorp Startup","Andersons Farm","Longford Farm","Whitestone Farm","Airship Air Station","Shipping Center","Fen Bog Port","Recycling Facility","Photovoltaic Park W01","Fen Bog Testing Zone","Control Station Tiger 03","Checkpoint Tiger Bravo","Checkpoint Tiger Hotel","Drone Station W052","Control Station Tiger 02","Drone Station W051","Hogweed Station","Ancient Village"];
+		const GoodHopeMountain = ["Red Weasel Outpost","Checkpoint Weasel India","Camp Weasel","Checkpoint Weasel Hotel","Bunker Edgehod South","Natural Hazards Control","Auroa Survival Shelter","Drone Station W111","Auroa Weather Station","Checkpoint Weasel Alpha","Checkpoint Weasel Golf"];
+		const SilentMountain = ["Pumping Station","Auroa Data Farm","Battery Farm","Auroa Intranet Control","Submarine Cable Control","Hemlock Station","O'Connors Mine","Mathilda's Palace","Camp Black Widow","Drone Station W071"];
+		const NewArgyll = ["Control Station Tiger 04","Fish Processing Center","Cold Storage Center","New Argyll Winery","Juice Processing Center","Brewery","Long Valley Residences","Skell Estate","Outpost Black Tiger","Ancient Fort","Ancient Sacred Site"];
+		const Infinity = ["Skell Foundation Head Office","Checkpoint Viper Golf","Control Station Viper 04","Alpha Centauri Residences","Skell Security","Checkpoint Viper Delta","Skell Technology Head Office","Polaris Residences","Checkpoint Viper Charlie","Vega Residences","Infinity Medical Center","Checkpoint Viper Echo","Canopus District","Jace Skell Conference Hall","Rigel Residences","Sirius Residences","Outpost Green Viper","Auroa Eco-Museum","Antares District","Infinity Transport Hub","Auroa Airport"];
+		const Channels = ["Oceanic Power Plant","Ancient Village","Electric Grid Control","Channels R&D Center","Channels Port","Red Shark Outpost","Navy Fuelling Station","Cold War Ruins","Main Pumping Station","Auroa Power Plant","Step Up Startup","Vulture SAM Site","Checkpoint Shark Charlie","Eagle SAM Site"];
+		const RestrictedArea01 = ["Maintenance Area","Checkpoint Fox Charlie","Grandview Mansion","Construction Site","Checkpoint Fox Alpha","Control Station Viper 01","Camp Ferret","Outpost Red Ferret","Assembly Hall Omega 02","Checkpoint Weasel Bravo","Arrow Testing Zone","Checkpoint Ferret Bravo","Gold Trail Testing Zone","Gate 07","Gate 03","Nugget Cliff","Omega Operations","Checkpoint Fox Echo","Training Center","Gate 06","Gate 05","Stony Creek Village","Gate 04","Checkpoint Fox Delta","Devil Forest Gold Mine","Omega R&D Center","Assembly Hall Omega 01","Drone Station W161","Russell Gold Mine","Freeman Residences","Outpost Red Fox","Control Station Fox 01","Control Station Fox 02","Prototype Workshop","Camp Fox","Gate 02","Gate 01","Checkpoint Fox Charlie"];
+		const LakeCountry = ["Skell Security Assembly Hall","Ancient Village","Red Viper Outpost","Prototype Workshop","Checkpoint Viper Alpha","Skell Security R&D Center","Two Lakes Residences","Skell Security Operations","Maintenance Area","Ancient Fort","Camp Viper","Drone Station W121"];
+		const NewStriling = ["Dunback Farm","Forsyth Farm","Ardmore Farm","World SeedVault","Control Station Viper 03","New Stirling Freight Yard","Glenfield Farm","Drone Station W131","Checkpoint Viper Hotel","Ettrick Residences","Checkpoint Viper India","Sutherland Vineyard","Glenorchy Orchard","Agronomy Center","Kelso Farm","Mossburn Hopfield","Drone Station W132","Kinloch Farm","Control Station Viper 02","Burnside Orchard","Blue Viper Outpost","Checkpoint Viper Foxtrot","Checkpoint Viper Bravo","Ancient Village","Gate 03"];
+		const SealIslands = ["Fuel Storage","West Radar Station","Buzzard SAM Site","Anti Aircraft Battery","Emelius Port","Ammunition Storage","Owl SAM Site","Checkpoint Shark Alpha","Control Station Shark 01","Naval Base Auroa Airfield","Sentinel Corp. Naval Base","Falcon SAM Site","Shark Base","Camp Seal Cove","Abandoned Barracks","Checkpoint Shark Charlie","Checkpoint Shark Bravo","Condor SAM site"];
+		const Liberty = ["Jace Skell Dam","Auroa Solar Power Plant","Detention Center","Checkpoint Fox Foxtrot","John Dewey Residences","Maunga Nui Eco Park","Ayn Rand Residences","Frederic Bastiat Residences","Liberty Airport","Autumn Lake District","Liberty Port","Winter Lake Shopping Street","Winter Park","Auroa Parliament","Parliament Shopping Street","Thomas Jefferson Residences","Adam Smith District","Construction Site (Liberty capital)","Construction Site (Liberty outskirts east)","Control Station Fox 01","Drone Station W191","East Park","Island District","Drone Station W192","Benjamin Franklin Residences","Liberty Transport Hub","Richard Cobden Residences","Jane Addams Residences","Control Station Fox 02","Ancient Fort","Checkpoint Fox Bravo","Auroa Hospital","Cryogenization Center","Cryohope","Eternity","Gate 06","Gate 05","Gate 07"];
+		const WindyIslands = ["Auroa Recycling Factory","Garbage Dump","Incineration Plant","Drone Station S01","Windy Islands Port"];
+
+
+		//For each provinces selected, build total array of possible locations to choose from
+		randomObjectives = null
+		randomObjectives = []; 
+		
+		provincesSelected.forEach(function callback(province) {
+		
+			if (province == 'Golem Island Sector 1') {
+			randomObjectives = randomObjectives.concat(Golem1)
+			}
+			
+			if (province == 'Golem Island Sector 2') {
+			randomObjectives = randomObjectives.concat(Golem2)
+			}
+			
+			if (province == 'Golem Island Sector 3') {
+			randomObjectives = randomObjectives.concat(Golem3)
+			}
+			
+			if (province == 'Cape North') {
+			randomObjectives = randomObjectives.concat(CapeNorth)
+			}
+						
+			if (province == 'Driftwood Islets') {
+			randomObjectives = randomObjectives.concat(DriftwoodIslets)
+			}
+						
+			if (province == 'Wild Coast') {
+			randomObjectives = randomObjectives.concat(WildCoast)
+			}
+						
+			if (province == 'Smugglers Coves') {
+			randomObjectives = randomObjectives.concat(SmugglersCoves)
+			}
+						
+			if (province == 'Sinking Country') {
+			randomObjectives = randomObjectives.concat(SinkingCountry)
+			}
+						
+			if (province == 'Whalers Bay') {
+			randomObjectives = randomObjectives.concat(WhalersBay)
+			}
+						
+			if (province == 'Mount Hodgson') {
+			randomObjectives = randomObjectives.concat(MountHodgson)
+			}
+						
+			if (province == 'Fen Bog') {
+			randomObjectives = randomObjectives.concat(FenBog)
+			}
+						
+			if (province == 'Good Hope Mountain') {
+			randomObjectives = randomObjectives.concat(GoodHopeMountain)
+			}
+						
+			if (province == 'Silent Mountain') {
+			randomObjectives = randomObjectives.concat(SilentMountain)
+			}
+						
+			if (province == 'New Argyll') {
+			randomObjectives = randomObjectives.concat(NewArgyll)
+			}
+						
+			if (province == 'Infinity') {
+			randomObjectives = randomObjectives.concat(Infinity)
+			}
+						
+			if (province == 'Channels') {
+			randomObjectives = randomObjectives.concat(Channels)
+			}
+						
+			if (province == 'Restricted Area 01') {
+			randomObjectives = randomObjectives.concat(RestrictedArea01)
+			}
+						
+			if (province == 'Lake Country') {
+			randomObjectives = randomObjectives.concat(LakeCountry)
+			}
+						
+			if (province == 'New Stirling') {
+			randomObjectives = randomObjectives.concat(NewStriling)
+			}
+						
+			if (province == 'Seal Islands') {
+			randomObjectives = randomObjectives.concat(SealIslands)
+			}
+						
+			if (province == 'Liberty') {
+			randomObjectives = randomObjectives.concat(Liberty)
+			}
+						
+			if (province == 'Windy Islands') {
+			randomObjectives = randomObjectives.concat(WindyIslands)
+			}
+			
+		});
+		
+		
+		// Shuffle total array
+		const shuffled = randomObjectives.sort(() => 0.5 - Math.random());
+		// Get sub-array of first numberOfLoc elements after shuffled
+		randomSelection = shuffled.slice(0, numberOfLoc);
+		//Remove duplicates (if numberOfLoc is more than number present in array, it would otherwise show duplicates of locations
+		randomSelection = randomSelection.filter(function (value, index, array) { 
+		return array.indexOf(value) === index;
+		});
+		
+		
+		//Build OPORD text from data and selections
+		
+		//Generate random number of OPORD
+		function randomIntFromInterval(min, max) {
+		return Math.floor(Math.random() * (max - min + 1) + min)
+		}
+		const rndInt = randomIntFromInterval(1, 99999)
+		
+		//OPORD NO.X
+		const el = document.createElement('div');
+		el.setAttribute(
+		'style',
+		'font-family:arial',
+		);
+		el.textContent = 'OPORD NO.'+rndInt;
+		const opordBox = document.getElementById('opordBox');
+		opordBox.appendChild(el);
+		
+		//BLANK LINE
+		 var br = document.createElement("br")
+		 opordBox.appendChild(br);
+		 
+		 //AREA OF OPERATIONS:
+		const ao = document.createElement('div');
+		ao.setAttribute(
+		'style',
+		'font-family:arial',
+		);
+		ao.textContent = 'AREA OF OPERATIONS:';
+		opordBox.appendChild(ao);
+		
+		//BLANK LINE
+		var br = document.createElement("br")
+		 opordBox.appendChild(br);
+		
+		//LIST PROVINCES SELECTED
+		provincesSelected.forEach(CreateTextAO);
+
+		function CreateTextAO(item) {
+		 const aoProvinces = document.createElement('div');
+		aoProvinces.setAttribute(
+		'style',
+		'font-family:arial',
+		);
+		aoProvinces.textContent = item;
+		opordBox.appendChild(aoProvinces);
+		}
+		
+		//BLANK LINE
+		var br = document.createElement("br")
+		opordBox.appendChild(br);
+				
+		//OBJECTIVES:
+		const objectives = document.createElement('div');
+		objectives.setAttribute(
+		'style',
+		'font-family:arial',
+		);
+		objectives.textContent = 'OBJECTIVES:';
+		opordBox.appendChild(objectives);						
+		
+		//BLANK LINE
+		var br = document.createElement("br")
+		opordBox.appendChild(br);		
+	
+		//LIST OBJECTIVES FROM THE RANDOM ROLL
+		randomSelection.forEach(CreateTextObjectives)
+		function CreateTextObjectives(item) {
+		 const objectiveslist = document.createElement('div');
+		objectiveslist.setAttribute(
+		'style',
+		'font-family:arial',
+		);
+		objectiveslist.textContent = item;
+		opordBox.appendChild(objectiveslist);
+		}
+		
+		//BLANK LINE
+		var br = document.createElement("br")
+		opordBox.appendChild(br);	
+		
+		//HORIZONTAL DIVIDER LINE
+		const hr = document.createElement('hr');
+		opordBox.appendChild(hr);
+		opordBox.appendChild(hr);
+		
+		//LOCATION HELP
+		const locationHelp = document.createElement('div');
+		locationHelp.setAttribute(
+		'style',
+		'font-family:arial',
+		);
+		locationHelp.textContent = 'For help on locating an objective on the map, use the:';
+		opordBox.appendChild(locationHelp);
+		
+		//LOCATION HELP LINK
+		const mapURL = document.createElement('a');
+		var linkText = document.createTextNode("Interactive Map");
+		mapURL.appendChild(linkText);
+		mapURL.target = "_blank";
+		mapURL.href = "https://swissgameguides.com/maps/ghost_recon_breakpoint/auroa/interactive_map.html";
+		mapURL.setAttribute(
+		'style',
+		'font-family:arial',
+		);
+		opordBox.appendChild(mapURL);
+		
+		//BLANK LINE
+		var br = document.createElement("br")
+		opordBox.appendChild(br);	
+	}
+</script>
+
+<br>
+<hr>
+<div id="opordBox"></div>
+
+</body>
+
+</html>
+
+
