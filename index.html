@@ -12,7 +12,7 @@
 
 <img src="title.png" alt="Ghost Recon Breakpoint Operation Generator" style="width:300px;height:148px;">
 
-<h3 style="font-family:arial"> 1- Select one or more provinces</h3>
+<h3 style="font-family:arial">Select one or more provinces</h3>
 
 <select name="provinces" size='22' style="width: 286px;font-family:arial" id="provinces" multiple>
 	<option value="Golem Island Sector 1">Golem Island Sector 1</option>
@@ -40,11 +40,11 @@
 </select>
 <br>
 <br>
-<h3 style="font-family:arial"> 2- Number of locations desired</h3>
+<h3 style="font-family:arial">Number of locations desired</h3>
 
 <form id="formNbrLocs" action="">
-  <input type="text" style="width: 278px;font-family:arial;font-size:120%" name="inputNumberOfLoc"><br><br><br>
-  <input type="button" style="width: 285px;height:50px;font-family:arial;font-size:120%" onclick="generateOp()" value="Generate random operation">
+  <input type="text" style="width: 278px;font-family:arial" name="inputNumberOfLoc"><br><br><br>
+  <input type="button" style="width: 285px;height:40px;font-family:arial;font-size:110%" onclick="generateOp()" value="Generate random operation">
 </form>
 <br>
 <hr>
@@ -296,6 +296,8 @@
 		//BLANK LINE
 		var br = document.createElement("br")
 		opordBox.appendChild(br);	
+
+
 		
 		//HORIZONTAL DIVIDER LINE
 		const hr = document.createElement('hr');
