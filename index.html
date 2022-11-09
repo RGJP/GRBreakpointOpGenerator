@@ -48,7 +48,7 @@
   <input type="button" style="width: 285px;height:40px;font-family:arial;font-size:110%" onclick="generateOp()" value="Generate random operation">
 </form>
 <br>
-<hr>
+
 
 <script>
 	function generateOp() {
@@ -219,6 +219,15 @@
 		
 		//Build OPORD text from data and selections
 		
+		//HORIZONTAL DIVIDER LINE
+		const hrT = document.createElement('hr');
+		const opordBoxT = document.getElementById('opordBox');
+		opordBoxT.appendChild(hrT);
+		
+		//BLANK LINE
+		var br = document.createElement("br")
+		 opordBoxT.appendChild(br);
+		
 		//Generate random number of OPORD
 		function randomIntFromInterval(min, max) {
 		return Math.floor(Math.random() * (max - min + 1) + min)
@@ -303,7 +312,6 @@
 		//HORIZONTAL DIVIDER LINE
 		const hr = document.createElement('hr');
 		opordBox.appendChild(hr);
-		opordBox.appendChild(hr);
 		
 		//LOCATION HELP
 		const locationHelp = document.createElement('div');
@@ -325,6 +333,10 @@
 		'font-family:arial',
 		);
 		opordBox.appendChild(mapURL);
+		
+		//HORIZONTAL DIVIDER LINE
+		const hr2 = document.createElement('hr');
+		opordBox.appendChild(hr2);
 		
 		//BLANK LINE
 		var br = document.createElement("br")
@@ -348,37 +360,35 @@
 
 <div id="opordBox"></div>
 
-
-
  <p hidden style="font-family:arial" id='spicesList'>
-*****************SPICES LIST***************** <br><br>
+↓ SPICES LIST ↓ <br><br>
     
 The generator won't pick a spice for you to allow for more freedom, but check the list below for inspiration on how to spice your generated OP in a fun way:<br><br>
 
 •Rules of Engagement (Less than lethal force only, Only open fire if fired upon, Minimize damage to buildings, Avoid all enemy contact recon only, Lethal force authorized on all hostiles, No civilian casualties etc.)<br><br>
 •Equipment restrictions (No NVGs, No Silencers, Specific weapons, etc.)<br><br>
-•Survival mode (Start with only a pistol and survive, pick up gear off the enemy)<br><br>
+•Survival mode (Start with only a pistol and survive, pick up gear in bases or off enemy)<br><br>
 •Time Limit (objectives must be completed before X event happens in X time)<br><br>
 •Hit multiple locations at once (Hack into comms relay to unlock servers elsewhere, destroy two servers simultaneously to prevent a backup, etc.)<br><br>
 •Full stealth requirement (no detection or mission failed)<br><br>
-•'Leave no trace' (full stealth, hide bodies, clean sites)<br><br>
-•Interrogation / intel mission only (find intel, interrogate enemies but don’t kill anyone, LTL only)<br><br>
+•Leave no trace (full stealth, hide bodies, clean sites or your presence)<br><br>
+•Interrogation / Intel mission only (find intel, interrogate enemies but don’t kill anyone, LTL only)<br><br>
 •Aerial assault (Attack helicopters)<br><br>
 •Ground assault (APC, armored vehicles)<br><br>
 •Strike designator (CAS type mission)<br><br>
 •No fly zone/radar (ground VHC only for transport)<br><br>
-•SCUBA gear / HELOCAST when near water<br><br>
+•SCUBA gear / HELOCAST and dive when near water<br><br>
 •False flag OP (dress as Sentinel/Wolves/Bodarks)<br><br>
 •Wiretap enemy comms without getting seen<br><br>
 •Extract HVT alive, bring him in for interrogation<br><br>
 •Take down HVT making it look like an accident<br><br>
 •Save civilians<br><br>
-•Plant beacon on vehicle or crates to find where they move them<br><br>
-•Sabotage a vehicle or equipment<br><br>
+•Plant beacon on vehicle or crates to find where they get delivered (then follow up with another OP)<br><br>
+•Sabotage vehicle or equipment<br><br>
 •Acquire Intel<br><br>
 •Hack an equipement<br><br>
 
-Your imagination is the limit obviously, hopefully that list acts as a good reminder.<br>If you have any great ideas to add to the mighty SPICES LIST, feel free to suggest them and I will consider adding them here!<br><br>
+Your imagination is the limit obviously, hopefully that list acts as a good reminder.<br>If you have any great ideas to add to the mighty SPICES LIST, feel free to suggest them and I will consider adding them here.<br><br>
 
  Stay safe Ghosts.
 
