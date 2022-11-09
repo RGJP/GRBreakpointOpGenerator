@@ -7,12 +7,13 @@
 </head>
 
 <title>Ghost Recon Breakpoint Operation Generator</title>
-<body style="background-color:black" text="ffffff"  link="ffffff" vlink="ffffff" alink="ffffff">
+<body style="background-image: url('./images/bgnd.jpg');background-repeat: repeat" text="ffffff"  link="ffffff" vlink="ffffff" alink="ffffff">
 
+<center> 
 
-<img src="title.png" alt="Ghost Recon Breakpoint Operation Generator" style="width:300px;height:148px;">
+<img src='./images/title.png' alt="Ghost Recon Breakpoint Operation Generator" style="width:300px;height:148px;border:10px solid black">
 
-<h3 style="font-family:arial">Select one or more provinces</h3>
+<h3 style="font-family:arial">Select one or more provinces ↓</h3>
 
 <select name="provinces" size='22' style="width: 286px;font-family:arial" id="provinces" multiple>
 	<option value="Golem Island Sector 1">Golem Island Sector 1</option>
@@ -40,7 +41,7 @@
 </select>
 <br>
 <br>
-<h3 style="font-family:arial">Number of locations desired</h3>
+<h3 style="font-family:arial">Number of locations desired ↓</h3>
 
 <form id="formNbrLocs" action="">
   <input type="text" style="width: 278px;font-family:arial" name="inputNumberOfLoc"><br><br><br>
@@ -310,7 +311,7 @@
 		'style',
 		'font-family:arial',
 		);
-		locationHelp.textContent = 'For help on locating an objective on the map, use the:';
+		locationHelp.textContent = 'For help on locating an objective on the map:';
 		opordBox.appendChild(locationHelp);
 		
 		//LOCATION HELP LINK
@@ -329,17 +330,63 @@
 		var br = document.createElement("br")
 		opordBox.appendChild(br);	
 		
-		//BLANK LINE
-		var br = document.createElement("br")
-		opordBox.appendChild(br);	
+
+		
+		//SHOW THE SPICES LIST
+		var spicesList = document.getElementById("spicesList");
+		spicesList.style.display = "block";
+		
+		
+		//REAPPLY THE BACXGROUND IMG SO IT DOESN'T CUT AND REPEAT
+		 document.body.style.background = "url('./images/bgnd.jpg') repeat";
+
+		
 	}
 </script>
 
 <br>
+
 <div id="opordBox"></div>
+
+
+
+ <p hidden style="font-family:arial" id='spicesList'>
+*****************SPICES LIST***************** <br><br>
+    
+The generator won't pick a spice for you to allow for more freedom, but check the list below for inspiration on how to spice your generated OP in a fun way:<br><br>
+
+•Rules of Engagement (Less than lethal force only, Only open fire if fired upon, Minimize damage to buildings, Avoid all enemy contact recon only, Lethal force authorized on all hostiles, No civilian casualties etc.)<br><br>
+•Equipment restrictions (No NVGs, No Silencers, Specific weapons, etc.)<br><br>
+•Survival mode (Start with only a pistol and survive, pick up gear off the enemy)<br><br>
+•Time Limit (objectives must be completed before X event happens in X time)<br><br>
+•Hit multiple locations at once (Hack into comms relay to unlock servers elsewhere, destroy two servers simultaneously to prevent a backup, etc.)<br><br>
+•Full stealth requirement (no detection or mission failed)<br><br>
+•'Leave no trace' (full stealth, hide bodies, clean sites)<br><br>
+•Interrogation / intel mission only (find intel, interrogate enemies but don’t kill anyone, LTL only)<br><br>
+•Aerial assault (Attack helicopters)<br><br>
+•Ground assault (APC, armored vehicles)<br><br>
+•Strike designator (CAS type mission)<br><br>
+•No fly zone/radar (ground VHC only for transport)<br><br>
+•SCUBA gear / HELOCAST when near water<br><br>
+•False flag OP (dress as Sentinel/Wolves/Bodarks)<br><br>
+•Wiretap enemy comms without getting seen<br><br>
+•Extract HVT alive, bring him in for interrogation<br><br>
+•Take down HVT making it look like an accident<br><br>
+•Save civilians<br><br>
+•Plant beacon on vehicle or crates to find where they move them<br><br>
+•Sabotage a vehicle or equipment<br><br>
+•Acquire Intel<br><br>
+•Hack an equipement<br><br>
+
+Your imagination is the limit obviously, hopefully that list acts as a good reminder.<br>If you have any great ideas to add to the mighty SPICES LIST, feel free to suggest them and I will consider adding them here!<br><br>
+
+ Stay safe Ghosts.
+
+</p>
+
+</center> 
 
 </body>
 
 </html>
-
 
