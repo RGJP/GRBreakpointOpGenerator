@@ -13,6 +13,8 @@
 <br><br>
 <img src='./images/title.png' alt="Ghost Recon Breakpoint Operation Generator" style="width:300px;height:148px;border:1px solid gray">
 
+<p style="font-family:arial;font-size:70%;color:gray">1.7</p>
+
 <h3 style="font-family:arial">Select one or more provinces</h3>
 
 <select name="provinces" size='22' style="width: 286px;font-family:arial;background:black;color:white;border:1px solid gray" id="provinces" multiple>
@@ -353,12 +355,7 @@
 		
 		//HORIZONTAL DIVIDER LINE
 		const hr2 = document.createElement('hr');
-		opordBox.appendChild(hr2);
-		
-		//BLANK LINE
-		var br = document.createElement("br")
-		opordBox.appendChild(br);	
-		
+		opordBox.appendChild(hr2);		
 		
 		//SHOW THE SPICES LIST
 		var spicesList = document.getElementById("spicesList");
@@ -369,7 +366,7 @@
 		 document.body.style.background = "url('./images/bgndblurred.jpg') repeat";
 		
 		
-		//SCROLL DOWN A BIT FOR EASIER READING
+		//SCROLL DOWN A BIT FOR EASIER READING - disabled
 		//window.scrollBy(0,200);
 		
 	}
@@ -380,38 +377,38 @@
 <div id="opordBox"></div>
 
  <p hidden style="font-family:arial" id='spicesList'>
-↓ SPICES LIST ↓ <br><br>
+░ SPICES LIST ░ <br><br>
     
-The generator won't pick a spice for you to allow for more freedom, but check the list below for inspiration on how to spice your generated OP in a fun way:<br><br>
+The generator won't automatically pick one to allow more freedom, but check the list below for inspiration on how to spice up your operation:<br><br>
+• Rules of Engagement (Less than lethal force only, Only open fire if fired upon, Minimize damage to buildings, Avoid all enemy contact recon only, Lethal force authorized on all hostiles, No civilian casualties etc.)<br><br>
+• Hit multiple locations at once (Hack into comms relay to unlock servers elsewhere, destroy two servers simultaneously to prevent a backup, etc.)<br><br>
+• Plant beacon on vehicle or crates to find where they get delivered (then follow up with another OP)<br><br>
+• Interrogation / Intel mission only (find intel, interrogate enemies but don’t kill anyone, LTL only)<br><br>
+• Operation by convoy (travel in convoy formation and gather supplies, protect your convoy)<br><br>	 
+• Survival mode (Start with only a pistol and survive, pick up gear in bases or off enemy)<br><br>
+• Time Limit (objectives must be completed before X event happens in X time)<br><br>
+• Equipment restrictions (No NVGs, No Silencers, Specific weapons, etc.)<br><br>
+• Leave no trace (full stealth, hide bodies, clean sites or your presence)<br><br>
+• Full stealth requirement (no detection or mission failed)<br><br>
+• Road ambushes on the enemy (C4, Mines, EMPs etc.)<br><br>
+• No fly zone/radar (ground VHC only for transport)<br><br>
+• False flag OP (dress as Sentinel/Wolves/Bodarks)<br><br>
+• SCUBA gear / HELOCAST infil when near water<br><br>
+• Extract HVT alive, bring him in for interrogation<br><br>
+• Take down HVT making it look like an accident<br><br>
+• Adding drone patrol sites around objectives<br><br>
+• Wiretap enemy comms without getting seen<br><br>
+• Ground assault (APC, armored vehicles)<br><br>
+• Strike designator (CAS type mission)<br><br>
+• Aerial assault (Attack helicopters)<br><br>
+• Sabotage vehicle or equipment<br><br>
+• Hack an equipement<br><br>
+• Save civilians<br><br>
+• Acquire Intel<br><br>
 
-•Rules of Engagement (Less than lethal force only, Only open fire if fired upon, Minimize damage to buildings, Avoid all enemy contact recon only, Lethal force authorized on all hostiles, No civilian casualties etc.)<br><br>
-•Equipment restrictions (No NVGs, No Silencers, Specific weapons, etc.)<br><br>
-•Survival mode (Start with only a pistol and survive, pick up gear in bases or off enemy)<br><br>
-•Time Limit (objectives must be completed before X event happens in X time)<br><br>
-•Hit multiple locations at once (Hack into comms relay to unlock servers elsewhere, destroy two servers simultaneously to prevent a backup, etc.)<br><br>
-•Full stealth requirement (no detection or mission failed)<br><br>
-•Road ambushes on the enemy (C4, Mines, EMPs etc.)<br><br>
-•Leave no trace (full stealth, hide bodies, clean sites or your presence)<br><br>
-•Operation by convoy (travel in convoy formation and gather supplies, protect your convoy)<br><br>	 
-•Interrogation / Intel mission only (find intel, interrogate enemies but don’t kill anyone, LTL only)<br><br>
-•Aerial assault (Attack helicopters)<br><br>
-•Ground assault (APC, armored vehicles)<br><br>
-•Strike designator (CAS type mission)<br><br>
-•No fly zone/radar (ground VHC only for transport)<br><br>
-•SCUBA gear / HELOCAST and dive when near water<br><br>
-•False flag OP (dress as Sentinel/Wolves/Bodarks)<br><br>
-•Wiretap enemy comms without getting seen<br><br>
-•Extract HVT alive, bring him in for interrogation<br><br>
-•Take down HVT making it look like an accident<br><br>
-•Save civilians<br><br>
-•Plant beacon on vehicle or crates to find where they get delivered (then follow up with another OP)<br><br>
-•Sabotage vehicle or equipment<br><br>
-•Acquire Intel<br><br>
-•Hack an equipement<br><br>
+Your imagination is the limit, hopefully that list acts as a good reminder.<br>Suggestions welcome.<br><br>
 
-Your imagination is the limit obviously, hopefully that list acts as a good reminder.<br>If you have any great ideas to add to the mighty SPICES LIST, feel free to suggest them and I will consider adding them here.<br><br>
-
- Stay safe Ghosts.
+Stay safe Ghosts.
 
 </p>
 
