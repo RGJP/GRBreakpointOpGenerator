@@ -230,17 +230,38 @@
 		function randomIntFromInterval(min, max) {
 		return Math.floor(Math.random() * (max - min + 1) + min)
 		}
-		const rndInt = randomIntFromInterval(1, 99999)
+		const rndInt = randomIntFromInterval(1, 9999)
+		
+		//Pick a random codename
+		const codenames = ['WIDOW','SPIDER','MAMBA','ADDER','APOLLO','AVALANCHE','BADGER','BANSHEE','GRIZZLY','BISHOP','BOOMER','BOAR','BERSERKER','BLACK KNIGHT','BREAKER','BUFFALO','CANARY','CORAL','COPPER','CRIMSON','CROW','DANGER','DAGGER','DINGO','DIAMOND','DRAGON','EAGLE','FIRESTICK','FOX','FIREFLY','GRIFFIN','GHOST','GOPHER','HARVESTER','HIGHLANDER','HUNTER','HOUND','HAWK','JACKSON','JESTER','KAHUNA','KEEPER','LANTERN','LYNX','LEOPARD','MAGE','MONARCH','MOTHER','OBELISK','OCELOT','ORACLE','OVERLORD','PAWN','PEQUOD','POLARIS','RAZOR','RED DRAGON','RED QUEEN','REAVER','RORK','RIPLEY','SABRE','SEAL','SHADOW','SHAMAN','SPARROW','SPECTRE','SPEARFISH','SPEAR','STONE','SWEEPER','TOMAHAWK','TIGER','HATCHET','UMBRA','UMBRELLA','VANDAL','VIPER','SNAKE','WARDEN','WANDERER','WARLOCK','WHITE WIZARD','WHITE RABBIT','X-RAY','ZEBRA','ZIPPER','TORCH','BLADE','TOXIC','MIST','SMOKE'];  
+		// Shuffle codenames array
+		const shuffledCodenames = codenames.sort(() => 0.5 - Math.random());
+		// Get first element from shuffled codenamesarray
+		codename = shuffledCodenames.slice(0, 1);
 		
 		//OPORD NO.X
-		const el = document.createElement('div');
-		el.setAttribute(
+		const opord = document.createElement('div');
+		opord.setAttribute(
 		'style',
 		'font-family:arial',
 		);
-		el.textContent = 'OPORD NO.'+rndInt;
+		opord.textContent = 'OPORD '+rndInt;
 		const opordBox = document.getElementById('opordBox');
-		opordBox.appendChild(el);
+		opordBox.appendChild(opord);
+		
+		//BLANK LINE
+		 var br = document.createElement("br")
+		 opordBox.appendChild(br);
+		
+		//CODENAME: X
+		const codenameLabel = document.createElement('div');
+		codenameLabel.setAttribute(
+		'style',
+		'font-family:arial',
+		);
+		codenameLabel.textContent = 'CODENAME: '+codename;
+		
+		opordBox.appendChild(codenameLabel);
 		
 		//BLANK LINE
 		 var br = document.createElement("br")
@@ -369,6 +390,7 @@ The generator won't pick a spice for you to allow for more freedom, but check th
 •Time Limit (objectives must be completed before X event happens in X time)<br><br>
 •Hit multiple locations at once (Hack into comms relay to unlock servers elsewhere, destroy two servers simultaneously to prevent a backup, etc.)<br><br>
 •Full stealth requirement (no detection or mission failed)<br><br>
+•Road ambushes on the enemy (C4, Mines, EMPs etc.)<br><br>
 •Leave no trace (full stealth, hide bodies, clean sites or your presence)<br><br>
 •Operation by convoy (travel in convoy formation and gather supplies, protect your convoy)<br><br>	 
 •Interrogation / Intel mission only (find intel, interrogate enemies but don’t kill anyone, LTL only)<br><br>
