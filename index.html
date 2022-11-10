@@ -7,15 +7,15 @@
 </head>
 
 <title>Ghost Recon Breakpoint Operation Generator</title>
-<body style="background-image: url('./images/bgnd.jpg');background-repeat: repeat" text="ffffff"  link="ffffff" vlink="ffffff" alink="ffffff">
+<body style="background-image: url('./images/bgndblurred.jpg');background-repeat: repeat" text="ffffff"  link="ffffff" vlink="ffffff" alink="ffffff">
 
 <center> 
 
-<img src='./images/title.png' alt="Ghost Recon Breakpoint Operation Generator" style="width:300px;height:148px;border:10px solid black">
+<img src='./images/title.png' alt="Ghost Recon Breakpoint Operation Generator" style="width:300px;height:148px;border:2px solid white">
 
-<h3 style="font-family:arial">Select one or more provinces ↓</h3>
+<h3 style="font-family:arial">↓ Select one or more provinces ↓</h3>
 
-<select name="provinces" size='22' style="width: 286px;font-family:arial;background:black;color:white" id="provinces" multiple>
+<select name="provinces" size='22' style="width: 286px;font-family:arial;background:black;color:white;border:2px solid white" id="provinces" multiple>
 	<option value="Golem Island Sector 1">Golem Island Sector 1</option>
 	<option value="Golem Island Sector 2">Golem Island Sector 2</option>
 	<option value="Golem Island Sector 3">Golem Island Sector 3</option>
@@ -41,11 +41,11 @@
 </select>
 <br>
 <br>
-<h3 style="font-family:arial">Number of locations desired ↓</h3>
+<h3 style="font-family:arial">↓ Number of locations desired ↓</h3>
 
 <form id="formNbrLocs" action="">
-  <input type="text" style="width: 278px;font-family:arial;background:black;color:white" name="inputNumberOfLoc"><br><br><br>
-  <input type="button" style="width: 285px;height:40px;font-family:arial;font-size:110%" onclick="generateOp()" value="Generate random operation">
+  <input type="text" style="width: 278px;font-family:arial;background:black;color:white;border:2px solid white" name="inputNumberOfLoc"><br><br><br>
+  <input type="button" style="width: 285px;height:40px;font-family:arial;font-size:110%;background:black;color:white;border:2px solid white" onclick="generateOp()" value="Generate random operation ⚄">
 </form>
 <br>
 
@@ -350,8 +350,11 @@
 		
 		
 		//REAPPLY THE BACXGROUND IMG SO IT DOESN'T CUT AND REPEAT
-		 document.body.style.background = "url('./images/bgnd.jpg') repeat";
-
+		 document.body.style.background = "url('./images/bgndblurred.jpg') repeat";
+		
+		
+		//SCROLL DOWN A BIT FOR EASIER READING
+		window.scrollBy(0,500);
 		
 	}
 </script>
@@ -372,7 +375,7 @@ The generator won't pick a spice for you to allow for more freedom, but check th
 •Hit multiple locations at once (Hack into comms relay to unlock servers elsewhere, destroy two servers simultaneously to prevent a backup, etc.)<br><br>
 •Full stealth requirement (no detection or mission failed)<br><br>
 •Leave no trace (full stealth, hide bodies, clean sites or your presence)<br><br>
-•Operation by convoy (travel in convoy formation and gather supplies, protect your convoy)	 
+•Operation by convoy (travel in convoy formation and gather supplies, protect your convoy)<br><br>	 
 •Interrogation / Intel mission only (find intel, interrogate enemies but don’t kill anyone, LTL only)<br><br>
 •Aerial assault (Attack helicopters)<br><br>
 •Ground assault (APC, armored vehicles)<br><br>
