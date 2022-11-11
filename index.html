@@ -59,6 +59,10 @@
 		const opordBoxClear = document.getElementById('opordBox');
 		opordBoxClear.innerHTML = ''
 		
+		//Re-Hide Maps at start of new roll
+		document.getElementById("golemMap").style.display = "none";
+		document.getElementById("channelsMap").style.display = "none";
+		
 		//Grab which provinces are selected
 		var provincesSelected = [];
 		for (var option of document.getElementById('provinces').options) {
@@ -331,38 +335,38 @@
 		var br = document.createElement("br")
 		opordBox.appendChild(br);	
 		
-		//HORIZONTAL DIVIDER LINE
-		const hr = document.createElement('hr');
-		opordBox.appendChild(hr);
 		
-		//LOCATION HELP
-		const locationHelp = document.createElement('div');
-		locationHelp.setAttribute(
-		'style',
-		'font-family:arial',
+		//SHOW MAP FOR EACH PROVINCES SELECTED		
+		provincesSelected.forEach(function showMaps(province) {
+
+			if ( province.match('Golem') ) {
+				document.getElementById("golemMap").style.display = "block";
+			}
+
+			if ( province.match('Channels')  ) {
+				//document.getElementById("channelsMap").style.display = "block";
+			}
+
+			}
 		);
-		locationHelp.textContent = 'For help on locating an objective on the map:';
-		opordBox.appendChild(locationHelp);
+
 		
-		//LOCATION HELP LINK
-		const mapURL = document.createElement('a');
-		var linkText = document.createTextNode("Ghost Recon Breakpoint Interactive Map");
-		mapURL.appendChild(linkText);
-		mapURL.target = "_blank";
-		mapURL.href = "https://swissgameguides.com/maps/ghost_recon_breakpoint/auroa/interactive_map.html";
-		mapURL.setAttribute(
-		'style',
-		'font-family:arial',
-		);
-		opordBox.appendChild(mapURL);
+		//BLANK LINE
+		var br = document.createElement("br")
+		opordBox.appendChild(br);
 		
 		//HORIZONTAL DIVIDER LINE
-		const hr2 = document.createElement('hr');
-		opordBox.appendChild(hr2);		
+		//const hr = document.createElement('hr');
+		//opordBox.appendChild(hr);
 		
+		//SHOW HR divider before spices list
+		var spiceListdivider = document.getElementById("spiceListdivider");
+		spiceListdivider.style.display = "block";
+					
 		//SHOW THE SPICES LIST
 		var spicesList = document.getElementById("spicesList");
 		spicesList.style.display = "block";
+		
 		
 		
 		//REAPPLY THE BACXGROUND IMG SO IT DOESN'T CUT AND REPEAT AFTER THE BUTTON
@@ -379,8 +383,15 @@
 
 <div id="opordBox"></div>
 
+<img hidden id='golemMap' src='./images/GolemIslandMAP.png' alt="GolemIslandMap" style="width:600px">
+<img hidden id='channelsMap' src='./images/ChannelsMAP.jpg' alt="ChannelsMAP" style="width:500px">
+<br>
+
+
+ <hr hidden id='spiceListdivider'>
+ 
  <p hidden style="font-family:arial" id='spicesList'>
-🧂 SPICES LIST 🧂<br><br>
+🌶 SPICES LIST 🌶<br><br>
     
 The generator won't automatically pick one to allow more freedom, but check the list below for inspiration on how to spice up your operation:<br><br>
 • Rules of Engagement (Less than lethal force only, Only open fire if fired upon, Minimize damage to buildings, Avoid all enemy contact recon only, Lethal force authorized on all hostiles, No civilian casualties etc.)<br><br>
