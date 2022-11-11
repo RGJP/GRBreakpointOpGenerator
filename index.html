@@ -20,7 +20,7 @@ img {
 
 <br>
 
-<button type="button" style="font-family:arial;font-size:70%;background-color:black;color:gray;border:0px" onclick=''>v3.1</button>
+<button type="button" style="font-family:arial;font-size:70%;background-color:black;color:gray;border:0px" onclick=''>v3.2</button>
 <!alert("Added random codename generation for OP.\nAdded additional locations.\nVisual improvements.")>
 
 <h3 style="font-family:arial">Select one or more provinces</h3>
@@ -69,6 +69,7 @@ img {
 		document.getElementById("capenorthMap").style.display = "none";
 		document.getElementById("driftwoodisletsMap").style.display = "none";
 		document.getElementById("wildcoastMap").style.display = "none";
+		document.getElementById("smugglerscovesMap").style.display = "none";
 		
 		//Grab which provinces are selected
 		var provincesSelected = [];
@@ -106,7 +107,7 @@ img {
 		const CapeNorth = ["Skell Foundation Campus","Darkwood Island Port","Bat SAM Site","Construction Site","Campus Data Farm","Underwater Cable Station","Campus Relay Station","A.I Experimental Center","Sentinel Corp. Location"];
 		const DriftwoodIslets = ["Driftwood Islets Testing Zone","Camp Kodiak","Ancient Sanctuary","Ancient Cemetery"];
 		const WildCoast = ["Electric Engine Factory","Outpost Blue Tiger","Toxic Storage Depot","Anchor Point Station","Drone Station W031","Engine R&D Center","Shark Bank Station","Control Station Tiger 01","Youth Spring","Wind Farm W03","Hybrid Engine Factory","Wild Coast Freight Yard","Storage Depot","Checkpoint Tiger Foxtrot","Ancient Harbor"];
-		const SmugglersCoves = ["Maunga Nui Port","Freeport","Smuggler Coves Freight Yard","Spanish Fortress","Drone Station W011","Wind Farm W01","Foxglove Station","Auroa Materials Deposit","Oleander Station","Polymorph Modeling","Outpost Red Tiger","Checkpoint Tiger Bravo","Checkpoint Tiger Charlie","Checkpoint Tiger Delta","Composite Factory","Emergency Center"];
+		const SmugglersCoves = ["Maunga Nui Port","Smuggler Coves Freight Yard","Spanish Fortress","Drone Station W011","Wind Farm W01","Foxglove Station","Auroa Materials Deposit","Oleander Station","Polymorph Modeling","Outpost Red Tiger","Checkpoint Tiger Bravo","Checkpoint Tiger Charlie","Checkpoint Tiger Delta","Composite Factory","Emergency Center"];
 		const SinkingCountry = ["Ancient Harbor (Tobacco Point) ","Howard Airfield","Howard Port","Radar Station North","Anti-Aircraft Ruins","Harrier SAM Site","Osprey SAM Site","Sparrowhawk SAM Site","Sentinel Corp. Land Base","Equipment Depot","Ammunition Depot","Checkpoint Tiger Kilo","Checkpoint Tiger Golf","Checkpoint Tiger India","Checkpoint Tiger Juliet","Bunker Edgehod North","Bunker Edgehod South","Camp Tiger"];
 		const WhalersBay = ["Checkpoint Weasel Charlie","Checkpoint Weasel Delta","Storage Depot","Mechanical R&D Center","Fanny Bay Port","Land Chassis Factory","Whalers Bay Airfield","Wind Farm W02","Drone Station W061","Blue Cove Station","Ancient Harbor","Construction Site","Checkpoint Weasel Echo","Air Chassis Factory"];
 		const MountHodgson = ["Bald Peak Mine","Chem-Extraction Complex","Silent Valley Mine","Drone Station W041","Checkpoint Tiger Echo","Mining Control Center"];
@@ -361,6 +362,9 @@ img {
 			if ( province.match('Wild Coast')  ) {
 				document.getElementById("wildcoastMap").style.display = "block";
 			}
+				if ( province.match('Smugglers Coves')  ) {
+				document.getElementById("smugglerscovesMap").style.display = "block";
+			}
 				
 			}
 		);
@@ -401,6 +405,7 @@ img {
 <img hidden id='capenorthMap' src='./images/capenorthMap.png' alt="capenorthMap" style="width:500px;border:5px solid black">
 <img hidden id='driftwoodisletsMap' src='./images/driftwoodisletsMap.png' alt="driftwoodisletsMap" style="width:500px;border:5px solid black">
 <img hidden id='wildcoastMap' src='./images/wildcoastMap.png' alt="wildcoastMap" style="width:500px;border:5px solid black">
+<img hidden id='smugglerscovesMap' src='./images/smugglerscovesMap.png' alt="smugglerscovesMap" style="width:500px;border:5px solid black">
 <br>
 
 
