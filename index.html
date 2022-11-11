@@ -20,7 +20,7 @@ img {
 
 <br>
 
-<button type="button" style="font-family:arial;font-size:70%;background-color:black;color:gray;border:0px" onclick=''>v2.7</button>
+<button type="button" style="font-family:arial;font-size:70%;background-color:black;color:gray;border:0px" onclick=''>v2.8</button>
 <!alert("Added random codename generation for OP.\nAdded additional locations.\nVisual improvements.")>
 
 <h3 style="font-family:arial">Select one or more provinces</h3>
@@ -66,7 +66,7 @@ img {
 		
 		//Re-Hide Maps at start of new roll
 		document.getElementById("golemMap").style.display = "none";
-		document.getElementById("channelsMap").style.display = "none";
+		document.getElementById("capenorthMap").style.display = "none";
 		
 		//Grab which provinces are selected
 		var provincesSelected = [];
@@ -348,8 +348,8 @@ img {
 				document.getElementById("golemMap").style.display = "block";
 			}
 
-			if ( province.match('Channels')  ) {
-				//document.getElementById("channelsMap").style.display = "block";
+			if ( province.match('Cape North')  ) {
+				document.getElementById("capenorthMap").style.display = "block";
 			}
 
 			}
@@ -388,8 +388,10 @@ img {
 
 <div id="opordBox"></div>
 
-<img hidden id='golemMap' src='./images/GOLEMISLANDMAP.png' alt="GolemIslandMap" style="width:600px">
-<img hidden id='channelsMap' src='./images/ChannelsMAP.jpg' alt="ChannelsMAP" style="width:500px">
+<img hidden id='golemMap' src='./images/GOLEMISLANDMAP.png' alt="GolemIslandMap" style="width:500px">
+<br>
+<img hidden id='capenorthMap' src='./images/CAPENORTHMAP.png' alt="ChannelsMAP" style="width:500px">
+
 <br>
 
 
