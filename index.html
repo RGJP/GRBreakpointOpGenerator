@@ -20,7 +20,7 @@ img {
 
 <br>
 
-<button type="button" style="font-family:arial;font-size:70%;background-color:black;color:gray;border:0px" onclick=''>v3.0</button>
+<button type="button" style="font-family:arial;font-size:70%;background-color:black;color:gray;border:0px" onclick=''>v3.1</button>
 <!alert("Added random codename generation for OP.\nAdded additional locations.\nVisual improvements.")>
 
 <h3 style="font-family:arial">Select one or more provinces</h3>
@@ -380,7 +380,8 @@ img {
 		var spicesList = document.getElementById("spicesList");
 		spicesList.style.display = "block";
 		
-		
+		//SHOW THE BOTTOM LOGO
+		document.getElementById("logoBottom").style.display = "block";
 		
 		//REAPPLY THE BACXGROUND IMG SO IT DOESN'T CUT AND REPEAT AFTER THE BUTTON
 		 document.body.style.background = "url('./images/bgndblurred.jpg') repeat";
@@ -443,6 +444,9 @@ All suggestions are welcome.<br><br>
 Stay safe Ghosts.<br><br>
 
 </p>
+
+
+<img hidden id='logoBottom' src='./images/logo.png' alt="logo" style="width:300px">
 
 </center> 
 
