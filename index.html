@@ -20,7 +20,7 @@ img {
 
 <br>
 
-<button type="button" style="font-family:arial;font-size:70%;background-color:black;color:gray;border:0px" onclick=''>v2.9</button>
+<button type="button" style="font-family:arial;font-size:70%;background-color:black;color:gray;border:0px" onclick=''>v3.0</button>
 <!alert("Added random codename generation for OP.\nAdded additional locations.\nVisual improvements.")>
 
 <h3 style="font-family:arial">Select one or more provinces</h3>
@@ -68,6 +68,7 @@ img {
 		document.getElementById("golemMap").style.display = "none";
 		document.getElementById("capenorthMap").style.display = "none";
 		document.getElementById("driftwoodisletsMap").style.display = "none";
+		document.getElementById("wildcoastMap").style.display = "none";
 		
 		//Grab which provinces are selected
 		var provincesSelected = [];
@@ -339,7 +340,8 @@ img {
 		
 		//BLANK LINE
 		var br = document.createElement("br")
-		opordBox.appendChild(br);	
+		opordBox.appendChild(br);
+		
 		
 		
 		//SHOW MAP FOR EACH PROVINCES SELECTED		
@@ -356,14 +358,15 @@ img {
 			if ( province.match('Driftwood Islets')  ) {
 				document.getElementById("driftwoodisletsMap").style.display = "block";
 			}
+			if ( province.match('Wild Coast')  ) {
+				document.getElementById("wildcoastMap").style.display = "block";
+			}
 				
 			}
 		);
 
 		
-		//BLANK LINE
-		var br = document.createElement("br")
-		opordBox.appendChild(br);
+
 		
 		//HORIZONTAL DIVIDER LINE
 		//const hr = document.createElement('hr');
@@ -393,11 +396,10 @@ img {
 
 <div id="opordBox"></div>
 
-<img hidden id='golemMap' src='./images/golemMap.png' alt="GolemIslandMap" style="width:500px">
-<br>
-<img hidden id='capenorthMap' src='./images/capenorthMap.png' alt="ChannelsMAP" style="width:500px">
-<br>
-<img hidden id='driftwoodisletsMap' src='./images/driftwoodisletsMap.png' alt="ChannelsMAP" style="width:500px">
+<img hidden id='golemMap' src='./images/golemMap.png' alt="golemMap" style="width:500px;border:5px solid black">
+<img hidden id='capenorthMap' src='./images/capenorthMap.png' alt="capenorthMap" style="width:500px;border:5px solid black">
+<img hidden id='driftwoodisletsMap' src='./images/driftwoodisletsMap.png' alt="driftwoodisletsMap" style="width:500px;border:5px solid black">
+<img hidden id='wildcoastMap' src='./images/wildcoastMap.png' alt="wildcoastMap" style="width:500px;border:5px solid black">
 <br>
 
 
