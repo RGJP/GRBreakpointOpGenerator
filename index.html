@@ -35,7 +35,7 @@ img {
 
 <br>
 
-<button type="button" style="font-family:arial;font-size:70%;background-color:black;color:gray;border:0px" onclick='alert("Added an overlay of whole map with provinces locations when you click on the word provinces to serve as a reminder before choosing. Especially useful when you want to pick two provinces next to each other.\n\nWORK IN PROGRESS (11 left to go): adding maps shown when a province is selected. This way you see all locations rolled easily and can add others around it. No need to waste time searching locations in game anymore! Know where everything is before heading in the game.")'>v3.9 - CLICK TO SEE CHANGES</button>
+<button type="button" style="font-family:arial;font-size:70%;background-color:black;color:gray;border:0px" onclick='alert("Added an overlay of whole map with provinces locations when you click on the word provinces to serve as a reminder before choosing. Especially useful when you want to pick two provinces next to each other.\n\nWORK IN PROGRESS (11 left to go): adding maps shown when a province is selected. This way you see all locations rolled easily and can add others around it. No need to waste time searching locations in game anymore! Know where everything is before heading in the game.")'>v4.0 - CLICK TO SEE CHANGES</button>
 
 
 <h3 style="font-family:arial">Select one or more <b><u onclick="on()" style="font-size:110%">provinces</b></u></h3> 
@@ -106,6 +106,7 @@ function off() {
 		document.getElementById("sinkingcountryMap").style.display = "none";
 		document.getElementById("whalersbayMap").style.display = "none";
 		document.getElementById("silentMountainMap").style.display = "none";
+		document.getElementById("fenbogMap").style.display = "none";
 		
 		//Grab which provinces are selected
 		var provincesSelected = [];
@@ -416,7 +417,9 @@ function off() {
 				if ( province.match('Silent Mountain')  ) {
 				document.getElementById("silentMountainMap").style.display = "block";
 			}
-			
+			if ( province.match('Fen Bog')  ) {
+				document.getElementById("fenbogMap").style.display = "block";
+			}
 				
 			}
 		);
@@ -462,6 +465,7 @@ function off() {
 <img hidden id='sinkingcountryMap' src='./images/sinkingcountryMap.png' alt="sinkingcountryMap" style="width:500px;border:5px solid black">
 <img hidden id='whalersbayMap' src='./images/whalersbayMap.png' alt="whalersbayMap" style="width:500px;border:5px solid black">
 <img hidden id='silentMountainMap' src='./images/silentmountainMap.png' alt="silentMountainMap" style="width:500px;border:5px solid black">
+<img hidden id='fenbogMap' src='./images/fenbogMap.png' alt="fenbogMap" style="width:500px;border:5px solid black">
 <br>
 
 
