@@ -9,6 +9,21 @@ img {
     max-width: 100%;
 }
 </style>
+<style>
+#overlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+  cursor: pointer;
+}
+</style>
 </head>
 
 <title>Ghost Recon Breakpoint Operation Generator</title>
@@ -20,10 +35,28 @@ img {
 
 <br>
 
-<button type="button" style="font-family:arial;font-size:70%;background-color:black;color:gray;border:0px" onclick=''>v3.3</button>
+<button type="button" style="font-family:arial;font-size:70%;background-color:black;color:gray;border:0px" onclick=''>v3.5</button>
 <!alert("Added random codename generation for OP.\nAdded additional locations.\nVisual improvements.")>
 
-<h3 style="font-family:arial">Select one or more provinces</h3>
+<h3 style="font-family:arial">Select one or more <b><u onclick="on()">provinces</b></u></h3> 
+<br>
+
+<div id="overlay" onclick="off()">
+<br><br><br>
+<img hidden id='provincesMap' src='./images/provincesMap.png' alt="provincesMap" style="width:600px;border:5px solid black">
+</div>
+
+<script>
+function on() {
+  document.getElementById("overlay").style.display = "block";
+  document.getElementById("provincesMap").style.display = "block";
+}
+
+function off() {
+  document.getElementById("overlay").style.display = "none";
+}
+</script>
+
 
 <select name="provinces" size='22' style="width: 286px;font-family:arial;background:black;color:white;border:1px solid gray" id="provinces" multiple>
 	<option value="Golem Island Sector 1">Golem Island Sector 1</option>
@@ -31,21 +64,21 @@ img {
 	<option value="Golem Island Sector 3">Golem Island Sector 3</option>
 	<option value="Cape North">Cape North</option>
 	<option value="Driftwood Islets">Driftwood Islets</option>
-	<option value="Wild Coast">Wild Coast</option>
 	<option value="Smugglers Coves">Smugglers Coves</option>
+	<option value="Wild Coast">Wild Coast</option>
+	<option value="Mount Hodgson">Mount Hodgson</option>
 	<option value="Sinking Country">Sinking Country</option>
 	<option value="Whalers Bay">Whalers Bay</option>
-	<option value="Mount Hodgson">Mount Hodgson</option>
-	<option value="Fen Bog">Fen Bog</option>
-	<option value="Good Hope Mountain">Good Hope Mountain</option>
 	<option value="Silent Mountain">Silent Mountain</option>
+	<option value="Fen Bog">Fen Bog</option>
 	<option value="New Argyll">New Argyll</option>
-	<option value="Infinity">Infinity</option>
 	<option value="Channels">Channels</option>
-	<option value="Restricted Area 01">Restricted Area 01</option>
+	<option value="Good Hope Mountain">Good Hope Mountain</option>
 	<option value="Lake Country">Lake Country</option>
-	<option value="New Stirling">New Stirling</option>
+	<option value="Infinity">Infinity</option>
 	<option value="Seal Islands">Seal Islands</option>
+	<option value="Restricted Area 01">Restricted Area 01</option>
+	<option value="New Stirling">New Stirling</option>
 	<option value="Liberty">Liberty</option>
 	<option value="Windy Islands">Windy Islands</option>
 </select>
