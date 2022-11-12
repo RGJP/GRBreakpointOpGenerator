@@ -35,7 +35,7 @@ img {
 
 <br>
 
-<button type="button" style="font-family:arial;font-size:70%;background-color:black;color:gray;border:0px" onclick='alert("Added an overlay of whole map with provinces locations when you click on the word provinces to serve as a reminder before choosing. Especially useful when you want to pick two provinces next to each other.\n\nWORK IN PROGRESS (11 left to go): adding maps shown when a province is selected. This way you see all locations rolled easily and can add others around it. No need to waste time searching locations in game anymore! Know where everything is before heading in the game.")'>v4.0 - CLICK TO SEE CHANGES</button>
+<button type="button" style="font-family:arial;font-size:70%;background-color:black;color:gray;border:0px" onclick='alert("Added an overlay of whole map with provinces locations when you click on the word provinces to serve as a reminder before choosing. Especially useful when you want to pick two provinces next to each other.\n\nWORK IN PROGRESS: adding maps shown when a province is selected. This way you see all locations rolled easily and can add others around it. No need to waste time searching locations in game anymore! Know where everything is before heading in the game.")'>v4.0 - CLICK TO SEE CHANGES</button>
 
 
 <h3 style="font-family:arial">Select one or more <b><u onclick="on()" style="font-size:110%">provinces</b></u></h3> 
@@ -107,6 +107,8 @@ function off() {
 		document.getElementById("whalersbayMap").style.display = "none";
 		document.getElementById("silentMountainMap").style.display = "none";
 		document.getElementById("fenbogMap").style.display = "none";
+		document.getElementById("newargyllMap").style.display = "none";
+		document.getElementById("channelsMap").style.display = "none";
 		
 		//Grab which provinces are selected
 		var provincesSelected = [];
@@ -151,7 +153,7 @@ function off() {
 		const FenBog = ["BlueCorp Startup","Andersons Farm","Longford Farm","Whitestone Farm","Airship Air Station","Shipping Center","Fen Bog Port","Recycling Facility","Photovoltaic Park W01","Fen Bog Testing Zone","Control Station Tiger 03","Checkpoint Tiger Bravo","Checkpoint Tiger Hotel","Drone Station W052","Control Station Tiger 02","Drone Station W051","Hogweed Station","Ancient Village"];
 		const GoodHopeMountain = ["Red Weasel Outpost","Checkpoint Weasel India","Camp Weasel","Checkpoint Weasel Hotel","Bunker Edgehod South","Natural Hazards Control","Auroa Survival Shelter","Drone Station W111","Auroa Weather Station","Checkpoint Weasel Alpha","Checkpoint Weasel Golf"];
 		const SilentMountain = ["Pumping Station","Auroa Data Farm","Battery Farm","Auroa Intranet Control","Submarine Cable Control","Hemlock Station","O'Connors Mine","Mathilda's Palace","Camp Black Widow","Drone Station W071"];
-		const NewArgyll = ["Control Station Tiger 04","Fish Processing Center","Cold Storage Center","New Argyll Winery","Juice Processing Center","Brewery","Long Valley Residences","Skell Estate","Outpost Black Tiger","Ancient Fort","Ancient Sacred Site"];
+		const NewArgyll = ["Control Station Tiger 04","Meal Packaging Center","Fish Processing Center","Cold Storage Center","New Argyll Winery","Juice Processing Center","Brewery","Long Valley Residences","Skell Estate","Outpost Black Tiger","Ancient Fort","Ancient Sacred Site"];
 		const Infinity = ["Skell Foundation Head Office","Checkpoint Viper Golf","Control Station Viper 04","Alpha Centauri Residences","Skell Security","Checkpoint Viper Delta","Skell Technology Head Office","Polaris Residences","Checkpoint Viper Charlie","Vega Residences","Infinity Medical Center","Checkpoint Viper Echo","Canopus District","Jace Skell Conference Hall","Rigel Residences","Sirius Residences","Outpost Green Viper","Auroa Eco-Museum","Antares District","Infinity Transport Hub","Auroa Airport"];
 		const Channels = ["Oceanic Power Plant","Ancient Village","Electric Grid Control","Channels R&D Center","Channels Port","Red Shark Outpost","Navy Fuelling Station","Cold War Ruins","Main Pumping Station","Auroa Power Plant","Step Up Startup","Vulture SAM Site","Checkpoint Shark Charlie","Eagle SAM Site","Sentinel Corp. Location"];
 		const RestrictedArea01 = ["Maintenance Area","Checkpoint Fox Charlie","Grandview Mansion","Construction Site","Checkpoint Fox Alpha","Control Station Viper 01","Camp Ferret","Outpost Red Ferret","Assembly Hall Omega 02","Checkpoint Weasel Bravo","Arrow Testing Zone","Checkpoint Ferret Bravo","Gold Trail Testing Zone","Gate 07","Gate 03","Nugget Cliff","Omega Operations","Checkpoint Fox Echo","Training Center","Gate 06","Gate 05","Stony Creek Village","Gate 04","Checkpoint Fox Delta","Devil Forest Gold Mine","Omega R&D Center","Assembly Hall Omega 01","Drone Station W161","Russell Gold Mine","Freeman Residences","Outpost Red Fox","Control Station Fox 01","Control Station Fox 02","Prototype Workshop","Camp Fox","Gate 02","Gate 01","Checkpoint Fox Charlie"];
@@ -420,6 +422,12 @@ function off() {
 			if ( province.match('Fen Bog')  ) {
 				document.getElementById("fenbogMap").style.display = "block";
 			}
+			if ( province.match('New Argyll')  ) {
+				document.getElementById("newargyllMap").style.display = "block";
+			}
+				if ( province.match('Channels')  ) {
+				document.getElementById("channelsMap").style.display = "block";
+			}
 				
 			}
 		);
@@ -466,6 +474,8 @@ function off() {
 <img hidden id='whalersbayMap' src='./images/whalersbayMap.png' alt="whalersbayMap" style="width:500px;border:5px solid black">
 <img hidden id='silentMountainMap' src='./images/silentmountainMap.png' alt="silentMountainMap" style="width:500px;border:5px solid black">
 <img hidden id='fenbogMap' src='./images/fenbogMap.png' alt="fenbogMap" style="width:500px;border:5px solid black">
+<img hidden id='newargyllMap' src='./images/newargyllMap.png' alt="newargyllMap" style="width:500px;border:5px solid black">
+<img hidden id='channelsMap' src='./images/channelsMap.png' alt="channelsMap" style="width:500px;border:5px solid black">
 <br>
 
 
