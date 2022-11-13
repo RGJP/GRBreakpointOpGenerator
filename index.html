@@ -35,7 +35,7 @@ img {
 
 <br>
 
-<button type="button" style="font-family:arial;font-size:70%;background-color:black;color:gray;border:0px" onclick='alert("Added an overlay of whole map with provinces locations when you click on the word provinces to serve as a reminder before choosing. Especially useful when you want to pick two provinces next to each other.\n\nWORK IN PROGRESS: adding maps shown when a province is selected. This way you see all locations rolled easily and can add others around it. No need to waste time searching locations in game anymore! Know where everything is before heading in the game.")'>v4.1 - CLICK TO SEE CHANGES</button>
+<button type="button" style="font-family:arial;font-size:70%;background-color:black;color:gray;border:0px" onclick='alert("Added an overlay of whole map with provinces locations when you click on the word provinces to serve as a reminder before choosing. Especially useful when you want to pick two provinces next to each other.\n\nWORK IN PROGRESS: adding maps shown when a province is selected. This way you see all locations rolled easily and can add others around it. No need to waste time searching locations in game anymore! Know where everything is before heading in the game.")'>v4.2 - CLICK TO SEE CHANGES</button>
 
 
 <h3 style="font-family:arial">Select one or more <b><u onclick="on()" style="font-size:110%">provinces</b></u></h3> 
@@ -109,6 +109,7 @@ function off() {
 		document.getElementById("fenbogMap").style.display = "none";
 		document.getElementById("newargyllMap").style.display = "none";
 		document.getElementById("channelsMap").style.display = "none";
+		document.getElementById("goodhopemountainMap").style.display = "none";
 		
 		//Grab which provinces are selected
 		var provincesSelected = [];
@@ -428,7 +429,9 @@ function off() {
 				if ( province.match('Channels')  ) {
 				document.getElementById("channelsMap").style.display = "block";
 			}
-				
+				if ( province.match('Good Hope Mountain')  ) {
+				document.getElementById("goodhopemountainMap").style.display = "block";
+			}
 			}
 		);
 
@@ -476,6 +479,7 @@ function off() {
 <img hidden id='fenbogMap' src='./images/fenbogMap.png' alt="fenbogMap" style="width:500px;border:5px solid black">
 <img hidden id='newargyllMap' src='./images/newargyllMap.png' alt="newargyllMap" style="width:500px;border:5px solid black">
 <img hidden id='channelsMap' src='./images/channelsMap.png' alt="channelsMap" style="width:500px;border:5px solid black">
+<img hidden id='goodhopemountainMap' src='./images/goodhopemountainMap.png' alt="goodhopemountainMap" style="width:500px;border:5px solid black">
 <br>
 
 
