@@ -110,6 +110,8 @@ function off() {
 		document.getElementById("newargyllMap").style.display = "none";
 		document.getElementById("channelsMap").style.display = "none";
 		document.getElementById("goodhopemountainMap").style.display = "none";
+		document.getElementById("lakecountryMap").style.display = "none";
+		document.getElementById("infinityMap").style.display = "none";
 		
 		//Grab which provinces are selected
 		var provincesSelected = [];
@@ -432,6 +434,12 @@ function off() {
 				if ( province.match('Good Hope Mountain')  ) {
 				document.getElementById("goodhopemountainMap").style.display = "block";
 			}
+				if ( province.match('Lake Country')  ) {
+				document.getElementById("lakecountryMap").style.display = "block";
+			}
+			if ( province.match('Infinity')  ) {
+				document.getElementById("infinityMap").style.display = "block";
+			}
 			}
 		);
 
@@ -480,6 +488,8 @@ function off() {
 <img hidden id='newargyllMap' src='./images/newargyllMap.png' alt="newargyllMap" style="width:500px;border:5px solid black">
 <img hidden id='channelsMap' src='./images/channelsMap.png' alt="channelsMap" style="width:500px;border:5px solid black">
 <img hidden id='goodhopemountainMap' src='./images/goodhopemountainMap.png' alt="goodhopemountainMap" style="width:500px;border:5px solid black">
+<img hidden id='lakecountryMap' src='./images/lakecountryMap.png' alt="lakecountryMap" style="width:500px;border:5px solid black">
+<img hidden id='infinityMap' src='./images/infinityMap.png' alt="infinityMap" style="width:500px;border:5px solid black">
 <br>
 
 
@@ -524,7 +534,7 @@ All suggestions are welcome.<br><br>
 </p>
 
 
-<img hidden id='logoBottom' src='./images/logo.png' alt="logo" style="width:300px">
+<img hidden id='logoBottom' src='./images/logo.png' alt="logo" style="width:250px">
 <br><br>
 </center> 
 
