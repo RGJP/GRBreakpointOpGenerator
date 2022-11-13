@@ -35,7 +35,7 @@ img {
 
 <br>
 
-<button type="button" style="font-family:arial;font-size:70%;background-color:black;color:gray;border:0px" onclick='alert("Added an overlay of whole map with provinces locations when you click on the word provinces to serve as a reminder before choosing. Especially useful when you want to pick two provinces next to each other.\n\nWORK IN PROGRESS: adding maps shown when a province is selected. This way you see all locations rolled easily and can add others around it. No need to waste time searching locations in game anymore! Know where everything is before heading in the game.")'>v4.2 - CLICK TO SEE CHANGES</button>
+<button type="button" style="font-family:arial;font-size:70%;background-color:black;color:gray;border:0px" onclick='alert("Added an overlay of whole map with provinces locations when you click on the word provinces to serve as a reminder before choosing. Especially useful when you want to pick two provinces next to each other.\n\nWORK IN PROGRESS: adding maps shown when a province is selected. This way you see all locations rolled easily and can add others around it if you wish. No need to waste time searching locations in game anymore! Know where everything is before heading in the game.")'>v4.3 - CLICK TO SEE CHANGES</button>
 
 
 <h3 style="font-family:arial">Select one or more <b><u onclick="on()" style="font-size:110%">provinces</b></u></h3> 
@@ -85,9 +85,19 @@ function off() {
 <h3 style="font-family:arial">Number of locations desired</h3>
 
 <form id="formNbrLocs" action="">
-  <input type="text" style="width: 278px;font-family:arial;background:black;color:white;border:1px solid gray" name="inputNumberOfLoc"><br><br><br>
-  <input type="button" style="width: 285px;height:40px;font-family:arial;font-size:110%;background:black;color:white;border:1px solid gray" onclick="generateOp()" value="Generate random operation  ⚄">
+  <input type="text" style="width: 278px;font-family:arial;background:black;color:white;border:1px solid gray" id="inputNumberOfLoc"><br><br><br>
+  <input type="button" id='generateButton' style="width: 285px;height:40px;font-family:arial;font-size:110%;background:black;color:white;border:1px solid gray" onclick="generateOp()" value="Generate random operation  ⚄">
 </form>
+
+<script>
+var input = document.getElementById("inputNumberOfLoc");
+input.addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    document.getElementById("generateButton").click();
+  }
+});
+</script>
 
 
 <script>
