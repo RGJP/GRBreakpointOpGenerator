@@ -35,7 +35,7 @@ img {
 
 <br>
 
-<button type="button" style="font-family:arial;font-size:70%;background-color:black;color:gray;border:0px" onclick='alert("Added an overlay of whole map with provinces locations when you click on the word provinces to serve as a reminder before choosing. Especially useful when you want to pick two provinces next to each other.\n\nWORK IN PROGRESS: adding maps shown when a province is selected. This way you see all locations rolled easily and can add others around it if you wish. No need to waste time searching locations in game anymore! Know where everything is before heading in the game.")'>v4.4 - CLICK TO SEE CHANGES</button>
+<button type="button" style="font-family:arial;font-size:70%;background-color:black;color:gray;border:0px" onclick='alert("Added an overlay of whole map with provinces locations when you click on the word provinces to serve as a reminder before choosing. Especially useful when you want to pick two provinces next to each other.\n\nFinished adding ALL maps shown when a province is selected. This way you see all locations rolled easily and can add others around it if you wish. No need to waste time searching locations in game anymore! Know where everything is before heading in.")'>v4.5 - CLICK TO SEE CHANGES</button>
 
 
 <h3 style="font-family:arial">Select one or more <b><u onclick="on()" style="font-size:110%">provinces</b></u></h3> 
@@ -123,9 +123,9 @@ input.addEventListener("keypress", function(event) {
 		document.getElementById("lakecountryMap").style.display = "none";
 		document.getElementById("infinityMap").style.display = "none";
 		document.getElementById("sealislandsMap").style.display = "none";
-		
-		
-		
+		document.getElementById("restrictedarea01Map").style.display = "none";
+		document.getElementById("newstirlingMap").style.display = "none";
+		document.getElementById("libertyMap").style.display = "none";
 		document.getElementById("windyislandsMap").style.display = "none";
 		
 		
@@ -177,9 +177,9 @@ input.addEventListener("keypress", function(event) {
 		const Channels = ["Oceanic Power Plant","Ancient Village","Electric Grid Control","Channels R&D Center","Channels Port","Red Shark Outpost","Navy Fuelling Station","Cold War Ruins","Main Pumping Station","Auroa Power Plant","Step Up Startup","Vulture SAM Site","Checkpoint Shark Charlie","Eagle SAM Site","Sentinel Corp. Location"];
 		const RestrictedArea01 = ["Maintenance Area","Checkpoint Fox Charlie","Grandview Mansion","Construction Site","Checkpoint Fox Alpha","Control Station Viper 01","Camp Ferret","Outpost Red Ferret","Assembly Hall Omega 02","Checkpoint Weasel Bravo","Arrow Testing Zone","Checkpoint Ferret Bravo","Gold Trail Testing Zone","Gate 07","Gate 03","Nugget Cliff","Omega Operations","Checkpoint Fox Echo","Training Center","Gate 06","Gate 05","Stony Creek Village","Gate 04","Checkpoint Fox Delta","Devil Forest Gold Mine","Omega R&D Center","Assembly Hall Omega 01","Drone Station W161","Russell Gold Mine","Freeman Residences","Outpost Red Fox","Control Station Fox 01","Control Station Fox 02","Prototype Workshop","Camp Fox","Gate 02","Gate 01","Checkpoint Fox Charlie"];
 		const LakeCountry = ["Skell Security Assembly Hall","Ancient Village","Red Viper Outpost","Prototype Workshop","Checkpoint Viper Alpha","Skell Security R&D Center","Two Lakes Residences","Skell Security Operations","Maintenance Area","Ancient Fort","Camp Viper","Drone Station W121"];
-		const NewStriling = ["Dunback Farm","Forsyth Farm","Ardmore Farm","World SeedVault","Control Station Viper 03","New Stirling Freight Yard","Glenfield Farm","Drone Station W131","Checkpoint Viper Hotel","Ettrick Residences","Checkpoint Viper India","Sutherland Vineyard","Glenorchy Orchard","Agronomy Center","Kelso Farm","Mossburn Hopfield","Drone Station W132","Kinloch Farm","Control Station Viper 02","Burnside Orchard","Blue Viper Outpost","Checkpoint Viper Foxtrot","Checkpoint Viper Bravo","Ancient Village","Gate 03"];
+		const NewStriling = ["Dunback Farm","Forsyth Farm","Ardmore Farm","World SeedVault","Control Station Viper 03","New Stirling Freight Yard","Glenfield Farm","Drone Station W131","Checkpoint Viper Hotel","Ettrick Residences","Checkpoint Viper India","Sutherland Vineyard","Glenorchy Orchard","Agronomy Center","Kelso Farm","Mossburn Hopfield","Drone Station W132","Kinloch Farm","Control Station Viper 02","Burnside Orchard","Blue Viper Outpost","Checkpoint Viper Foxtrot","Checkpoint Viper Bravo","Ancient Village"];
 		const SealIslands = ["Fuel Storage","West Radar Station","Buzzard SAM Site","Anti Aircraft Battery","Emelius Port","Ammunition Storage","Owl SAM Site","Checkpoint Shark Alpha","Control Station Shark 01","Naval Base Auroa Airfield","Sentinel Corp. Naval Base","Falcon SAM Site","Shark Base","Camp Seal Cove","Abandoned Barracks","Checkpoint Shark Bravo","Condor SAM site"];
-		const Liberty = ["Jace Skell Dam","Auroa Solar Power Plant","Detention Center","Checkpoint Fox Foxtrot","John Dewey Residences","Maunga Nui Eco Park","Ayn Rand Residences","Frederic Bastiat Residences","Liberty Airport","Autumn Lake District","Liberty Port","Winter Lake Shopping Street","Winter Park","Auroa Parliament","Parliament Shopping Street","Thomas Jefferson Residences","Adam Smith District","Construction Site (Liberty capital)","Construction Site (Liberty outskirts east)","Control Station Fox 01","Drone Station W191","East Park","Island District","Drone Station W192","Benjamin Franklin Residences","Liberty Transport Hub","Richard Cobden Residences","Jane Addams Residences","Control Station Fox 02","Ancient Fort","Checkpoint Fox Bravo","Auroa Hospital","Cryogenization Center","Cryohope","Eternity","Gate 06","Gate 05","Gate 07"];
+		const Liberty = ["Jace Skell Dam","Auroa Solar Power Plant","Detention Center","Checkpoint Fox Foxtrot","John Dewey Residences","Maunga Nui Eco Park","Ayn Rand Residences","Frederic Bastiat Residences","Liberty Airport","Autumn Lake District","Liberty Port","Winter Park","Auroa Parliament","Parliament Shopping Street","Thomas Jefferson Residences","Adam Smith District","Construction Site (Liberty capital)","Construction Site (Liberty outskirts east)","Control Station Fox 01","Drone Station W191","East Park","Island District","Drone Station W192","Benjamin Franklin Residences","Liberty Transport Hub","Richard Cobden Residences","Jane Addams Residences","Control Station Fox 02","Ancient Fort","Checkpoint Fox Bravo","Auroa Hospital","Cryogenization Center","Cryohope","Eternity","Gate 06","Gate 05","Gate 07"];
 		const WindyIslands = ["Auroa Recycling Factory","Garbage Dump","Incineration Plant","Drone Station S01","Windy Islands Port"];
 
 
@@ -462,11 +462,18 @@ input.addEventListener("keypress", function(event) {
 			}
 			
 			
+			if ( province.match('Restricted Area 01')  ) {
+				document.getElementById("restrictedarea01Map").style.display = "block";
+			}
 			
 			
+			if ( province.match('New Stirling')  ) {
+				document.getElementById("newstirlingMap").style.display = "block";
+			}
 			
-			
-			
+			if ( province.match('Liberty')  ) {
+				document.getElementById("libertyMap").style.display = "block";
+			}
 			if ( province.match('Windy Islands')  ) {
 				document.getElementById("windyislandsMap").style.display = "block";
 			}
@@ -522,8 +529,9 @@ input.addEventListener("keypress", function(event) {
 <img hidden id='lakecountryMap' src='./images/lakecountryMap.png' alt="lakecountryMap" style="width:500px;border:5px solid black">
 <img hidden id='infinityMap' src='./images/infinityMap.png' alt="infinityMap" style="width:500px;border:5px solid black">
 <img hidden id='sealislandsMap' src='./images/sealislandsMap.png' alt="sealislandsMap" style="width:500px;border:5px solid black">
-
-
+<img hidden id='restrictedarea01Map' src='./images/restrictedarea01Map.png' alt="restrictedarea01Map" style="width:500px;border:5px solid black">
+<img hidden id='newstirlingMap' src='./images/newstirlingMap.png' alt="newstirlingMap" style="width:500px;border:5px solid black">
+<img hidden id='libertyMap' src='./images/libertyMap.png' alt="libertyMap" style="width:500px;border:5px solid black">
 <img hidden id='windyislandsMap' src='./images/windyislandsMap.png' alt="windyislandsMap" style="width:500px;border:5px solid black">
 
 <br>
@@ -566,11 +574,11 @@ Your imagination is the limit,<br>
 hopefully that list is a good reminder.<br>
 All suggestions are welcome.<br><br>
 •<br><br>
-Ψ NOS AUTEM DE IUSTITIA MANES Ψ<br>
+NOS AUTEM DE IUSTITIA MANES<br>
 </p>
 
 
-<img hidden id='logoBottom' src='./images/logo.png' alt="logo" style="width:250px">
+<img hidden id='logoBottom' src='./images/logo.png' alt="logo" style="width:250px;border:5px solid DarkOliveGreen">
 <br><br>
 </center> 
 
