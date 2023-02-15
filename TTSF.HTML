@@ -8,7 +8,7 @@
 
     <title>Speech synthesiser</title>
 
-	<!-- v1.1-->
+	<!-- v1.2-->
     <style> 
 
 
@@ -26,7 +26,7 @@ h1, p {
   
 }
 
-.txt, select, form > div {
+.txt, select, div {
   display: block;
   margin: 0 auto;
   font-family: sans-serif;
@@ -42,11 +42,11 @@ select {
   width: 83%;
 }
 
-form > div {
+div {
   width: 81%;
 }
 
-.txt, form > div {
+.txt, div {
   margin-bottom: 10px;
   overflow: auto;
 }
@@ -85,7 +85,7 @@ center
   <body>
     
 
-    <form>
+ 
 	
 	<!-- <label for="txt">Enter text</label>
 	|| voice.lang.startsWith('en-AU') || voice.lang.startsWith('en-CA') || voice.lang.startsWith('en-IE') || voice.lang.startsWith('en-GB') 
@@ -104,13 +104,13 @@ center
         <center> <label for="rate">Rate</label> 
 		<br>
 		
-		<input type="range" min="0.5" max="2" value="0.8" step="0.1" id="rate" />
-        <div class="rate-value">0.8</div>
+		<input type="range" min="0.5" max="2" value="0.9" step="0.1" id="rate" />
+        <div class="rate-value">0.9</div>
         <div class="clearfix"></div>
 		</center>
       </div>
 	  
-	  	 <div>
+	  	 <div style='display:none'>
 		 <center>
         <label for="pitch">Pitch</label>
 		<br>
@@ -130,13 +130,13 @@ center
      
       <div class="controls">
 	  <center>
-		<button id="play" type="submit">Play</button>
+		<button onclick="speak()">Play</button>
 			<button onclick="pauseTTS()">Pause</button>
 	<button onclick="resumeTTS()">Resume</button>
 		
 		</center>
       </div>
-    </form>
+
 	
 	<div class="controls">
 	<br>
@@ -148,6 +148,8 @@ center
 	<br>
 	<br>
 	<br>
+	
+	
     <script>
 	
 
@@ -166,9 +168,7 @@ center
             synth.resume();
         }
 		
- 
-
-		const inputForm = document.querySelector("form");
+	
 		const inputTxt = document.querySelector(".txt");
 		const voiceSelect = document.querySelector("select");
 
@@ -197,7 +197,7 @@ center
 			option.setAttribute("data-name", voices[i].name);
 			voiceSelect.appendChild(option);
 		  }
-		  voiceSelect.selectedIndex = selectedIndex;
+		  voiceSelect.selectedIndex = 13;
 		}
 
 		populateVoiceList();
@@ -207,21 +207,12 @@ center
 		}
 
 		function speak() {
-		  if (synth.speaking) {
-			console.error("speechSynthesis.speaking");
-			return;
-		  }
-
+		
+		 synth.cancel();
+		 
 		  if (inputTxt.value !== "") {
 			const utterThis = new SpeechSynthesisUtterance(inputTxt.value);
 
-			utterThis.onend = function (event) {
-			  console.log("SpeechSynthesisUtterance.onend");
-			};
-
-			utterThis.onerror = function (event) {
-			  console.error("SpeechSynthesisUtterance.onerror");
-			};
 
 			const selectedOption =
 			  voiceSelect.selectedOptions[0].getAttribute("data-name");
@@ -238,13 +229,7 @@ center
 		  }
 		}
 
-		inputForm.onsubmit = function (event) {
-		  event.preventDefault();
-
-		  speak();
-
-		  inputTxt.blur();
-		};
+	
 
 		pitch.onchange = function () {
 		  pitchValue.textContent = pitch.value;
