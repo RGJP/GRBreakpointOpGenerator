@@ -10,17 +10,10 @@
 
     <style> 
 
-body, html {
-  margin: 0;
-}
-
-html {
-  height: 100%;
-}
 
 body {
   height: 90%;
-  max-width: 800px;
+  
   margin: 0 auto;
   	 background-color: #001a00;
 	 color:white;
@@ -29,7 +22,7 @@ body {
 h1, p {
   font-family: sans-serif;
   text-align: center;
-  padding: 20px;
+  
 }
 
 .txt, select, form > div {
@@ -62,19 +55,15 @@ form > div {
 }
 
 label {
-  float: left;
-  width: 10%;
-  line-height: 1.5;
+center
 }
 
 .rate-value, .pitch-value {
-  float: right;
-  width: 5%;
-  line-height: 1.5;
+center
 }
 
 #rate, #pitch {
-  float: right;
+  center;
   width: 81%;
   color:white;
 }
@@ -82,10 +71,12 @@ label {
 .controls {
   text-align: center;
   margin-top: 10px;
+ 
 }
 
 .controls button {
-  padding: 10px;
+  padding: 15px;
+  margin-right:20px;
 }
 </style>
   </head>
@@ -104,20 +95,28 @@ label {
             window.speechSynthesis.cancel();
         }
 	-->
-		<p>Select voice and settings<br><br> Recommended Browser:<br> Microsoft Edge<br><br>Recommended Voice:<br> 'Microsoft Christopher Online (Natural) - English (United States) (en-US)'</p>
+		<p>Recommended Browser: Microsoft Edge<br><br>Recommended Voice: 'Microsoft Christopher Online (Natural) - English (United States) (en-US)'</p>
 		
 		 <select selectedIndex='5'> </select>
 	 <br>
       <div>
-        <label for="rate">Rate</label><input type="range" min="0.5" max="2" value="0.8" step="0.1" id="rate" />
+        <center> <label for="rate">Rate</label> 
+		<br>
+		
+		<input type="range" min="0.5" max="2" value="0.8" step="0.1" id="rate" />
         <div class="rate-value">0.8</div>
         <div class="clearfix"></div>
+		</center>
       </div>
+	  
 	  	 <div>
-        <label for="pitch">Pitch</label
-        ><input type="range" min="0" max="2" value="1" step="0.1" id="pitch" />
+		 <center>
+        <label for="pitch">Pitch</label>
+		<br>
+		<input type="range" min="0" max="2" value="1" step="0.1" id="pitch" />
         <div class="pitch-value">1</div>
         <div class="clearfix"></div>
+		</center>
       </div> 
 	  
 	  <p>Paste or type text in the area below and press 'Play' to hear it.</p>
@@ -129,11 +128,12 @@ label {
 	  
      
       <div class="controls">
+	  <center>
 		<button id="play" type="submit">Play</button>
 			<button onclick="pauseTTS()">Pause</button>
 	<button onclick="resumeTTS()">Resume</button>
 		
-		
+		</center>
       </div>
     </form>
 	
