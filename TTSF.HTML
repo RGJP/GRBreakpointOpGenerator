@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Speech synthesiser</title>
+
+    <style> 
+
+body, html {
+  margin: 0;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 90%;
+  max-width: 800px;
+  margin: 0 auto;
+  	 background-color: #001a00;
+	 color:white;
+}
+
+h1, p {
+  font-family: sans-serif;
+  text-align: center;
+  padding: 20px;
+}
+
+.txt, select, form > div {
+  display: block;
+  margin: 0 auto;
+  font-family: sans-serif;
+  font-size: 16px;
+  padding: 5px;
+}
+
+.txt {
+  width: 80%;
+}
+
+select {
+  width: 83%;
+}
+
+form > div {
+  width: 81%;
+}
+
+.txt, form > div {
+  margin-bottom: 10px;
+  overflow: auto;
+}
+
+.clearfix {
+  clear: both;
+}
+
+label {
+  float: left;
+  width: 10%;
+  line-height: 1.5;
+}
+
+.rate-value, .pitch-value {
+  float: right;
+  width: 5%;
+  line-height: 1.5;
+}
+
+#rate, #pitch {
+  float: right;
+  width: 81%;
+  color:white;
+}
+
+.controls {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.controls button {
+  padding: 10px;
+}
+</style>
+  </head>
+
+  <body>
+    
+
+    <form>
+	
+	<!-- <label for="txt">Enter text</label>
+	|| voice.lang.startsWith('en-AU') || voice.lang.startsWith('en-CA') || voice.lang.startsWith('en-IE') || voice.lang.startsWith('en-GB') 
+		    function pauseTTS() {
+            window.speechSynthesis.pause();
+        }
+        function stopTTS() {
+            window.speechSynthesis.cancel();
+        }
+	-->
+		<p>Select voice and settings<br><br> Recommended Browser:<br> Microsoft Edge<br><br>Recommended Voice:<br> 'Microsoft Christopher Online (Natural) - English (United States) (en-US)'</p>
+		
+		 <select selectedIndex='5'> </select>
+	 <br>
+      <div>
+        <label for="rate">Rate</label><input type="range" min="0.5" max="2" value="0.8" step="0.1" id="rate" />
+        <div class="rate-value">0.8</div>
+        <div class="clearfix"></div>
+      </div>
+	  	 <div>
+        <label for="pitch">Pitch</label
+        ><input type="range" min="0" max="2" value="1" step="0.1" id="pitch" />
+        <div class="pitch-value">1</div>
+        <div class="clearfix"></div>
+      </div> 
+	  
+	  <p>Paste or type text in the area below and press 'Play' to hear it.</p>
+      <textarea id="txt" type="text" class="txt"  style="resize:none;height: 300px" ></textarea>
+	  
+     
+
+	
+	  
+     
+      <div class="controls">
+		<button id="play" type="submit">Play</button>
+			<button onclick="pauseTTS()">Pause</button>
+	<button onclick="resumeTTS()">Resume</button>
+		
+		
+      </div>
+    </form>
+	
+	<div class="controls">
+	<br>
+	<button onclick="stopTTS()">CANCEL / RESET Speech Module</button>
+	</div>
+	
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+    <script>
+	
+
+		
+		const synth = window.speechSynthesis;
+		 
+		       function stopTTS() {
+            synth.cancel();
+        }
+		
+			  function pauseTTS() {
+            synth.pause();
+        }
+		
+			  function resumeTTS() {
+            synth.resume();
+        }
+		
+ 
+
+		const inputForm = document.querySelector("form");
+		const inputTxt = document.querySelector(".txt");
+		const voiceSelect = document.querySelector("select");
+
+		const pitch = document.querySelector("#pitch");
+		const pitchValue = document.querySelector(".pitch-value");
+		const rate = document.querySelector("#rate");
+		const rateValue = document.querySelector(".rate-value");
+
+		let voices = [];
+
+		function populateVoiceList() {
+		  voices = synth.getVoices().filter(voice => voice.lang.startsWith('en-US') || voice.lang.startsWith('en-AU') || voice.lang.startsWith('en-CA') || voice.lang.startsWith('en-IE') || voice.lang.startsWith('en-GB')   )  ;
+		  const selectedIndex =
+			voiceSelect.selectedIndex < 0 ? 0 : voiceSelect.selectedIndex;
+		  voiceSelect.innerHTML = "";
+
+		  for (let i = 0; i < voices.length; i++) {
+			const option = document.createElement("option");
+			option.textContent = `${voices[i].name} (${voices[i].lang})`;
+
+			if (voices[i].default) {
+			  option.textContent += " -- DEFAULT";
+			}
+
+			option.setAttribute("data-lang", voices[i].lang);
+			option.setAttribute("data-name", voices[i].name);
+			voiceSelect.appendChild(option);
+		  }
+		  voiceSelect.selectedIndex = selectedIndex;
+		}
+
+		populateVoiceList();
+
+		if (speechSynthesis.onvoiceschanged !== undefined) {
+		  speechSynthesis.onvoiceschanged = populateVoiceList;
+		}
+
+		function speak() {
+		  if (synth.speaking) {
+			console.error("speechSynthesis.speaking");
+			return;
+		  }
+
+		  if (inputTxt.value !== "") {
+			const utterThis = new SpeechSynthesisUtterance(inputTxt.value);
+
+			utterThis.onend = function (event) {
+			  console.log("SpeechSynthesisUtterance.onend");
+			};
+
+			utterThis.onerror = function (event) {
+			  console.error("SpeechSynthesisUtterance.onerror");
+			};
+
+			const selectedOption =
+			  voiceSelect.selectedOptions[0].getAttribute("data-name");
+
+			for (let i = 0; i < voices.length; i++) {
+			  if (voices[i].name === selectedOption) {
+				utterThis.voice = voices[i];
+				break;
+			  }
+			}
+			utterThis.pitch = pitch.value;
+			utterThis.rate = rate.value;
+			synth.speak(utterThis);
+		  }
+		}
+
+		inputForm.onsubmit = function (event) {
+		  event.preventDefault();
+
+		  speak();
+
+		  inputTxt.blur();
+		};
+
+		pitch.onchange = function () {
+		  pitchValue.textContent = pitch.value;
+		};
+
+		rate.onchange = function () {
+		  rateValue.textContent = rate.value;
+		};
+
+		voiceSelect.onchange = function () {
+		  speak();
+		};
+		
+	
+	</script>
+	
+	
+  </body>
+</html>
