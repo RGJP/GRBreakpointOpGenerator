@@ -8,7 +8,7 @@
 
     <title>Speech synthesiser</title>
 
-	<!-- v1.2-->
+	<!-- v1.3-->
     <style> 
 
 
@@ -151,27 +151,9 @@ center
 	
 	
     <script>
-	
-
-		
 		const synth = window.speechSynthesis;
-		 
-		       function stopTTS() {
-            synth.cancel();
-        }
-		
-			  function pauseTTS() {
-            synth.pause();
-        }
-		
-			  function resumeTTS() {
-            synth.resume();
-        }
-		
-	
 		const inputTxt = document.querySelector(".txt");
 		const voiceSelect = document.querySelector("select");
-
 		const pitch = document.querySelector("#pitch");
 		const pitchValue = document.querySelector(".pitch-value");
 		const rate = document.querySelector("#rate");
@@ -208,7 +190,7 @@ center
 
 		function speak() {
 		
-		 synth.cancel();
+		 synth.resume();
 		 
 		  if (inputTxt.value !== "") {
 			const utterThis = new SpeechSynthesisUtterance(inputTxt.value);
@@ -229,7 +211,6 @@ center
 		  }
 		}
 
-	
 
 		pitch.onchange = function () {
 		  pitchValue.textContent = pitch.value;
@@ -242,6 +223,18 @@ center
 		voiceSelect.onchange = function () {
 		  speak();
 		};
+		
+			       function stopTTS() {
+            synth.cancel();
+        }
+		
+			  function pauseTTS() {
+            synth.pause();
+        }
+		
+			  function resumeTTS() {
+            synth.resume();
+        }
 		
 	
 	</script>
