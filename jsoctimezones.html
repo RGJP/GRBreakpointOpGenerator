@@ -39,7 +39,7 @@
         
         // display the time and timezone in an HTML element
         var timeElem = document.getElementById("time");
-        timeElem.innerHTML = "" + "Detected local timezone: " + timezoneString;
+        timeElem.innerHTML = "" + "Detected local timezone:<br>" + timezoneString;
 		
 		 
       };
@@ -116,11 +116,12 @@ document.getElementById('convertedToAustralia').textContent = `Australia Time: $
  
     <p id="time"></p>
 	<hr>
-	 <h2>Show a given local time in other timezones</h2>
+	 <h3>Show a local time in other timezones</h3>
 	 <p>My time:<br><br><input  style="font-size: 18px" type="time" id="givenLocalTime" name="time"></p>
 	
 		<button style="font-size: 18px; padding: 10px 16px;" onclick="convertTime()">Equals to...</button>
-
+		<br>
+		<hr>
 		<p id="convertedToPacific"> </p>
 	
 		<p id="convertedToMountain"> </p>
