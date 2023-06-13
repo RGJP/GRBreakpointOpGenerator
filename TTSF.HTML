@@ -152,42 +152,54 @@ center
 	
 	
     <script>
-		const synth = window.speechSynthesis;
-		const inputTxt = document.querySelector(".txt");
-		const voiceSelect = document.querySelector("select");
-		const pitch = document.querySelector("#pitch");
-		const pitchValue = document.querySelector(".pitch-value");
-		const rate = document.querySelector("#rate");
-		const rateValue = document.querySelector(".rate-value");
+	const synth = window.speechSynthesis;
+const inputTxt = document.querySelector(".txt");
+const voiceSelect = document.querySelector("select");
+const pitch = document.querySelector("#pitch");
+const pitchValue = document.querySelector(".pitch-value");
+const rate = document.querySelector("#rate");
+const rateValue = document.querySelector(".rate-value");
 
-		let voices = [];
+let voices = [];
 
-		function populateVoiceList() {
-		  voices = synth.getVoices().filter(voice => voice.lang.startsWith('en-US') || voice.lang.startsWith('en-AU') || voice.lang.startsWith('en-CA') || voice.lang.startsWith('en-IE') || voice.lang.startsWith('en-GB')   )  ;
-		  const selectedIndex =
-			voiceSelect.selectedIndex < 0 ? 0 : voiceSelect.selectedIndex;
-		  voiceSelect.innerHTML = "";
+function populateVoiceList() {
+  voices = synth.getVoices().filter(voice => voice.lang.startsWith('en-US') || voice.lang.startsWith('en-AU') || voice.lang.startsWith('en-CA') || voice.lang.startsWith('en-IE') || voice.lang.startsWith('en-GB'));
+  const selectedIndex = voiceSelect.selectedIndex < 0 ? 0 : voiceSelect.selectedIndex;
+  voiceSelect.innerHTML = "";
 
-		  for (let i = 0; i < voices.length; i++) {
-			const option = document.createElement("option");
-			option.textContent = `${voices[i].name} (${voices[i].lang})`;
+  for (let i = 0; i < voices.length; i++) {
+    const option = document.createElement("option");
+    option.textContent = `${voices[i].name} (${voices[i].lang})`;
 
-			if (voices[i].default) {
-			  option.textContent += " -- DEFAULT";
-			}
+    if (voices[i].default) {
+      option.textContent += " -- DEFAULT";
+    }
 
-			option.setAttribute("data-lang", voices[i].lang);
-			option.setAttribute("data-name", voices[i].name);
-			voiceSelect.appendChild(option);
-		  }
-		  voiceSelect.selectedIndex = 19;
-		}
+    option.setAttribute("data-lang", voices[i].lang);
+    option.setAttribute("data-name", voices[i].name);
+    voiceSelect.appendChild(option);
+  }
+  voiceSelect.selectedIndex = 19;
+}
 
-		populateVoiceList();
+function waitForVoicesToLoad() {
+  return new Promise(resolve => {
+    if (synth.getVoices().length !== 0) {
+      resolve();
+    } else {
+      synth.onvoiceschanged = () => {
+        resolve();
+      };
+    }
+  });
+}
 
-		if (speechSynthesis.onvoiceschanged !== undefined) {
-		  speechSynthesis.onvoiceschanged = populateVoiceList;
-		}
+async function initialize() {
+  await waitForVoicesToLoad();
+  populateVoiceList();
+}
+
+initialize();
 
 		function speak() {
 		
