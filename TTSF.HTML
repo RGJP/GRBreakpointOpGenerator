@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>TTS v1.8</title>
+    <title>TTS v1.9</title>
 
 	
     <style> 
@@ -166,7 +166,12 @@ function populateVoiceList() {
   voices = synth.getVoices().filter(voice => voice.lang.startsWith('en-US') || voice.lang.startsWith('en-AU') || voice.lang.startsWith('en-CA') || voice.lang.startsWith('en-IE') || voice.lang.startsWith('fr-CA') || voice.lang.startsWith('en-GB'));
   const selectedIndex = voiceSelect.selectedIndex < 0 ? 0 : voiceSelect.selectedIndex;
   voiceSelect.innerHTML = "";
-
+  
+  //test debug list voices
+  let voiceNames = voices.map(voice => voice.name).join('\n');
+alert(voiceNames);
+	//
+	
   for (let i = 0; i < voices.length; i++) {
     const option = document.createElement("option");
     option.textContent = `${voices[i].name} (${voices[i].lang})`;
@@ -200,6 +205,8 @@ async function initialize() {
 }
 
 initialize();
+
+
 
 		function speak() {
 		
