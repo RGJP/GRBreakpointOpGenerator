@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>TTS v1.9</title>
+    <title>TTS v2.0</title>
 
 	
     <style> 
@@ -151,117 +151,106 @@ center
 	<br>
 	
 	
-    <script>
-	const synth = window.speechSynthesis;
-const inputTxt = document.querySelector(".txt");
-const voiceSelect = document.querySelector("select");
-const pitch = document.querySelector("#pitch");
-const pitchValue = document.querySelector(".pitch-value");
-const rate = document.querySelector("#rate");
-const rateValue = document.querySelector(".rate-value");
+   <script>
+  const synth = window.speechSynthesis;
+  const inputTxt = document.querySelector(".txt");
+  const voiceSelect = document.querySelector("select");
+  const pitch = document.querySelector("#pitch");
+  const pitchValue = document.querySelector(".pitch-value");
+  const rate = document.querySelector("#rate");
+  const rateValue = document.querySelector(".rate-value");
 
-let voices = [];
+  let voices = [];
 
-function populateVoiceList() {
-  voices = synth.getVoices().filter(voice => voice.lang.startsWith('en-US') || voice.lang.startsWith('en-AU') || voice.lang.startsWith('en-CA') || voice.lang.startsWith('en-IE') || voice.lang.startsWith('fr-CA') || voice.lang.startsWith('en-GB'));
-  const selectedIndex = voiceSelect.selectedIndex < 0 ? 0 : voiceSelect.selectedIndex;
-  voiceSelect.innerHTML = "";
-  
-  //test debug list voices
-  let voiceNames = voices.map(voice => voice.name).join('\n');
-alert(voiceNames);
-	//
-	
-  for (let i = 0; i < voices.length; i++) {
-    const option = document.createElement("option");
-    option.textContent = `${voices[i].name} (${voices[i].lang})`;
+  function populateVoiceList() {
+    voices = synth
+      .getVoices()
+      .filter(
+        (voice) =>
+          voice.lang.startsWith("en-US") ||
+          voice.lang.startsWith("en-AU") ||
+          voice.lang.startsWith("en-CA") ||
+          voice.lang.startsWith("en-IE") ||
+          voice.lang.startsWith("fr-CA") ||
+          voice.lang.startsWith("en-GB")
+      );
+    const selectedIndex = voiceSelect.selectedIndex < 0 ? 0 : voiceSelect.selectedIndex;
+    voiceSelect.innerHTML = "";
 
-    if (voices[i].default) {
-      option.textContent += " -- DEFAULT";
+    for (let i = 0; i < voices.length; i++) {
+      const option = document.createElement("option");
+      option.textContent = `${voices[i].name} (${voices[i].lang})`;
+
+      if (voices[i].default) {
+        option.textContent += " -- DEFAULT";
+      }
+
+      option.setAttribute("data-lang", voices[i].lang);
+      option.setAttribute("data-name", voices[i].name);
+      voiceSelect.appendChild(option);
     }
-
-    option.setAttribute("data-lang", voices[i].lang);
-    option.setAttribute("data-name", voices[i].name);
-    voiceSelect.appendChild(option);
+    voiceSelect.selectedIndex = 22;
   }
-  voiceSelect.selectedIndex = 22;
-}
 
-function waitForVoicesToLoad() {
-  return new Promise(resolve => {
-    if (synth.getVoices().length !== 0) {
-      resolve();
-    } else {
-      synth.onvoiceschanged = () => {
-        resolve();
-      };
+  function initialize() {
+    populateVoiceList();
+
+    if (synth.onvoiceschanged !== undefined) {
+      synth.onvoiceschanged = populateVoiceList;
     }
-  });
-}
+  }
 
-async function initialize() {
-  await waitForVoicesToLoad();
-  populateVoiceList();
-}
+  initialize();
 
-initialize();
+  function speak() {
+    synth.cancel();
 
+    if (inputTxt.value !== "") {
+      const utterThis = new SpeechSynthesisUtterance(inputTxt.value);
+      const selectedOption = voiceSelect.selectedOptions[0].getAttribute("data-name");
 
-
-		function speak() {
-		
-		 synth.cancel();
-		 
-		  if (inputTxt.value !== "") {
-			const utterThis = new SpeechSynthesisUtterance(inputTxt.value);
-
-
-			const selectedOption =
-			  voiceSelect.selectedOptions[0].getAttribute("data-name");
-
-			for (let i = 0; i < voices.length; i++) {
-			  if (voices[i].name === selectedOption) {
-				utterThis.voice = voices[i];
-				break;
-			  }
-			}
-			utterThis.pitch = pitch.value;
-			utterThis.rate = rate.value;
-			synth.speak(utterThis);
-		  }
-		}
-
-
-		pitch.onchange = function () {
-		  pitchValue.textContent = pitch.value;
-		};
-
-		rate.onchange = function () {
-		  rateValue.textContent = rate.value;
-		};
-
-		voiceSelect.onchange = function () {
-		  speak();
-		};
-		
-			       function stopTTS() {
-            synth.cancel();
+      for (let i = 0; i < voices.length; i++) {
+        if (voices[i].name === selectedOption) {
+          utterThis.voice = voices[i];
+          break;
         }
-		
-			  function pauseTTS() {
-            synth.pause();
-        }
-		
-			  function resumeTTS() {
-            synth.resume();
-        }
-		
-			  function clearTXT() {
-            inputTxt.value = "";
-        }
-		
-	
-	</script>
+      }
+
+      utterThis.pitch = pitch.value;
+      utterThis.rate = rate.value;
+      synth.speak(utterThis);
+    }
+  }
+
+  pitch.onchange = function () {
+    pitchValue.textContent = pitch.value;
+  };
+
+  rate.onchange = function () {
+    rateValue.textContent = rate.value;
+  };
+
+  voiceSelect.onchange = function () {
+    speak();
+  };
+
+  function stopTTS() {
+    synth.cancel();
+  }
+
+  function pauseTTS() {
+    synth.pause();
+  }
+
+  function resumeTTS() {
+    synth.resume();
+  }
+
+  function clearTXT() {
+    inputTxt.value = "";
+  }
+</script>
+
 	
 	
   </body>
