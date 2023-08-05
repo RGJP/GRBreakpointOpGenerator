@@ -97,6 +97,11 @@ center
         }
 	-->
 		<p>Supported Browser: Microsoft Edge (Latest version)<br><br>Recommended voices: 'Steffan, Eric, Christopher, Liam, Ryan, Thomas, Jenny, Michelle, Clara.'</p>
+		 
+	  <center>
+		<button onclick="initialize()">LOAD VOICES</button>
+		<br><br>
+		</center>
 		
 		 <select> </select>
 	 <br>
@@ -130,6 +135,7 @@ center
      
       <div class="controls">
 	  <center>
+		
 		<button onclick="speak()">PLAY</button>
 			<button onclick="stopTTS()">STOP</button>
 		<button onclick="clearTXT()">CLEAR TEXTBOX</button>
@@ -160,7 +166,7 @@ center
   const rate = document.querySelector("#rate");
   const rateValue = document.querySelector(".rate-value");
 
-  let voices = [];
+  voices = [];
 
   function populateVoiceList() {
     voices = synth
@@ -200,7 +206,7 @@ center
     }
   }
 
-  initialize();
+ 
 
   function speak() {
     synth.cancel();
