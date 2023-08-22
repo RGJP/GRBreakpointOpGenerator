@@ -33,44 +33,187 @@ img {
 
 <h3 style="font-family:arial">MILSIM soundboard for roleplay</b></u></h3> 
 <p style="font-family:arial">*Click button to play, click again to stop (toggle)</b></u></p> 
-<input type="button" id='Sound' style="width: 285px; height: 40px; font-family: arial; font-size: 110%; background: black; color: white; border: 1px solid gray; margin:15px" onclick="toggleSound1()" value="Sound">
+<input type="button" id='Sound' style="width: 285px; height: 40px; font-family: arial; font-size: 110%; background: black; color: white; border: 1px solid gray; margin:15px" onclick="hackcomputer()" value="Accessing Computer">
 <br>
-<input type="button" id='Sound' style="width: 285px; height: 40px; font-family: arial; font-size: 110%; background: black; color: white; border: 1px solid gray; margin:15px" onclick="toggleSound1()" value="Sound">
+<input type="button" id='Sound' style="width: 285px; height: 40px; font-family: arial; font-size: 110%; background: black; color: white; border: 1px solid gray; margin:15px" onclick="searchingDocuments()" value="Grabbing Intel documents">
 <br>
-<input type="button" id='Sound' style="width: 285px; height: 40px; font-family: arial; font-size: 110%; background: black; color: white; border: 1px solid gray; margin:15px" onclick="toggleSound1()" value="Sound">
+<input type="button" id='Sound' style="width: 285px; height: 40px; font-family: arial; font-size: 110%; background: black; color: white; border: 1px solid gray; margin:15px" onclick="panelWiretap()" value="Placing wiretap in a panel">
 <br>
-<input type="button" id='Sound' style="width: 285px; height: 40px; font-family: arial; font-size: 110%; background: black; color: white; border: 1px solid gray; margin:15px" onclick="toggleSound1()" value="Sound">
+<input type="button" id='Sound' style="width: 285px; height: 40px; font-family: arial; font-size: 110%; background: black; color: white; border: 1px solid gray; margin:15px" onclick="ziptie()" value="Zip tie HVT">
 <br>
-<input type="button" id='Sound' style="width: 285px; height: 40px; font-family: arial; font-size: 110%; background: black; color: white; border: 1px solid gray; margin:15px" onclick="toggleSound1()" value="Sound">
+<input type="button" id='Sound' style="width: 285px; height: 40px; font-family: arial; font-size: 110%; background: black; color: white; border: 1px solid gray; margin:15px" onclick="radio1()" value="Radio reply 1 short">
 <br>
-<input type="button" id='Sound' style="width: 285px; height: 40px; font-family: arial; font-size: 110%; background: black; color: white; border: 1px solid gray; margin:15px" onclick="toggleSound1()" value="Sound">
+<input type="button" id='Sound' style="width: 285px; height: 40px; font-family: arial; font-size: 110%; background: black; color: white; border: 1px solid gray; margin:15px" onclick="radio2()" value="Radio reply 2 short">
 <br>
-<input type="button" id='Sound' style="width: 285px; height: 40px; font-family: arial; font-size: 110%; background: black; color: white; border: 1px solid gray; margin:15px" onclick="toggleSound1()" value="Sound">
+<input type="button" id='Sound' style="width: 285px; height: 40px; font-family: arial; font-size: 110%; background: black; color: white; border: 1px solid gray; margin:15px" onclick="radio3()" value="Radio reply 3 long">
 <br>
-<input type="button" id='Sound' style="width: 285px; height: 40px; font-family: arial; font-size: 110%; background: black; color: white; border: 1px solid gray; margin:15px" onclick="toggleSound1()" value="Sound">
+<input type="button" id='Sound' style="width: 285px; height: 40px; font-family: arial; font-size: 110%; background: black; color: white; border: 1px solid gray; margin:15px" onclick="wood()" value="Wood creaking">
 <br>
-<input type="button" id='Sound' style="width: 285px; height: 40px; font-family: arial; font-size: 110%; background: black; color: white; border: 1px solid gray; margin:15px" onclick="toggleSound1()" value="Sound">
+<input type="button" id='Sound' style="width: 285px; height: 40px; font-family: arial; font-size: 110%; background: black; color: white; border: 1px solid gray; margin:15px" onclick="geiger()" value="Geiger (radiation)">
+
 <br>
-<input type="button" id='Sound' style="width: 285px; height: 40px; font-family: arial; font-size: 110%; background: black; color: white; border: 1px solid gray; margin:15px" onclick="toggleSound1()" value="Sound">
+<input type="button" id='Sound' style="width: 285px; height: 40px; font-family: arial; font-size: 110%; background: black; color: white; border: 1px solid gray; margin:15px" onclick="alarm()" value="Helicopter alarm (going down)">
+
+<br>
+<input type="button" id='Sound' style="width: 285px; height: 40px; font-family: arial; font-size: 110%; background: black; color: white; border: 1px solid gray; margin:15px" onclick="samlaunch()" value="SAM lock and launch">
 
 </center> 
 
- <audio id="sound">
-        <source src="./sounds/computer.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
+<audio id="hackcomputer">
+<source src="./sounds/computer.mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
 	
+<audio id="searchingDocuments">
+<source src="./sounds/searchingDocuments.mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
+
+<audio id="panelWiretap">
+<source src="./sounds/paneltools.mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
+
+<audio id="ziptie">
+<source src="./sounds/ziptie.mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
+
+<audio id="radio1">
+<source src="./sounds/radioreply1.mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
+<audio id="radio2">
+<source src="./sounds/radioreply2.mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
+<audio id="radio3">
+<source src="./sounds/radioreply3long.mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
+<audio id="wood">
+<source src="./sounds/woodcreak.mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
+<audio id="geiger">
+<source src="./sounds/geiger.mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
+<audio id="alarm">
+<source src="./sounds/helicopter_alarm.mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
+<audio id="samlaunch">
+<source src="./sounds/samLockandLaunch.mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
+
 
  <script>
-           function toggleSound1() {
-            var sound = document.getElementById('sound');
-          if (sound.paused || sound.ended) {
-        sound.currentTime = 0; // Reset playback position to the beginning
-        sound.play();
-    } else {
-        sound.pause();
-    }
-        }
+	function hackcomputer() {
+	var sound = document.getElementById('hackcomputer');
+		if (sound.paused || sound.ended) {
+		sound.currentTime = 0; // Reset playback position to the beginning
+		sound.play();
+		} else {
+		sound.pause();
+		}
+	}
+	
+		function searchingDocuments() {
+	var sound = document.getElementById('searchingDocuments');
+		if (sound.paused || sound.ended) {
+		sound.currentTime = 0; // Reset playback position to the beginning
+		sound.play();
+		} else {
+		sound.pause();
+		}
+	}
+	
+			function panelWiretap() {
+	var sound = document.getElementById('panelWiretap');
+		if (sound.paused || sound.ended) {
+		sound.currentTime = 0; // Reset playback position to the beginning
+		sound.play();
+		} else {
+		sound.pause();
+		}
+	}
+	
+	
+		function ziptie() {
+	var sound = document.getElementById('ziptie');
+		if (sound.paused || sound.ended) {
+		sound.currentTime = 0; // Reset playback position to the beginning
+		sound.play();
+		} else {
+		sound.pause();
+		}
+	}
+			function radio1() {
+	var sound = document.getElementById('radio1');
+		if (sound.paused || sound.ended) {
+		sound.currentTime = 0; // Reset playback position to the beginning
+		sound.play();
+		} else {
+		sound.pause();
+		}
+	}
+			function radio2() {
+	var sound = document.getElementById('radio2');
+		if (sound.paused || sound.ended) {
+		sound.currentTime = 0; // Reset playback position to the beginning
+		sound.play();
+		} else {
+		sound.pause();
+		}
+	}
+			function radio3() {
+	var sound = document.getElementById('radio3');
+		if (sound.paused || sound.ended) {
+		sound.currentTime = 0; // Reset playback position to the beginning
+		sound.play();
+		} else {
+		sound.pause();
+		}
+	}
+			function wood() {
+	var sound = document.getElementById('wood');
+		if (sound.paused || sound.ended) {
+		sound.currentTime = 0; // Reset playback position to the beginning
+		sound.play();
+		} else {
+		sound.pause();
+		}
+	}
+			function geiger() {
+	var sound = document.getElementById('geiger');
+		if (sound.paused || sound.ended) {
+		sound.currentTime = 0; // Reset playback position to the beginning
+		sound.play();
+		} else {
+		sound.pause();
+		}
+	}
+			function alarm() {
+	var sound = document.getElementById('alarm');
+		if (sound.paused || sound.ended) {
+		sound.currentTime = 0; // Reset playback position to the beginning
+		sound.play();
+		} else {
+		sound.pause();
+		}
+	}
+			function samlaunch() {
+	var sound = document.getElementById('samlaunch');
+		if (sound.paused || sound.ended) {
+		sound.currentTime = 0; // Reset playback position to the beginning
+		sound.play();
+		} else {
+		sound.pause();
+		}
+	}
+	
    </script>
 	
 </body>
