@@ -23,6 +23,36 @@ img {
   z-index: 2;
   cursor: pointer;
 }
+
+#instructions-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+#instructions-box {
+ background:white;
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 20px;
+  max-width: 400px;
+  text-align: center;
+}
+
+#instructions-box span {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+
 </style>
 </head>
 
@@ -34,8 +64,31 @@ img {
 <img src='./images/title.png' alt="Ghost Recon Breakpoint Operation Generator" style="width:300px;height:148px;border:1px solid gray">
 
 <br>
+<br>
+<button type="button" style="font-family: arial; font-size: 80%; background-color: black; color: white; border: 1px solid white; border-radius: 1px;" onclick="showInstructions()">v5.0 - CLICK FOR INSTRUCTIONS</button>
 
-<button type="button" style="font-family:arial;font-size:70%;background-color:black;color:gray;border:0px" onclick='alert("Added an overlay of whole map with provinces locations when you click on the word provinces to serve as a reminder before choosing. Especially useful when you want to pick two provinces next to each other.\n\nFinished adding ALL maps shown when a province is selected. This way you see all locations rolled easily and can add others around it if you wish. No need to waste time searching locations in game anymore! Know where everything is before heading in.")'>v4.5 - CLICK TO SEE CHANGES</button>
+<div id="instructions-overlay" onclick="hideInstructions()">
+  <div id="instructions-box">
+    
+<p style="font-family:arial;color:black"><u>Instructions:</u></p>
+<p style="font-family:arial;color:black">
+
+1. Click on the underlined word "provinces" to view the locations of all regions on the map. This is helpful if you wish to select two provinces that are in close proximity.
+<br><br>
+2. Choose one or more provinces, specify the number of locations/objectives you want to randomize, and then click the "Generate random operation" button.
+<br><br>
+3. A random operation will be generated below. For each province selected you will find a map displaying all the main locations. This allows you to quickly visualize the placement of your random locations and also provides context about what surrounds them, should you want to add more afterwards.
+<br><br>
+4. Finally, you can click the "Copy ChatGPT prompt" button to copy to your clipboard a customized prompt that includes the randomized objectives. Paste the prompt into your personal ChatGPT, and it will generate a fairly comprehensive operation template to use as a starting point. Fine tune the prompt as needed and regenerate in ChatGPT a few times until you get good results/inspiration. This is very useful for sparking creativity.
+<br><br>
+
+Enjoy! 
+
+<br><br>
+Please feel free to share this tool.<br>I developed it with the intention of benefiting the entire Ghost Recon Breakpoint community.<br><br>With love, Snake.
+</p>
+  </div>
+</div>
 
 
 <h3 style="font-family:arial">Select one or more <b><u onclick="on()" style="font-size:110%">provinces</b></u></h3> 
@@ -54,6 +107,14 @@ function on() {
 function off() {
   document.getElementById("overlay").style.display = "none";
 }
+
+ function showInstructions() {
+        document.getElementById("instructions-overlay").style.display = "flex";
+    }
+
+    function hideInstructions() {
+        document.getElementById("instructions-overlay").style.display = "none";
+    }
 </script>
 
 
@@ -308,12 +369,68 @@ input.addEventListener("keypress", function(event) {
 		const rndInt = randomIntFromInterval(1, 9999)
 		
 		//Pick a random codename
-		const codenames = ['WIDOW','SPIDER','MAMBA','ADDER','APOLLO','AVALANCHE','BADGER','BANSHEE','GRIZZLY','BISHOP','BOOMER','BOAR','BERSERKER','BLACK KNIGHT','BREAKER','BUFFALO','CANARY','CORAL','COPPER','CRIMSON','CROW','DANGER','DAGGER','DINGO','DIAMOND','DRAGON','EAGLE','FIRESTICK','FOX','FIREFLY','GRIFFIN','GHOST','GOPHER','HARVESTER','HIGHLANDER','HUNTER','HOUND','HAWK','JACKSON','JESTER','KAHUNA','KEEPER','LANTERN','LYNX','LEOPARD','MAGE','MONARCH','MOTHER','OBELISK','OCELOT','ORACLE','OVERLORD','PAWN','PEQUOD','POLARIS','RAZOR','RED DRAGON','RED QUEEN','REAVER','RORK','RIPLEY','SABRE','SEAL','SHADOW','SHAMAN','SPARROW','SPECTRE','SPEARFISH','SPEAR','STONE','SWEEPER','TOMAHAWK','TIGER','HATCHET','UMBRA','UMBRELLA','VANDAL','VIPER','SNAKE','WARDEN','WANDERER','WARLOCK','WHITE WIZARD','WHITE RABBIT','X-RAY','ZEBRA','ZIPPER','TORCH','BLADE','TOXIC','MIST','SMOKE'];  
+const codenames = ['WIDOW','SPIDER','MAMBA','ADDER','APOLLO','AVALANCHE','BADGER','BANSHEE','GRIZZLY','BISHOP','BOOMER','BOAR','BERSERKER','BLACK KNIGHT','BREAKER','BUFFALO','CANARY','CORAL','COPPER','CRIMSON','CROW','DANGER','DAGGER','DINGO','DIAMOND','DRAGON','EAGLE','FIRESTICK','FOX','FIREFLY','GRIFFIN','GHOST','GOPHER','HARVESTER','HIGHLANDER','HUNTER','HOUND','HAWK','JACKSON','JESTER','KAHUNA','KEEPER','LANTERN','LYNX','LEOPARD','MAGE','MONARCH','MOTHER','OBELISK','OCELOT','ORACLE','OVERLORD','PAWN','PEQUOD','POLARIS','RAZOR','RED DRAGON','RED QUEEN','REAVER','RORK','RIPLEY','SABRE','SEAL','SHADOW','SHAMAN','SPARROW','SPECTRE','SPEARFISH','SPEAR','STONE','SWEEPER','TOMAHAWK','TIGER','HATCHET','UMBRA','UMBRELLA','VANDAL','VIPER','SNAKE','WARDEN','WANDERER','WARLOCK','WHITE WIZARD','WHITE RABBIT','X-RAY','ZEBRA','ZIPPER','TORCH','BLADE','TOXIC','MIST','SMOKE','AVALANCHE','AVATAR','ARCHER','ANIMA','BARRACUDA','BANSHEE','BLACKOUT','BLITZ','BLIZZARD','BOLT','BULLDOG','BUTCHER','CARNIVAL','CASTLE','CHARGER','COBRA','COMET','CRIMSON','CROW','CRUSADER','DAGGER','DARKSTAR','DISCIPLE','DRAGON','EAGLE','ECLIPSE','ENIGMA','EREBUS','EXCALIBUR','FALCON','FIRESTORM','FOX','FROST','FURY','GAMMA','GOLIATH','GLADIATOR','GHOST','GRIFFIN','GRINCH','GUARDIAN','HARRIER','HAVOC','HAZARD','HELLHOUND','HELIOS','HORUS','HYDRA','HUNTER','HURRICANE','HAMMER','INFERNO','IRONHIDE','IRONCLAD','IVORY','JAGUAR','JACKAL','JUGGERNAUT','KODIAK','KESTREL','KNIGHT','KUMA','LANCER','LIGHTNING','LYNX','MAGICIAN','MAMBA','MAVERICK','MARAUDER','MIRAGE','MONGOOSE','MUSTANG','NEBULA','NEMESIS','NIGHTHAWK','NIGHTSHADE','NEPTUNE','NOVA','OBSIDIAN','OMEGA','ONYX','ORACLE','ORION','OXIDE','OUTLAW','PANTHER','PALADIN','PHANTOM','PHOENIX','PUMA','PYRO','POSEIDON','QUAKER','RAPTOR','RAZOR','RAZORBACK','REAPER','RENEGADE','RIPTIDE','RONIN','RUBEDO','SABER','SAPPHIRE','SANDMAN','SANDSTORM','SCALER','SCORPION','SHADOW','SOLO','SPECTRE','SPITFIRE','STALKER','STORMRIDER','STRIKER','TALON','TEMPEST','THUNDER','TITAN','TYPHOON','UNDERTAKER','UNDERTOW','URSA','VALKYRIE','VENGEANCE','VENOM','VIGILANTE','VIPER','VORTEX','WARBRINGER','WARCRY','WARHAWK','WARLOCK','WARLORD','WARDEN','WHISPER','WIDOWMAKER','WOLVERINE','WRAITH','WYVERN','X-RAY','XERXES','YANKEE','YELLOWJACKET','YUKON','ZEUS','ZERO','ZEPHYR','ZODIAC'];
 		// Shuffle codenames array
 		const shuffledCodenames = codenames.sort(() => 0.5 - Math.random());
 		// Get first element from shuffled codenamesarray
 		codename = shuffledCodenames.slice(0, 1);
 		
+		
+					
+		 // Create a CHATGPT button element
+  var ChatGPTButton = document.createElement("button");
+    ChatGPTButton.style.width = "285px";
+	    ChatGPTButton.style.height = "40px";
+  ChatGPTButton.style.fontSize = "110%"; 
+  ChatGPTButton.style.background = "black"; 
+  ChatGPTButton.style.color = "white"; 
+  ChatGPTButton.style.border = "1px solid gray"; 
+
+  // Set the text content of the ChatGPTButton
+  ChatGPTButton.textContent = "Copy ChatGPT prompt 📋";
+
+  // Add an event listener to the ChatGPTButton
+  ChatGPTButton.addEventListener("click", function() {
+
+// Custom Prompt
+
+
+    var promptText = `You are now a MILSIM gaming operation writer. I will give you a template and instructions below framed by * *, please generate a realistic military operation with military lingo throughout and respect all instructions, especially the order (SITUATION AND MISSION first, CONCEPT OF OPERATION second, OBJECTIVES third). Throughout all the text refer to the team in the first person ('we') and don't split the team.
+OPERATION: *Generate a codename for the operation here*
+
+SITUATION AND MISSION:
+*The section below framed by [] contains the locations the team needs to go to (each separated by a comma). Generate a paragraph describing the situation the team needs to handle based on the objectives you will generate for each locations, be creative but use realistic military objectives. Make sure to generate only one paragraph summarizing all, dont write separate paragraphs for each locations. Make sure the section framed by [] is NOT included in your output.
+[randomSelection]
+*
+
+CONCEPT OF OPERATION : 
+*Generate a short paragraph describing how the team will leave HQ via helicopter and land in the AO, then we will move on with our objectives.*
+
+OBJECTIVES :
+*Generate a list of objectives based on the SITUATION AND MISSION paragraph you generated above. Each objective should be marked with letter like Alpha,Bravo,Charlie,etc. and be one very brief sentence. There should be the same number of objectives listed as there were items in the section framed by []*
+`;
+
+
+//include the actual objectives rolled in the prompt to copy to clipboard
+var promptText = promptText.replace("randomSelection", randomSelection);
+
+
+    navigator.clipboard.writeText(promptText)
+      .then(() => {
+        alert('Custom prompt has been copied to the clipboard. Now go to your ChatGPT, paste the prompt, fine tune as needed and enjoy the magic! It is recommended you regenerate in ChatGPT a few times until you get a good result.');
+      })
+      .catch(err => {
+        console.error('Error copying prompt:', err);
+      });
+  });
+  
+opordBoxT.appendChild(ChatGPTButton);
+ var br = document.createElement("br")
+opordBoxT.appendChild(br);
+ var br = document.createElement("br")
+opordBoxT.appendChild(br);
+
+  
 		//OPORD NO.X
 		const opord = document.createElement('div');
 		opord.setAttribute(
@@ -505,6 +622,7 @@ input.addEventListener("keypress", function(event) {
 		
 		//SCROLL DOWN A BIT FOR EASIER READING - disabled
 		//window.scrollBy(0,200);
+	
 		
 	}
 </script>
