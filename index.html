@@ -37,7 +37,7 @@ img {
 }
 
 #instructions-box {
- background:white;
+ background:black;
   border: 2px solid black;
   border-radius: 5px;
   padding: 20px;
@@ -65,13 +65,13 @@ img {
 
 <br>
 <br>
-<button type="button" style="font-family: arial; font-size: 80%; background-color: black; color: white; border: 1px solid white; border-radius: 1px;" onclick="showInstructions()">v5.0 - CLICK FOR INSTRUCTIONS</button>
+<button type="button" style="font-family: arial; font-size: 80%; background-color: black; color: white; border: 1px solid white; border-radius: 1px;" onclick="showInstructions()">New version 5.3 - CLICK FOR INSTRUCTIONS</button>
 
 <div id="instructions-overlay" onclick="hideInstructions()">
   <div id="instructions-box">
     
-<p style="font-family:arial;color:black"><u>Instructions:</u></p>
-<p style="font-family:arial;color:black">
+<p style="font-family:arial;color:white"><u>Instructions (click again to close):</u></p>
+<p style="font-family:arial;color:white">
 
 1. Click on the underlined word "provinces" to view the locations of all regions on the map. This is helpful if you wish to select two provinces that are in close proximity.
 <br><br>
@@ -79,7 +79,7 @@ img {
 <br><br>
 3. A random operation will be generated below. For each province selected you will find a map displaying all the main locations. This allows you to quickly visualize the placement of your random locations and also provides context about what surrounds them, should you want to add more afterwards.
 <br><br>
-4. Finally, you can click the "Copy ChatGPT prompt" button to copy to your clipboard a customized prompt that includes the randomized objectives. Paste the prompt into your personal ChatGPT, and it will generate a fairly comprehensive operation template to use as a starting point. Fine tune the prompt as needed and regenerate in ChatGPT a few times until you get good results/inspiration. This is very useful for sparking creativity.
+4. Finally, you can click the "Copy ChatGPT prompt" button to copy to your clipboard a customized prompt that includes the randomized objectives. Paste the prompt into your personal <a href="https://chat.openai.com/" target="_blank">ChatGPT</a>, and it will generate a fairly comprehensive operation template to use as a starting point. Fine tune the prompt as needed and regenerate in ChatGPT a few times until you get good results/inspiration. This is very useful for sparking creativity.
 <br><br>
 
 Enjoy! 
@@ -393,25 +393,27 @@ const codenames = ['WIDOW','SPIDER','MAMBA','ADDER','APOLLO','AVALANCHE','BADGER
   ChatGPTButton.addEventListener("click", function() {
 
 // Custom Prompt
-
-
-    var promptText = `You are now a MILSIM gaming operation writer. I will give you a template and instructions below framed by * *, please generate a realistic military operation with military lingo throughout and respect all instructions, especially the order (SITUATION AND MISSION first, CONCEPT OF OPERATION second, OBJECTIVES third). Throughout all the text refer to the team in the first person ('we') and don't split the team.
-OPERATION: *Generate a codename for the operation here*
+  var promptText = `You are now a MILSIM gaming operation writer. I will give you a template and instructions below framed by * *, please generate a realistic military operation with military lingo throughout and respect all instructions, especially the order (SITUATION AND MISSION first, CONCEPT OF OPERATION second, OBJECTIVES third). Throughout all the text refer to the team in the first person ('we') and don't split the team.
+OPERATION: opCodename
 
 SITUATION AND MISSION:
-*The section below framed by [] contains the locations the team needs to go to (each separated by a comma). Generate a paragraph describing the situation the team needs to handle based on the objectives you will generate for each locations, be creative but use realistic military objectives. Make sure to generate only one paragraph summarizing all, dont write separate paragraphs for each locations. Make sure the section framed by [] is NOT included in your output.
+*The section below framed by [] contains the locations the team needs to go to (each separated by a comma). Generate a storyline describing the situation the team needs to handle based on the objectives you will generate for each locations, be creative but use realistic military objectives. Ensure objectives are varied and richely detailed. Dont write separate paragraphs for each locations. Make sure the section framed by [] is NOT included in your output.
 [randomSelection]
 *
 
-CONCEPT OF OPERATION : 
+CONCEPT OF OPERATION :
 *Generate a short paragraph describing how the team will leave HQ via helicopter and land in the AO, then we will move on with our objectives.*
 
 OBJECTIVES :
 *Generate a list of objectives based on the SITUATION AND MISSION paragraph you generated above. Each objective should be marked with letter like Alpha,Bravo,Charlie,etc. and be one very brief sentence. There should be the same number of objectives listed as there were items in the section framed by []*
+
+*Generate a list at the bottom of the operation named "---HVT profiles (integrate in the op as needed)---" containing a few HVT profiles to act as secondary objectives. Dont use a russian name for the HVT, only english male names.
 `;
 
 
-//include the actual objectives rolled in the prompt to copy to clipboard
+
+//include the actual codename and objectives rolled in the prompt to copy to clipboard
+var promptText = promptText.replace("opCodename", codename);
 var promptText = promptText.replace("randomSelection", randomSelection);
 
 
@@ -658,6 +660,8 @@ opordBoxT.appendChild(br);
  <hr hidden id='spiceListdivider'>
  
  <p hidden style="font-family:arial" id='spicesList'>
+ <!-- <img hidden id='logoBottom' src='./images/logo.png' alt="logo" style="width:250px;border:5px solid DarkOliveGreen"> -->
+ 
 🌶 SPICES LIST 🌶<br><br>
     
 The generator won't automatically pick one to allow more freedom, but check the list below for inspiration on how to spice up your operation:<br><br>
@@ -690,14 +694,10 @@ The generator won't automatically pick one to allow more freedom, but check the 
 
 Your imagination is the limit,<br>
 hopefully that list is a good reminder.<br>
-All suggestions are welcome.<br><br>
-•<br><br>
-NOS AUTEM DE IUSTITIA MANES<br>
+Good luck out there.<br>
 </p>
 
-
-<img hidden id='logoBottom' src='./images/logo.png' alt="logo" style="width:250px;border:5px solid DarkOliveGreen">
-<br><br>
+<br>
 </center> 
 
 </body>
