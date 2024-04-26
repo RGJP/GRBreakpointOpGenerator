@@ -34,7 +34,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black overlay */
+            background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black overlay */
             z-index: 999;
         }
         .overlay img {
@@ -52,14 +52,14 @@
 <body>
 
     <h2>Select a province below<br>to display it's GRID map:</h2>
-
+<hr>
     <div id="links">
 <a href="#" onclick="showImage('gridimages/golem_island.jpg')">Golem Island</a><br>
 <a href="#" onclick="showImage('gridimages/cape_north.jpg')">Cape North</a><br>
 <a href="#" onclick="showImage('gridimages/driftwood_islets.jpg')">Driftwood Islets</a><br>
-<a href="#" onclick="showImage('gridimagessmugglers_coves.jpg')">Smugglers Coves</a><br>
-<a href="#" onclick="showImage('gridimageswild_coast.jpg')">Wild Coast</a><br>
-<a href="#" onclick="showImage('gridimagesmount_hodgson.jpg')">Mount Hodgson</a><br>
+<a href="#" onclick="showImage('gridimages/smugglers_coves.jpg')">Smugglers Coves</a><br>
+<a href="#" onclick="showImage('gridimages/wild_coast.jpg')">Wild Coast</a><br>
+<a href="#" onclick="showImage('gridimages/mount_hodgson.jpg')">Mount Hodgson</a><br>
 <a href="#" onclick="showImage('gridimages/sinking_country.jpg')">Sinking Country</a><br>
 <a href="#" onclick="showImage('gridimages/whalers_bay.jpg')">Whalers Bay</a><br>
 <a href="#" onclick="showImage('gridimages/silent_mountain.jpg')">Silent Mountain</a><br>
@@ -76,7 +76,9 @@
 <a href="#" onclick="showImage('gridimages/windy_islands.jpg')">Windy Islands</a><br>
 
     </div>
-
+	<hr>
+<p>This is a ressource for MILSIM.<br>Suggested example radio communication<br>(first letters are the province name abbreviated, here CHARLIE NOVEMBER = Cape North)<br>so for the Construction Site in Cape North:</p>
+<p>...target is at CHARLIE NOVEMBER INDIA ONE ZERO SOUTH EAST SECTOR, how copy?... </p>
     <div class="overlay" onclick="hideImage()">
         <img id="overlayImg" src="" alt="Overlay Image">
     </div>
