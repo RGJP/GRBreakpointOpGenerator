@@ -1,46 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kairos Operations Archive</title>
-    <style>
-        body {
-            background-color: #333b24;
-            color: white;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 20px;
-        }
-        a {
-            color: white;
-            text-decoration: none;
-            font-size: 20px;
-            display: block;
-            margin: 10px 0;
-			
-            #text-transform: uppercase;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Delta Team Operations Archive</title>
+<style>
+	body {
+	background-color: #333b24;
+	color: white;
+	font-family: Arial, sans-serif;
+	text-align: center;
+	padding: 20px;
+	}
+	a {
+	color: white;
+	text-decoration: none;
+	font-size: 20px;
+	display: block;
+	margin: 10px 0;
+	#text-transform: uppercase;
+	}
+	a:hover {
+	text-decoration: underline;
+	}
+</style>
 </head>
 <body>
-
-    <img src="DeltaTeamLogo.png" alt="Delta Team Logo" style="display: block; margin-left: auto; margin-right: auto; width: 200px	">
-
-
-
-    <h2>Kairos' Operations Archive v2.2</h2>
-	    <p>(Ghost Recon Breakpoint MILSIM roleplay)</p>
-	 <a href="https://discord.gg/5NyF6jMsJj">Join the PlayStation Discord!</a> 
+<img src="DeltaTeamLogo.png" alt="Delta Team Logo" style="display: block; margin-left: auto; margin-right: auto; width: 200px">
+<h2>Delta Team Operations Archive</h2>
+<p>Ghost Recon Breakpoint MILSIM roleplay</p>
+<a href="https://discord.gg/5NyF6jMsJj" target="_blank" style="display: inline-block; vertical-align: bottom;">
+<img src="psdiscord.png" alt="psdiscord" style=" margin-left: auto; margin-right: auto; width: 60px; vertical-align: bottom;">
+</a>
 
 <hr>
-    <div>
-        <!-- Links to .html files in the 'htmlops' subfolder will be listed here -->
-<h2>OPORDS</h2>
+<h3>Select an OPORD below or</h3>
+<button onclick="pickRandomOperation()" style="background-color: black; color: white; font-size: 1.2em; padding: 5px 15px; border: 1px solid white;">Pick a Random Operation</button>
+<br><br>
 <hr>
+
+<script>
+function pickRandomOperation() {
+// Get all valid links excluding those with 'discord' in the href
+const links = Array.from(document.querySelectorAll('a[href]')).filter(link => !link.href.includes('discord'));
+
+// Proceed only if there are valid links
+if (links.length > 0) {
+const randomLink = links[Math.floor(Math.random() * links.length)];
+window.location.href = randomLink.href; // Navigate to the randomly selected link
+} else {
+console.warn('No valid links available to pick from.');
+}
+}
+</script>
+
+<div>
 <a href="Ground Branch Task Force - OPORDS BREAKPOINT ALPHA - op-antidote [1132034939655831633].html">op-antidote</a>
 <a href="Ground Branch Task Force - OPORDS BREAKPOINT ALPHA - op-backhand [1131651353249337494].html">op-backhand</a>
 <a href="Ground Branch Task Force - OPORDS BREAKPOINT ALPHA - 🌋-golem-op-basalt [1132025512320045056].html">op-basalt</a>
@@ -147,12 +161,6 @@
 <a href="JSOC Ghost Division - 🗂 OPERATIONS V - op-zephyr [1314986669182550026].html">op-zephyr</a>
 <a href="Ground Branch Task Force - OPORDS BREAKPOINT BRAVO - op-zodiac [1174380288827207710].html">op-zodiac</a>
 
-
-
-
-
-
-
-    </div>
+</div>
 </body>
 </html>
