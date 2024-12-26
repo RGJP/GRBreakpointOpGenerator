@@ -22,8 +22,11 @@
 <br>
 <input type="button" id='Sound' style="width: 285px; height: 40px; font-family: arial; font-size: 110%; background: black; color: white; border: 1px solid gray; margin:15px" onclick="panelWiretap()" value="Placing wiretap in a panel">
 <br>
+<input type="button" id='Sound' style="width: 285px; height: 40px; font-family: arial; font-size: 110%; background: black; color: white; border: 1px solid gray; margin:15px" onclick="medic()" value="Medic TCCC (sealing wound)">
+<br>
 <input type="button" id='Sound' style="width: 285px; height: 40px; font-family: arial; font-size: 110%; background: black; color: white; border: 1px solid gray; margin:15px" onclick="ziptie()" value="Zip tie HVT">
 <br>
+
 <input type="button" id='Sound' style="width: 285px; height: 40px; font-family: arial; font-size: 110%; background: black; color: white; border: 1px solid gray; margin:15px" onclick="radio1()" value="Radio reply 1 short">
 <br>
 <input type="button" id='Sound' style="width: 285px; height: 40px; font-family: arial; font-size: 110%; background: black; color: white; border: 1px solid gray; margin:15px" onclick="radio2()" value="Radio reply 2 short">
@@ -41,6 +44,11 @@
 <input type="button" id='Sound' style="width: 285px; height: 40px; font-family: arial; font-size: 110%; background: black; color: white; border: 1px solid gray; margin:15px" onclick="samlaunch()" value="SAM lock and launch">
 <br><br><br>
 </center> 
+
+<audio id="medic">
+<source src="./sounds/medic.mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
 
 <audio id="keyradio">
 <source src="./sounds/keyradio.mp3" type="audio/mpeg">
@@ -98,6 +106,17 @@ Your browser does not support the audio element.
 
 
  <script>
+  	function medic() {
+	var sound = document.getElementById('medic');
+		if (sound.paused || sound.ended) {
+		sound.currentTime = 0; // Reset playback position to the beginning
+		sound.play();
+		} else {
+		sound.pause();
+		}
+	}
+	
+	
  	function keyradio() {
 	var sound = document.getElementById('keyradio');
 		if (sound.paused || sound.ended) {
