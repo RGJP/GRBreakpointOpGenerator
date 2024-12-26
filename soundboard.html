@@ -117,6 +117,16 @@ Your browser does not support the audio element.
 
 
  <script>
+ 	function keyradio() {
+	var sound = document.getElementById('keyradio');
+		if (sound.paused || sound.ended) {
+		sound.currentTime = 0; // Reset playback position to the beginning
+		sound.play();
+		} else {
+		sound.pause();
+		}
+	}
+	
 	function hackcomputer() {
 	var sound = document.getElementById('hackcomputer');
 		if (sound.paused || sound.ended) {
