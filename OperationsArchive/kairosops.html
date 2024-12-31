@@ -33,8 +33,17 @@
 
 <hr>
 <h3>SELECT AN OPORD BELOW OR</h3>
-<button onclick="pickRandomOperation()" style="background-color: black; color: white; font-size: 1.2em; padding: 5px 15px; border: 1px solid white;">Pick a random operation</button>
+<button onclick="pickRandomOperation()" style="background-color: black; color: white; font-size: 1.2em; padding: 5px 18px; border: 1px solid white;">Pick a random operation</button>
+<h3>OR SEARCH IN OPS</h3>
+<input type="text" id="keyword" placeholder="Enter keyword and click search below" style="background-color: black; color: white; font-size: 0.9em; width: 243px; height: 30px; border: 1px solid white;">
+
 <br><br>
+<button onclick="searchKeyword()" style="background-color: black; color: white; font-size: 0.9em; padding: 5px 15px; border: 1px solid white">Search</button>
+<button onclick="location.reload()" style="background-color: black; color: white; font-size: 0.9em; padding: 5px 15px; border: 1px solid white">Reset</button>
+
+	  <div id="results">
+	  </div>
+<br>
 <hr>
 
 <script>
@@ -50,6 +59,143 @@
 			console.warn('No valid links available to pick from.');
 		}
 	}
+	
+	    async function fetchHTML(url) {
+            const response = await fetch(url);
+            return await response.text();
+        }
+
+      async function searchKeyword() {
+	
+    const keyword = document.getElementById('keyword').value.trim();
+    if (!keyword) {
+        console.log("No keyword entered. Aborting search.");
+        return;
+    }
+    console.log("Searching for: " + keyword);
+const urls = [
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT ALPHA - op-antidote [1132034939655831633].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT ALPHA - op-backhand [1131651353249337494].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT ALPHA - op-black-fin [1147893075696431176].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT ALPHA - op-black-knight [1132394344469512273].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT ALPHA - op-black-talon [1132026638339690576].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT ALPHA - op-blue-remedy [1132362938343243787].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT ALPHA - op-codebreaker [1134469686172602388].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT ALPHA - op-cold-resolve [1132368729414574151].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT ALPHA - op-coral [1132027448746332180].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT ALPHA - op-corrosion [1144981396364988567].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT ALPHA - op-crescendo [1132028002922930357].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT ALPHA - op-fragma [1148247568258711575].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT ALPHA - op-horseman [1132364165735010315].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT ALPHA - op-marrow [1132031176324960257].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT ALPHA - op-miscible [1131642235516104806].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT ALPHA - op-moon-lake [1132397396798734456].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT ALPHA - op-oculus [1131649996693983353].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT ALPHA - op-orca [1132751109174345839].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT ALPHA - op-oxide [1150112464147599360].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT ALPHA - op-panko [1146442427226402918].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT ALPHA - op-paramount [1132742972803399831].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT ALPHA - op-pheonix-dawn [1164985375966642286].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT ALPHA - op-red-queen [1147101840673079318].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT ALPHA - op-renewed-hope [1132738687139057804].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT ALPHA - op-riptide [1148950384178647130].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT ALPHA - op-rustle [1132400228893470781].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT ALPHA - op-silent-horizon [1133006954701262968].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT ALPHA - op-silent-shore [1150792346749915146].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT ALPHA - op-silver-dawn [1146934558797865124].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT ALPHA - op-skyfall [1143848105909952545].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT ALPHA - op-solaris [1132028178832031797].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT ALPHA - op-steel-dust [1148229681045327923].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT ALPHA - op-stormbringer [1135195819524489236].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT ALPHA - op-subterra [1132358171697086615].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT ALPHA - op-sustained-force [1132740123021287434].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT ALPHA - op-thunderbolt [1144985921603772567].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT ALPHA - op-triad [1144981357517361192].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT ALPHA - op-umbral [1134111975522177054].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT ALPHA - op-wavelength [1131652257025372412].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT ALPHA - ❗-cbrn-op-extremis [1132740832064192603].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT ALPHA - ❗-cbrn-op-otrovna [1132748196385398866].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT ALPHA - ❗-cbrn-op-subsistence [1132030629500952696].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT ALPHA - 🌋-golem-op-basalt [1132025512320045056].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT ALPHA - 🌋-golem-op-obsidian [1151564847318847599].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT ALPHA - 🌋-golem-op-onyx [1132361892636131338].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT ALPHA - 🌋-golem-op-pyroclasm [1150761867103436890].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT ALPHA - 🌋-golem-op-whisper [1132404239709257818].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT BRAVO - op-boomslang [1241501070493225084].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT BRAVO - op-canopy [1176193943591993374].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT BRAVO - op-citrinitas [1242130620562538516].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT BRAVO - op-condor [1174870926349836298].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT BRAVO - op-conundrum [1240610538631860274].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT BRAVO - op-crescent [1165985681219268628].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT BRAVO - op-crusader [1242425388441796628].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT BRAVO - op-crypt [1166778178098962472].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT BRAVO - op-cyclone [1264392246090797067].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT BRAVO - op-dolomite [1165626737028243527].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT BRAVO - op-excalibur [1173634225572958318].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT BRAVO - op-falcon-shield [1239394122486517811].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT BRAVO - op-furlough [1242287075139649556].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT BRAVO - op-gator [1174862764615934063].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT BRAVO - op-golden-claw [1243568774830100614].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT BRAVO - op-hammerhead [1228874084239020174].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT BRAVO - op-hangman [1274831813814124606].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT BRAVO - op-harrier [1273805766960218186].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT BRAVO - op-highlander [1174047489943416832].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT BRAVO - op-jaguar [1242908777741811824].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT BRAVO - op-kappa [1239895003057229865].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT BRAVO - op-killswitch [1191460355466080296].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT BRAVO - op-kobold [1237392300489838692].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT BRAVO - op-lantern [1237128602319982714].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT BRAVO - op-magician [1167267837606375474].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT BRAVO - op-man-cave [1201149450907828224].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT BRAVO - op-morpheus [1233037653511766027].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT BRAVO - op-neptune-spear [1231244746471637074].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT BRAVO - op-neptune-wrath [1230504126220206233].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT BRAVO - op-noxious-snare [1235971720599310457].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT BRAVO - op-overcrank [1235602457854476412].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT BRAVO - op-payday [1250470093142364221].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT BRAVO - op-red-blanket [1193325640200491208].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT BRAVO - op-red-dawn [1175836735452741632].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT BRAVO - op-rubedo [1231577660183023736].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT BRAVO - op-saber [1169712957500952728].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT BRAVO - op-sifted-lover [1232290083701260339].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT BRAVO - op-sirroco [1183414051318013982].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT BRAVO - op-staghorn [1167101545284894803].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT BRAVO - op-stranded-knight [1193888398314848387].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT BRAVO - op-subzero [1241003925063340102].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT BRAVO - op-titan-shield [1237861316774068305].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT BRAVO - op-trihedron [1270213805447712788].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT BRAVO - op-vandal [1232342930631426149].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT BRAVO - op-wandering-wraith [1240241026182942790].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT BRAVO - op-warlord [1179008062988767252].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT BRAVO - op-x-ray [1172994829140099115].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT BRAVO - op-zero-nova [1246997863838388244].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT BRAVO - op-zodiac [1174380288827207710].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT CHARLIE - op-charger [1280680710839210015].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT CHARLIE - op-iron-nest [1283120832813600809].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT CHARLIE - op-moonshine [1281031266896187422].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT CHARLIE - op-vespa [1277622595713241103].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/Ground Branch Task Force - OPORDS BREAKPOINT CHARLIE - op-wolverine [1276163608425922590].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/JSOC Ghost Division - 🗂 OPERATIONS III - op-eos [1051851626253660171].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/JSOC Ghost Division - 🗂 OPERATIONS III - op-man-cave [1182487457460129904].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/JSOC Ghost Division - 🗂 OPERATIONS III - op-subsistence [1117526514452410399].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/JSOC Ghost Division - 🗂 OPERATIONS V - op-boomstick [1318787425559908404].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/JSOC Ghost Division - 🗂 OPERATIONS V - op-midnight-tango [1320144771242524795].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/JSOC Ghost Division - 🗂 OPERATIONS V - op-zephyr [1314986669182550026].html',
+    'https://rgjp.github.io/GRBreakpointOpGenerator/OperationsArchive/op-terminal.html',
+];
+    const results = document.getElementById('results');
+    results.innerHTML = '';
+
+    for (const url of urls) {
+        const content = await fetchHTML(url);
+        if (content.toLowerCase().includes(keyword.toLowerCase())) {
+            const match = url.match(/op-[^ ]+/);
+            const strippedUrl = match ? match[0] : url;
+            results.innerHTML += `<p><a href="${url}" target="_blank">${strippedUrl}</a></p>`;
+        }
+    }
+}
+
 </script>
 
 <div>
