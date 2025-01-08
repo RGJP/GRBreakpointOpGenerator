@@ -67,7 +67,7 @@ img {
 
 <br>
 <br>
-<button type="button" style="font-family: arial; font-size: 80%; background-color: black; color: white; border: 1px solid white; border-radius: 1px;" onclick="showInstructions()">Version  1.4 CLICK FOR INSTRUCTIONS</button>
+<button type="button" style="font-family: arial; font-size: 80%; background-color: black; color: white; border: 1px solid white; border-radius: 1px;" onclick="showInstructions()">Version  1.5 CLICK FOR INSTRUCTIONS</button>
 
 <br>
 <br>
@@ -83,7 +83,7 @@ img {
 <br><br>
 2. Choose one or more provinces, specify the number of locations/objectives you want to randomize, and then click the "Generate random operation" button.
 <br><br>
-3. A random operation will be generated below. If you haven’t fully explored the in-game map or need assistance pinpointing locations, refer to the interactive map that appears at the very bottom of the page once you generate the operation.
+3. A random operation will be generated below. If you haven’t fully explored the in-game map or need assistance pinpointing locations, click the interactive map link that appears at the very bottom of the page once you generate the operation.
 <br><br>
 4. Finally, you can click the "Copy ChatGPT prompt" button to copy to your clipboard a customized prompt that includes the randomized objectives. Paste the prompt into your personal <a href="https://chatgpt.com/" target="_blank">ChatGPT</a>, and it will generate a fairly comprehensive operation template to use as a starting point. Fine tune the prompt as needed and regenerate in ChatGPT a few times until you get good results/inspiration. This is very useful for sparking creativity.
 <br><br>
@@ -1092,31 +1092,14 @@ opordBoxT.appendChild(br2);
 		opordBox.appendChild(objectiveslist);
 		}
 		
-	//BLANK LINE
-var br = document.createElement("br");
-opordBox.appendChild(br);
-
-// Create iframe element
-var iframe = document.createElement('iframe');
-
-// Set iframe attributes
-iframe.src = 'https://www.swissgameguides.com/maps/ghost_recon_wildlands/world/interactive_map.html';
-iframe.width = '100%';
-iframe.height = '100%';
-iframe.style.border = '0';
-
-
-// Check if iframe is created correctly
-console.log(iframe);
-
-// Append the iframe to a container element
-var iframeContainer = document.getElementById('iframeContainer');
-if (iframeContainer) {
-  iframeContainer.appendChild(iframe);
-} else {
-  console.log('Error: iframeContainer element not found');
-}
-
+		//BLANK LINE
+		var br = document.createElement("br")
+		opordBox.appendChild(br);
+		
+    //SHOW MAP LINK
+    var link = document.getElementById('interactivemap');
+    link.style.display = 'block';
+		
 	}
 </script>
 
@@ -1125,9 +1108,10 @@ if (iframeContainer) {
 <hr>
 
 <br>
+<a href="https://www.swissgameguides.com/maps/ghost_recon_wildlands/world/interactive_map.html" id="interactivemap" style="font-family:arial; display:none; text-decoration:none;" target="_blank" rel="noopener noreferrer"> 👉 INTERACTIVE MAP 👈</a>
 
 
-<div id="iframeContainer"></div>
+
 
 
 <br>
