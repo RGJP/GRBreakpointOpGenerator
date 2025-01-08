@@ -67,7 +67,7 @@ img {
 
 <br>
 <br>
-<button type="button" style="font-family: arial; font-size: 80%; background-color: black; color: white; border: 1px solid white; border-radius: 1px;" onclick="showInstructions()">Version  1.1 CLICK FOR INSTRUCTIONS</button>
+<button type="button" style="font-family: arial; font-size: 80%; background-color: black; color: white; border: 1px solid white; border-radius: 1px;" onclick="showInstructions()">Version  1.2 CLICK FOR INSTRUCTIONS</button>
 
 <br>
 <br>
@@ -936,16 +936,16 @@ const codenames = ['WIDOW','SPIDER','MAMBA','ADDER','APOLLO','AVALANCHE','BADGER
   ChatGPTButton.addEventListener("click", function() {
 
 // Custom Prompt
-  var promptText = `You are now a MILSIM gaming operation writer for the game Ghost Recon WILDLANDS. The enemy faction is 'Santa Blanca and Unidad'. All locations named 'FOB' or similar are enemy, not friendly. I will give you a template and instructions below framed by * *, please generate a realistic military operation with military lingo throughout and respect all instructions, especially the order (SITUATION AND MISSION first, CONCEPT OF OPERATION second, OBJECTIVES third). Throughout all the text refer to the team in the first person ('we') and don't split the team.
+  var promptText = `You are now a MILSIM gaming operation writer for the game Ghost Recon WILDLANDS. The enemy faction is 'Santa Blanca'. All locations named 'FOB' or similar are enemy, not friendly. I will give you a template and instructions below framed by * *, please generate a realistic military operation with military lingo throughout and respect all instructions, especially the order (SITUATION AND MISSION first, CONCEPT OF OPERATION second, OBJECTIVES third). Throughout all the text refer to the team in the first person ('we') and don't split the team.
 OPERATION: opCodename
 
 SITUATION AND MISSION:
-*The section below framed by [] contains the locations the team needs to go to (each separated by a comma). Generate a storyline describing the situation the team needs to handle based on the objectives you will generate for each locations, be creative but use realistic military objectives. Ensure objectives are varied and richely detailed. Dont write separate paragraphs for each locations. Make sure the section framed by [] is NOT included in your output.
+*The section below framed by [] contains the locations the team needs to go to (each separated by a comma). Generate a storyline describing the situation the team needs to handle based on the objectives you will generate for each locations, be creative but use realistic military objectives. Ensure objectives are varied and richely detailed. Don't write separate paragraphs for each locations. Keep it short. Make sure the section framed by [] is NOT included in your output.
 [randomSelection]
 *
 
 CONCEPT OF OPERATION :
-*Generate a short paragraph describing how the team will leave the 'nearest safehouse' to infiltrate the AO then move on foot to our objectives.*
+*Generate a short paragraph describing how the team will leave the 'nearest safehouse' to infiltrate the AO then move to our objectives.*
 
 OBJECTIVES :
 *Generate a list of objectives based on the SITUATION AND MISSION paragraph you generated above. Each objective should be marked with letter like Alpha,Bravo,Charlie,etc. and be one very brief sentence. There should be the same number of objectives listed as there were items in the section framed by []*
