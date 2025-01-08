@@ -987,11 +987,15 @@ openChatGPTButton.style.border = "1px solid gray";
 // Set the text content of the OpenChatGPTButton
 openChatGPTButton.textContent = "Open ChatGPT 🌐";
 
-// Add an event listener to the OpenChatGPTButton
+<!-- Add an event listener to the OpenChatGPTButton -->
 openChatGPTButton.addEventListener("click", function() {
-    // Logic to open ChatGPT, such as navigating to its URL or opening a modal
-    window.open('https://chatgpt.com/', '_blank'); // Opens ChatGPT in a new tab
+    // Create an anchor element
+    const a = document.createElement('a');
+    a.href = 'https://chatgpt.com/';
+    a.target = '_blank'; // Opens in a new tab
+    a.click(); // Simulates a click on the anchor element
 });
+
 
 // Append the new button to the DOM (like your original button)
 opordBoxT.appendChild(openChatGPTButton);
