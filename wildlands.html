@@ -67,7 +67,7 @@ img {
 
 <br>
 <br>
-<button type="button" style="font-family: arial; font-size: 80%; background-color: black; color: white; border: 1px solid white; border-radius: 1px;" onclick="showInstructions()">Version  1.2 CLICK FOR INSTRUCTIONS</button>
+<button type="button" style="font-family: arial; font-size: 80%; background-color: black; color: white; border: 1px solid white; border-radius: 1px;" onclick="showInstructions()">Version  1.3 CLICK FOR INSTRUCTIONS</button>
 
 <br>
 <br>
@@ -105,6 +105,8 @@ Please feel free to share this tool.<br>I developed it with the intention of ben
 </div>
 
 <script>
+
+
 function on() {
   document.getElementById("overlay").style.display = "block";
   document.getElementById("provincesMap").style.display = "block";
@@ -171,8 +173,7 @@ input.addEventListener("keypress", function(event) {
 
 <script>
 	function generateOp() {
-    // show bottom link for map
-    document.getElementById('interactivemap').style.display = 'block';
+ 
 
 		//Clean OPORD values
 		const opordBoxClear = document.getElementById('opordBox');
@@ -1091,11 +1092,31 @@ opordBoxT.appendChild(br2);
 		opordBox.appendChild(objectiveslist);
 		}
 		
-		//BLANK LINE
-		var br = document.createElement("br")
-		opordBox.appendChild(br);
-		
-		
+	//BLANK LINE
+var br = document.createElement("br");
+opordBox.appendChild(br);
+
+// Create iframe element
+var iframe = document.createElement('iframe');
+
+// Set iframe attributes
+iframe.src = 'https://www.swissgameguides.com/maps/ghost_recon_wildlands/world/interactive_map.html';
+iframe.width = '100%';
+iframe.height = '550px';
+iframe.style.border = '0';
+
+
+// Check if iframe is created correctly
+console.log(iframe);
+
+// Append the iframe to a container element
+var iframeContainer = document.getElementById('iframeContainer');
+if (iframeContainer) {
+  iframeContainer.appendChild(iframe);
+} else {
+  console.log('Error: iframeContainer element not found');
+}
+
 	}
 </script>
 
@@ -1104,7 +1125,11 @@ opordBoxT.appendChild(br2);
 <hr>
 
 <br>
-<a href="https://www.swissgameguides.com/maps/ghost_recon_wildlands/world/interactive_map.html" id="interactivemap" style="font-family:arial; display:none; text-decoration:none;" target="_blank" rel="noopener noreferrer"> 👉 INTERACTIVE MAP 👈</a>
+
+
+<div id="iframeContainer"></div>
+
+
 <br>
 </center> 
 
