@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+img {
+    max-width: 100%;
+}
+</style>
+<style>
+#overlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+  cursor: pointer;
+}
+
+#instructions-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+#instructions-box {
+ background:black;
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 20px;
+  max-width: 400px;
+  text-align: center;
+}
+
+#instructions-box span {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+
+</style>
+</head>
+
+<title>Ghost Recon Wildlands Operation Generator</title>
+<body style="background-color: #36291e; background-repeat: repeat;" text="ffffff" link="ffffff" vlink="ffffff" alink="ffffff">
+
+<center> 
+
+
+
+<img src='./images/titlewl.png' alt="Ghost Recon Wildlands Operation Generator" style="width:350px;border:1px solid gray">
+
+<br>
+<br>
+<button type="button" style="font-family: arial; font-size: 80%; background-color: black; color: white; border: 1px solid white; border-radius: 1px;" onclick="showInstructions()">Version  1.0 CLICK FOR INSTRUCTIONS</button>
+
+<br>
+<br>
+
+
+<div id="instructions-overlay" onclick="hideInstructions()">
+  <div id="instructions-box">
+    
+<p style="font-family:arial;color:white"><u>Instructions (click again to close):</u></p>
+<p style="font-family:arial;color:white">
+
+1. Click on the underlined word "provinces" to view the locations of all regions on the map. This is helpful if you wish to select two provinces that are in close proximity.
+<br><br>
+2. Choose one or more provinces, specify the number of locations/objectives you want to randomize, and then click the "Generate random operation" button.
+<br><br>
+3. A random operation will be generated below. If you haven’t fully explored the in-game map or need assistance pinpointing locations, click the interactive map link that appears at the very bottom of the page once you generate the operation.
+<br><br>
+4. Finally, you can click the "Copy ChatGPT prompt" button to copy to your clipboard a customized prompt that includes the randomized objectives. Paste the prompt into your personal <a href="https://chatgpt.com/" target="_blank">ChatGPT</a>, and it will generate a fairly comprehensive operation template to use as a starting point. Fine tune the prompt as needed and regenerate in ChatGPT a few times until you get good results/inspiration. This is very useful for sparking creativity.
+<br><br>
+
+Enjoy! 
+
+<br><br>
+Please feel free to share this tool.<br>I developed it with the intention of benefiting the entire Ghost Recon Wildlands community.<br><br>With love, Kairos.
+</p>
+  </div>
+</div>
+
+
+<h3 style="font-family:arial">Select one or more <b><u onclick="on()" style="font-size:110%">provinces</b></u></h3> 
+
+<div id="overlay" onclick="off()">
+<br><br><br>
+<img hidden id='provincesMap' src='./images/wlprovs.png' alt="provincesMap" style="width:600px;border:5px solid black">
+</div>
+
+<script>
+function on() {
+  document.getElementById("overlay").style.display = "block";
+  document.getElementById("provincesMap").style.display = "block";
+}
+
+function off() {
+  document.getElementById("overlay").style.display = "none";
+}
+
+ function showInstructions() {
+        document.getElementById("instructions-overlay").style.display = "flex";
+    }
+
+    function hideInstructions() {
+        document.getElementById("instructions-overlay").style.display = "none";
+    }
+</script>
+
+
+<select name="provinces" size='22' style="width: 286px;font-family:arial;background:black;color:white;border:1px solid gray" id="provinces" multiple>
+    <option value="BARVECHOS">BARVECHOS</option>
+    <option value="CAIMANES">CAIMANES</option>
+    <option value="ESPIRITU SANTO">ESPIRITU SANTO</option>
+    <option value="FLOR DEL ORO">FLOR DEL ORO</option>
+    <option value="INCA CAMINA">INCA CAMINA</option>
+    <option value="ITACUA">ITACUA</option>
+    <option value="KOANI">KOANI</option>
+    <option value="LA CRUZ">LA CRUZ</option>
+    <option value="LIBERTAD">LIBERTAD</option>
+    <option value="MALCA">MALCA</option>
+    <option value="MEDIA LUNA">MEDIA LUNA</option>
+    <option value="MOJOCOYO">MOJOCOYO</option>
+    <option value="MONTE PUNCU">MONTE PUNCU</option>
+    <option value="MONTUYOC">MONTUYOC</option>
+    <option value="OCORO">OCORO</option>
+    <option value="PN AQUA VERDE">PN AQUA VERDE</option>
+    <option value="PUCARA">PUCARA</option>
+    <option value="REMANZO">REMANZO</option>
+    <option value="SAN MATEO">SAN MATEO</option>
+    <option value="TABACAL">TABACAL</option>
+    <option value="VILLA VERDE">VILLA VERDE</option>
+</select>
+
+<br>
+<h3 style="font-family:arial">Number of locations desired</h3>
+
+<form id="formNbrLocs" action="">
+  <input type="text" style="width: 278px;font-family:arial;background:black;color:white;border:1px solid gray" id="inputNumberOfLoc"><br><br><br>
+  <input type="button" id='generateButton' style="width: 285px;height:40px;font-family:arial;font-size:110%;background:black;color:white;border:1px solid gray" onclick="generateOp()" value="Generate random operation  ⚄">
+</form>
+
+
+
+<script>
+var input = document.getElementById("inputNumberOfLoc");
+input.addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    document.getElementById("generateButton").click();
+  }
+});
+</script>
+
+
+<script>
+	function generateOp() {
+    // show bottom link for map
+    document.getElementById('interactivemap').style.display = 'block';
+
+		//Clean OPORD values
+		const opordBoxClear = document.getElementById('opordBox');
+		opordBoxClear.innerHTML = ''
+		
+
+		
+		
+		//Grab which provinces are selected
+		var provincesSelected = [];
+		for (var option of document.getElementById('provinces').options) {
+		if (option.selected) {
+		provincesSelected.push(option.value);
+		}
+		}
+		
+		//Stop if no provinces selected
+		if (provincesSelected.length < 1) {
+		alert('No provinces selected. Select one or more provinces.');
+		return;
+		}
+	
+		//Grab the 'Number of locations desired'
+		let numberOfLoc = document.getElementById("formNbrLocs").elements["inputNumberOfLoc"].value;
+
+		//Stop if no number provided
+		if (numberOfLoc.length < 1) {
+		alert('No number of locations desired provided. Provide a number.');
+		return;
+		}
+		
+		//Stop if number provided is not a number
+		if (isNaN(numberOfLoc)) {
+		alert(numberOfLoc + ' is not a valid number, provide a number.');
+		return;
+		}
+		
+		//Create arrays for provinces locations
+		const barvechos = [
+  "Bartolome Farm",
+  "Checkpoint",
+  "Matico",
+  "La Leproserna",
+  "Barvechos Mine Quarry",
+  "Gas Station Via-B Gas",
+  "Outpost",
+  "Outpost",
+  "Outpost",
+  "Nidia Flores' Hacienda",
+  "Outpost",
+  "Checkpoint",
+  "Barvechos Base",
+  "Makeshift Runway",
+  "Outpost",
+  "Barvechos",
+  "Macoya Cooperative",
+  "Barvechos Mine",
+  "Outpost",
+  "Lieutenant House",
+  "Pucamayu",
+  "Los Fisgones",
+  "Santa Maria Farm",
+  "Carretera 3",
+  "Nueva Plata Site"
+];
+
+const caimanes = [
+  "Malpaso Farm",
+  "Gas Station",
+  "La Frontera",
+  "Riverine Checkpoint",
+  "Makeshift Hospital",
+  "Rebel Campsite",
+  "Outpost",
+  "Ingani",
+  "Camargo Campsite",
+  "Caimanes Base",
+  "San Miguel Ruins",
+  "Puerto Chico",
+  "Combat Outpost",
+  "River Market",
+  "Los Hombres Jaguares",
+  "Outpost",
+  "Gas Station Via-B Gas",
+  "Rebel Campsite",
+  "Frontera",
+  "Buchon House",
+  "Las Anguila Wreck",
+  "Child Hunt"
+];
+
+		const espiritusanto = [
+  'Buchone Chapel',
+  'Outpost',
+  'Outpost',
+  'Alta Garcia Mine',
+  'Alta Gracia',
+  'Pilgrim House',
+  'Shrine of Truth',
+  'Santa Muerte Sanctuary',
+  'Espiritu Santo Base',
+  'Observation Post',
+  'Pilgrim House',
+  'Experimental Farm 03',
+  'Lajosa Farm',
+  'Guari',
+  'Guari Mine',
+  'Los Humildes Peregrinos',
+  'Outpost',
+  'Huanca Farm',
+  'Observation Post',
+  'Miski Secure Barn',
+  'Miski Farm',
+  'Outpost',
+  'Shrine of Purity',
+  'Coca Warehouse',
+  'Bahia Floresta',
+  'Huayani Farm',
+  'Buchon House',
+  'Shrine of Loyalty'
+];
+
+		
+	const flordeloro = [
+  'Hoalaca Ruins',
+  'Nupucu',
+  'Combat Outpost',
+  'Combat Outpost',
+  'Los Tramperos',
+  'Train Freight Yard',
+  'Combat Outpost',
+  'Rocha',
+  'Rocha Sawmill',
+  'Checkpoint',
+  'Halcone House',
+  'Armadillo Hunting Lodge',
+  'Gas Station Via-B Gas',
+  'M.O.B. Jaguar',
+  'Unidad Train Freight Yard',
+  'Checkpoint',
+  'Unidad Military Hospital',
+  'Huma Chua Sawmill',
+  'La Fortaleza',
+  'Huma Chua',
+  'Observation Post',
+  'Makeshift Runway',
+  'Chorrilos Wood Storage',
+  'Checkpoint',
+  'Checkpoint',
+  'Chorrillos',
+  'F.O.B. Serpiente',
+  'Checkpoint'
+];
+
+const incacamina = [
+  'Outpost',
+  'Inca Camina Base',
+  'Inca Chaca',
+  'Refugio de Pastores',
+  'Crash Site',
+  'Inca Ruins',
+  'Inca Road',
+  'Nevado Llamiru',
+  'San Martin Mountain Hut',
+  'Crash Site',
+  'Trecking Campsite',
+  'Nuevo Mondo',
+  'Cable Car Station',
+  'Lookout',
+  'Train Wrecks',
+  'La Cabaña de Pesca',
+  'Gas Station Via-B Gas',
+  'Inca Camina Freight Yard',
+  'Checkpoint',
+  'Julpe Alto',
+  'Improvised Runway',
+  'Archaeological Site',
+  'Checkpoint',
+  'Santa Catalina Chapel',
+  'Nevado Llamiru Garage',
+  'Ancient Cemetery of Miners',
+  'Sicario House',
+  'Refugio de Pastores'
+];
+
+const itacua = [
+  'Buena Vida',
+  'Cotani',
+  'Checkpoint',
+  'Yopil',
+  'Santa Maria',
+  'Culta',
+  'Hunt Lodge',
+  'Santa Catalina Chapel',
+  'Outpost',
+  'Vieja Granja',
+  'F.O.B. Armadillo',
+  'Baurecito Ruins',
+  'Campo de Futbol el Yayo',
+  'Colque Ranch',
+  'Atollo Farm',
+  'Mendez Farm',
+  'Sicario House',
+  'Pantoja',
+  'Observation Post',
+  'Outpost',
+  'Bocca Farm',
+  'Checkpoint',
+  'La Casa Del Mexicano',
+  'Itacua Base',
+  'Khochi'
+];
+
+const koani = [
+  'Narco-Slaughter',
+  'Huertas Mine',
+  'Koani Railway Camp',
+  'Santa Blanca Living District',
+  'Huertas',
+  'Truck Depot',
+  'Crashed Plane',
+  'Checkpoint',
+  'Combat Outpost',
+  'Outpost',
+  'Locotal Mine',
+  'Outpost',
+  'A Prehistoric Site',
+  'Koani Lithium Mine',
+  'Truck Stop Mamani',
+  'Gas Station Via-B Gas',
+  'Salt Hotel',
+  'Combat Outpost',
+  'El Arbol de Piedra',
+  'Outpost',
+  'Improvised Runway',
+  'Salt Miner\'s House',
+  'Sacani Salt Mines',
+  'Mina de Sal',
+  'Outpost',
+  'El Albergue',
+  'Sacani',
+  'Unidad Campsite',
+  'Shamanic Site',
+  'Train Cemetery',
+  'El Buen Sal',
+  'Makeshift Runway',
+  'Salt Mine Condori',
+  'Koani Air Base',
+  'Crashed Plane'
+];
+
+const lacruz = [
+  'Hoyito',
+  'F.O.B. Vibora',
+  'Rioja Ranch',
+  'Combat Outpost',
+  'San Rodrigo Monastery',
+  'Outpost',
+  'Buchon House',
+  'Makeshift Runway',
+  'Santa Elena',
+  'La Cruz Freight Yard',
+  'Outpost',
+  'Outpost',
+  'La Hacha Buena',
+  'Rebel Campsite',
+  'Outpost',
+  'Cemetery El Bosque Quemado',
+  'Isque',
+  'La Cruz Base',
+  'Burned Forest',
+  'Luluni Ruins',
+  'Carrasco Farm',
+  'El Pequeño Lago',
+  'Outpost'
+];
+
+
+const libertad = [
+  'Forestry Site',
+  'Checkpoint',
+  'Observation Post',
+  'Pa Kollu',
+  'La Guarida de Tres Brujas',
+  'Outpost',
+  'Shrine of Wealth',
+  'Bolivar Square',
+  'Libertad',
+  'Checkpoint',
+  'F.O.B. Oso Hormiguero',
+  'Los Cuatros Hermanos',
+  'Los Viejos Pinos',
+  'Viloma Tres Gas Field',
+  'Outpost',
+  'Oso',
+  'Viloma Dos Oil Field',
+  'Viloma Uno Oil Field',
+  'Viloma Refinery',
+  'Chem Precursors Storage',
+  'Viloma',
+  'Libertad Airport',
+  'Road Market',
+  'Narco-Slaughter',
+  'Chemical Institute Via-B Gas',
+  'Libertad Base',
+  'Gas Station Via-B Gas',
+  'Outpost',
+  'Viloma Cuatro Gas Field',
+  'Combat Outpost',
+  'El Escondite del Cazador'
+];
+
+const malca = [
+  'Outpost',
+  'Banado',
+  'Santa Muerte Idol',
+  'Chacori Farm',
+  'Uma Marca',
+  'Uma Marca Mine',
+  'El Establo',
+  'Combat Outpost',
+  'Outpost',
+  'Icoya',
+  'Sicario House',
+  'El Pais de la Felicidad',
+  'Holy Malca Base',
+  'Los Crios de la Muerte',
+  'La Buena Muerte'
+];
+
+const medialuna = [
+  'Combat Outpost',
+  'Rebel Campsite',
+  'Makeshift Runway',
+  'El Cañon',
+  'Combat Outpost',
+  'La Loma',
+  'F.O.B. Buitre',
+  'El Acantilado',
+  'Chipaya Farm',
+  'Checkpoint',
+  'El Puente del Diablo',
+  'Shooting Range',
+  'Combat Outpost',
+  'Checkpoint',
+  'Acevedo',
+  'Rebel Campsite',
+  'Checkpoint',
+  'Archaeology Site',
+  'Observation Post',
+  'Cardoza',
+  'M.O.B. Condor',
+  'Junin'
+];
+
+const mojocoyo = [
+  "Makeshift Runway",
+  "Cocaine Hideout",
+  "Gas Station Via-B Gas",
+  "Capachunco",
+  "Checkpoint",
+  "Prison Camp",
+  "Mojocoyo Base",
+  "Quispe Farm",
+  "La Vieja Granja",
+  "Panua Village",
+  "Private Helipad",
+  "Cocaine Hideout",
+  "Sacrificial Site",
+  "Chullpas",
+  "Rancho Sabala",
+  "Lieutenant House",
+  "Almacén de Quinua",
+  "Barrera Farm",
+  "Cocaine Hideout",
+  "Abandoned Prospecting Site",
+  "Cocaine Hideout",
+  "Outpost",
+  "Chacatal",
+  "Sicario House",
+  "La Curva de la Muerte"
+];
+
+const montepuncu = [
+  "Secure Barn 01",
+  "Experimental Farm 01",
+  "Outpost",
+  "Chaca Barraca",
+  "Rebel Campsite",
+  "Outpost",
+  "Rebel Campsite",
+  "A Car Wreck",
+  "Agronomic Center",
+  "La Cumbre",
+  "Rojas Farm",
+  "El Yayo Cooperative",
+  "Las Tumbas del Camino",
+  "Las Tumbas del Camino",
+  "Santa Blanca Campsite",
+  "Klaus Barbie House"
+];
+
+const montuyoc = [
+  "San Francisco Monastery",
+  "Montuyoc Training Base",
+  "Pre Columbian Necropolis",
+  "Gas Station Via-B Gas",
+  "Sicarios Boot Camp",
+  "Supply Depot",
+  "Laguna Colorada Baths",
+  "Makeshift Runway",
+  "Checkpoint",
+  "Mapooca Farm",
+  "Tupac Katari Tomb",
+  "Outpost",
+  "Vieja Granja",
+  "Araca Village",
+  "Choza Padre Mine",
+  "Hunter Shelter",
+  "Laguna Colorada",
+  "Lafuente Farm",
+  "Choza Padre",
+  "Inca Corral Farm",
+  "Condor Cairn"
+];
+
+const ocoro = [
+  "Outpost",
+  "Buchon House",
+  "Coca Paste Factory",
+  "Outpost",
+  "A Fisherman's House",
+  "Puerto Grande",
+  "Zona Narco Prohibida",
+  "Outpost",
+  "Combat Outpost",
+  "Zona Narco Prohibida",
+  "Zona Narco Prohibida",
+  "Puerto Nuevo",
+  "Nenma Freight Yard",
+  "Moko",
+  "Zona Narco Prohibida",
+  "Zona Narco Prohibida",
+  "Campo Ana",
+  "Outpost",
+  "Pachamama Scars",
+  "Ocoro Dispensary",
+  "Checkpoint",
+  "Gas Station Via-B Gas",
+  "Santa Rosa",
+  "El Altiplano Verde",
+  "Outpost",
+  "Gas Station Via-B Gas",
+  "Checkpoint",
+  "Outpost",
+  "Outpost",
+  "Checkpoint",
+  "Pujio",
+  "Outpost",
+  "Ocoro Base",
+  "Los Mosquitos"
+];
+
+const pnaquaverde = [
+  "Outpost",
+  "La Torre de Arroyo Baya",
+  "Arroyo Baya",
+  "La Nube Blanca",
+  "Playa Sirena",
+  "Outpost",
+  "Secret Cocaine Hideout",
+  "Patuja Mansion",
+  "Ajuga Mansion",
+  "Kantuta Mansion",
+  "Tajibo Mansion",
+  "Playa Tajibo",
+  "Rio Del Jaguar",
+  "Siren Island",
+  "Buchon House",
+  "Riverine Checkpoint",
+  "Goyo",
+  "Agua Verde Base",
+  "Paraiso Casino",
+  "Halcone House",
+  "Outpost",
+  "Paraiso Agua Verde",
+  "Checkpoint",
+  "Alicia Town"
+];
+
+const pucara = [
+  "Horco Farm",
+  "Charamokho Village",
+  "Makeshift Runway",
+  "Riverine Docks",
+  "Outpost",
+  "Olico Super Dam",
+  "Todos Santos Town",
+  "Santa Muerte Tomb",
+  "Todos Santos Rock Quarry",
+  "Old Silver Mine",
+  "Santa Muerte Tomb",
+  "Sueño Mausoleum",
+  "Pucara Base",
+  "El Nido de Cóndores",
+  "Outpost",
+  "Santa Muerte Tomb",
+  "Pilca Village",
+  "Pilca Mine",
+  "Pucara",
+  "Outpost"
+];
+
+const remanzo = [
+  "Las Mulas",
+  "Poco Irrigation Tank",
+  "Poco",
+  "F.O.B. Puma",
+  "Outpost",
+  "Remanzo Base",
+  "Test Center",
+  "Ovejas Real Slaughterhouse",
+  "Buying Office",
+  "Marcavi",
+  "Outpost",
+  "Observation Post",
+  "San Vicente",
+  "Factory Electro Energy Drink",
+  "Liquid Cocaine Lab",
+  "Gas Station"
+];
+
+const sanmateo = [
+  "Checkpoint",
+  "La Casa Abandonada",
+  "Train Station",
+  "La Carcel Del Pueblo",
+  "Abandoned House",
+  "San Mateo Base",
+  "Makeshift Runway",
+  "Flores Farm",
+  "Prison Rosario",
+  "Rebel Campsite",
+  "Gas Station Via-B Gas",
+  "Outpost",
+  "Narco-Muro",
+  "Outpost",
+  "Outpost",
+  "Sicario House",
+  "Boot Camp",
+  "Valle Verde",
+  "El Vaquero",
+  "Restaurante Humacha",
+  "Makeshift Runway",
+  "Checkpoint"
+];
+
+const tabacal = [
+  "Rebel Campsite",
+  "Killasisa Farm",
+  "Makeshift Runway",
+  "Secure Barn West",
+  "La Cote Molinos",
+  "Outpost",
+  "Tabacal Base",
+  "Outpost",
+  "Buchone House",
+  "SNPC Freight Yard",
+  "El Sicario Invencible",
+  "Crashed Plane",
+  "Barrientos Coop",
+  "Gas Station Via-B Gas",
+  "Bella Selva",
+  "El Cocalero Fallecido",
+  "Secure Barn East",
+  "Jaruma Cooperative",
+  "Pilpintu Farm",
+  "Observation Post"
+];
+
+const villaverde = [
+  "Outpost",
+  "Lafuente Farm",
+  "Pinaicobo Farm",
+  "La Buena Pesca",
+  "Villa Verde",
+  "El Yayo Cooperative",
+  "Camacho Farm",
+  "Coca Drying Site",
+  "Outpost",
+  "Gas Station Via-B Gas",
+  "Makeshift Runway",
+  "La Gran Colina",
+  "La Marqueza",
+  "Precursor's Storage",
+  "Outpost",
+  "Pyrolusite Laboratory Dos",
+  "Outpost",
+  "Lookout",
+  "Puerto de la Coca",
+  "Villa Verde Base",
+  "Maco",
+  "Pyrolusite Laboratory Uno",
+  "Forest Parking",
+  "Palmeras",
+  "Mama Coca Shrine",
+  "Leipez Cooperative",
+  "Prospecting Black Site",
+  "Ore Storage",
+  "F.O.B. Tucan",
+  "Illegal Pyrolusite Mine",
+  "Road Market",
+  "Observation Post",
+  "Boicobu Farm",
+  "Imaybe Glade",
+  "Quya Farm",
+  "Quya Secure Barn"
+];
+
+		//For each provinces selected, build total array of possible locations to choose from
+		randomObjectives = null
+		randomObjectives = []; 
+		
+		provincesSelected.forEach(function callback(province) {
+		
+			if (province == 'BARVECHOS') {
+			randomObjectives = randomObjectives.concat(barvechos)
+			}
+			
+			if (province == 'CAIMANES') {
+			randomObjectives = randomObjectives.concat(caimanes)
+			}
+			
+			if (province == 'ESPIRITU SANTO') {
+			randomObjectives = randomObjectives.concat(espiritusanto)
+			}
+			
+			if (province == 'FLOR DEL ORO') {
+			randomObjectives = randomObjectives.concat(flordeloro)
+			}
+						
+			if (province == 'INCA CAMINA') {
+			randomObjectives = randomObjectives.concat(incacamina)
+			}
+						
+			if (province == 'ITACUA') {
+			randomObjectives = randomObjectives.concat(itacua)
+			}
+						
+			if (province == 'KOANI') {
+			randomObjectives = randomObjectives.concat(koani)
+			}
+						
+			if (province == 'LA CRUZ') {
+			randomObjectives = randomObjectives.concat(lacruz)
+			}
+						
+			if (province == 'LIBERTAD') {
+			randomObjectives = randomObjectives.concat(libertad)
+			}
+						
+			if (province == 'MALCA') {
+			randomObjectives = randomObjectives.concat(malca)
+			}
+						
+			if (province == 'MEDIA LUNA') {
+			randomObjectives = randomObjectives.concat(medialuna)
+			}
+						
+			if (province == 'MOJOCOYO') {
+			randomObjectives = randomObjectives.concat(mojocoyo)
+			}
+						
+			if (province == 'MONTE PUNCU') {
+			randomObjectives = randomObjectives.concat(montepuncu)
+			}
+						
+			if (province == 'MONTUYOC') {
+			randomObjectives = randomObjectives.concat(montuyoc)
+			}
+						
+			if (province == 'OCORO') {
+			randomObjectives = randomObjectives.concat(ocoro)
+			}
+						
+			if (province == 'PN AQUA VERDE') {
+			randomObjectives = randomObjectives.concat(pnaquaverde)
+			}
+						
+			if (province == 'PUCARA') {
+			randomObjectives = randomObjectives.concat(pucara)
+			}
+						
+			if (province == 'REMANZO') {
+			randomObjectives = randomObjectives.concat(remanzo)
+			}
+						
+			if (province == 'SAN MATEO') {
+			randomObjectives = randomObjectives.concat(sanmateo)
+			}
+						
+			if (province == 'TABACAL') {
+			randomObjectives = randomObjectives.concat(tabacal)
+			}
+						
+			if (province == 'VILLA VERDE') {
+			randomObjectives = randomObjectives.concat(villaverde)
+			}
+						
+
+			
+		});
+		
+		
+// Shuffle the total array
+const shuffled = randomObjectives.sort(() => 0.5 - Math.random());
+// Get sub-array of first numberOfLoc elements after shuffled
+const randomSelection = shuffled.slice(0, numberOfLoc);
+
+		
+		
+		//Build OPORD text from data and selections
+		
+		//HORIZONTAL DIVIDER LINE
+		const hrT = document.createElement('hr');
+		const opordBoxT = document.getElementById('opordBox');
+		opordBoxT.appendChild(hrT);
+		
+		//BLANK LINE
+		var br = document.createElement("br")
+		 opordBoxT.appendChild(br);
+		
+		//Generate random number of OPORD
+		function randomIntFromInterval(min, max) {
+		return Math.floor(Math.random() * (max - min + 1) + min)
+		}
+		const rndInt = randomIntFromInterval(1, 9999)
+		
+		//Pick a random codename
+const codenames = ['WIDOW','SPIDER','MAMBA','ADDER','APOLLO','AVALANCHE','BADGER','BANSHEE','GRIZZLY','BISHOP','BOOMER','BOAR','BERSERKER','BLACK KNIGHT','BREAKER','BUFFALO','CANARY','CORAL','COPPER','CRIMSON','CROW','DANGER','DAGGER','DINGO','DIAMOND','DRAGON','EAGLE','FIRESTICK','FOX','FIREFLY','GRIFFIN','GHOST','GOPHER','HARVESTER','HIGHLANDER','HUNTER','HOUND','HAWK','JACKSON','JESTER','KAHUNA','KEEPER','LANTERN','LYNX','LEOPARD','MAGE','MONARCH','MOTHER','OBELISK','OCELOT','ORACLE','OVERLORD','PAWN','PEQUOD','POLARIS','RAZOR','RED DRAGON','RED QUEEN','REAVER','RORK','RIPLEY','SABRE','SEAL','SHADOW','SHAMAN','SPARROW','SPECTRE','SPEARFISH','SPEAR','STONE','SWEEPER','TOMAHAWK','TIGER','HATCHET','UMBRA','UMBRELLA','VANDAL','VIPER','SNAKE','WARDEN','WANDERER','WARLOCK','WHITE WIZARD','WHITE RABBIT','X-RAY','ZEBRA','ZIPPER','TORCH','BLADE','TOXIC','MIST','SMOKE','AVALANCHE','AVATAR','ARCHER','ANIMA','BARRACUDA','BANSHEE','BLACKOUT','BLITZ','BLIZZARD','BOLT','BULLDOG','BUTCHER','CARNIVAL','CASTLE','CHARGER','COBRA','COMET','CRIMSON','CROW','CRUSADER','DAGGER','DARKSTAR','DISCIPLE','DRAGON','EAGLE','ECLIPSE','ENIGMA','EREBUS','EXCALIBUR','FALCON','FIRESTORM','FOX','FROST','FURY','GAMMA','GOLIATH','GLADIATOR','GHOST','GRIFFIN','GRINCH','GUARDIAN','HARRIER','HAVOC','HAZARD','HELLHOUND','HELIOS','HORUS','HYDRA','HUNTER','HURRICANE','HAMMER','INFERNO','IRONHIDE','IRONCLAD','IVORY','JAGUAR','JACKAL','JUGGERNAUT','KODIAK','KESTREL','KNIGHT','KUMA','LANCER','LIGHTNING','LYNX','MAGICIAN','MAMBA','MAVERICK','MARAUDER','MIRAGE','MONGOOSE','MUSTANG','NEBULA','NEMESIS','NIGHTHAWK','NIGHTSHADE','NEPTUNE','NOVA','OBSIDIAN','OMEGA','ONYX','ORACLE','ORION','OXIDE','OUTLAW','PANTHER','PALADIN','PHANTOM','PHOENIX','PUMA','PYRO','POSEIDON','QUAKER','RAPTOR','RAZOR','RAZORBACK','REAPER','RENEGADE','RIPTIDE','RONIN','RUBEDO','SABER','SAPPHIRE','SANDMAN','SANDSTORM','SCALER','SCORPION','SHADOW','SOLO','SPECTRE','SPITFIRE','STALKER','STORMRIDER','STRIKER','TALON','TEMPEST','THUNDER','TITAN','TYPHOON','UNDERTAKER','UNDERTOW','URSA','VALKYRIE','VENGEANCE','VENOM','VIGILANTE','VIPER','VORTEX','WARBRINGER','WARCRY','WARHAWK','WARLOCK','WARLORD','WARDEN','WHISPER','WIDOWMAKER','WOLVERINE','WRAITH','WYVERN','X-RAY','XERXES','YANKEE','YELLOWJACKET','YUKON','ZEUS','ZERO','ZEPHYR','ZODIAC'];
+		// Shuffle codenames array
+		const shuffledCodenames = codenames.sort(() => 0.5 - Math.random());
+		// Get first element from shuffled codenamesarray
+		codename = shuffledCodenames.slice(0, 1);
+		
+		
+					
+		 // Create a CHATGPT button element
+  var ChatGPTButton = document.createElement("button");
+    ChatGPTButton.style.width = "285px";
+	    ChatGPTButton.style.height = "40px";
+  ChatGPTButton.style.fontSize = "110%"; 
+  ChatGPTButton.style.background = "black"; 
+  ChatGPTButton.style.color = "white"; 
+  ChatGPTButton.style.border = "1px solid gray"; 
+
+  // Set the text content of the ChatGPTButton
+  ChatGPTButton.textContent = "Copy ChatGPT prompt 📋";
+
+  // Add an event listener to the ChatGPTButton
+  ChatGPTButton.addEventListener("click", function() {
+
+// Custom Prompt
+  var promptText = `You are now a MILSIM gaming operation writer for the game Ghost Recon WILDLANDS. The enemy faction is 'Santa Blanca and Unidad'. I will give you a template and instructions below framed by * *, please generate a realistic military operation with military lingo throughout and respect all instructions, especially the order (SITUATION AND MISSION first, CONCEPT OF OPERATION second, OBJECTIVES third). Throughout all the text refer to the team in the first person ('we') and don't split the team.
+OPERATION: opCodename
+
+SITUATION AND MISSION:
+*The section below framed by [] contains the locations the team needs to go to (each separated by a comma). Generate a storyline describing the situation the team needs to handle based on the objectives you will generate for each locations, be creative but use realistic military objectives. Ensure objectives are varied and richely detailed. Dont write separate paragraphs for each locations. Make sure the section framed by [] is NOT included in your output.
+[randomSelection]
+*
+
+CONCEPT OF OPERATION :
+*Generate a short paragraph describing how the team will leave the nearest safehouse to infiltrate the AO then move on foot to our objectives.*
+
+OBJECTIVES :
+*Generate a list of objectives based on the SITUATION AND MISSION paragraph you generated above. Each objective should be marked with letter like Alpha,Bravo,Charlie,etc. and be one very brief sentence. There should be the same number of objectives listed as there were items in the section framed by []*
+
+*Generate a list at the bottom of the operation named "---HVT profiles (integrate in the op as needed)---" containing a few HVT profiles to act as secondary objectives. Dont use a russian name for the HVT, only spanish male names.
+`;
+
+
+
+//include the actual codename and objectives rolled in the prompt to copy to clipboard
+var promptText = promptText.replace("opCodename", codename);
+var promptText = promptText.replace("randomSelection", randomSelection);
+
+
+    navigator.clipboard.writeText(promptText)
+      .then(() => {
+        alert('Custom prompt has been copied to the clipboard. Now go to your ChatGPT, paste the prompt, fine tune as needed and enjoy the magic! It is recommended you regenerate in ChatGPT a few times until you get a good result.');
+      })
+      .catch(err => {
+        console.error('Error copying prompt:', err);
+      });
+  });
+  
+opordBoxT.appendChild(ChatGPTButton);
+ var br = document.createElement("br")
+opordBoxT.appendChild(br);
+ var br = document.createElement("br")
+opordBoxT.appendChild(br);
+
+// Create the "Open ChatGPT" button element
+var openChatGPTButton = document.createElement("button");
+openChatGPTButton.style.width = "285px";
+openChatGPTButton.style.height = "40px";
+openChatGPTButton.style.fontSize = "110%"; 
+openChatGPTButton.style.background = "black"; 
+openChatGPTButton.style.color = "white"; 
+openChatGPTButton.style.border = "1px solid gray"; 
+
+// Set the text content of the OpenChatGPTButton
+openChatGPTButton.textContent = "Open ChatGPT 🌐";
+
+// Add an event listener to the OpenChatGPTButton
+openChatGPTButton.addEventListener("click", function() {
+    // Logic to open ChatGPT, such as navigating to its URL or opening a modal
+    window.open('https://chatgpt.com/', '_blank'); // Opens ChatGPT in a new tab
+});
+
+// Append the new button to the DOM (like your original button)
+opordBoxT.appendChild(openChatGPTButton);
+
+// Add line breaks to match the spacing of your original code
+var br1 = document.createElement("br");
+opordBoxT.appendChild(br1);
+var br2 = document.createElement("br");
+opordBoxT.appendChild(br2);
+
+
+  
+		//OPORD NO.X
+		const opord = document.createElement('div');
+		opord.setAttribute(
+		'style',
+		'font-family:arial',
+		);
+		opord.textContent = 'OPORD '+rndInt;
+		const opordBox = document.getElementById('opordBox');
+		opordBox.appendChild(opord);
+		
+		//BLANK LINE
+		 var br = document.createElement("br")
+		 opordBox.appendChild(br);
+		
+		//CODENAME: X
+		const codenameLabel = document.createElement('div');
+		codenameLabel.setAttribute(
+		'style',
+		'font-family:arial',
+		);
+		codenameLabel.textContent = 'CODENAME: '+codename;
+		
+		opordBox.appendChild(codenameLabel);
+		
+		//BLANK LINE
+		 var br = document.createElement("br")
+		 opordBox.appendChild(br);
+		 
+		 //AREA OF OPERATIONS:
+		const ao = document.createElement('div');
+		ao.setAttribute(
+		'style',
+		'font-family:arial',
+		);
+		ao.textContent = 'AREA OF OPERATIONS:';
+		opordBox.appendChild(ao);
+		
+		//BLANK LINE
+		var br = document.createElement("br")
+		 opordBox.appendChild(br);
+		
+		//LIST PROVINCES SELECTED
+		provincesSelected.forEach(CreateTextAO);
+
+		function CreateTextAO(item) {
+		 const aoProvinces = document.createElement('div');
+		aoProvinces.setAttribute(
+		'style',
+		'font-family:arial',
+		);
+		aoProvinces.textContent = item;
+		opordBox.appendChild(aoProvinces);
+		}
+		
+		//BLANK LINE
+		var br = document.createElement("br")
+		opordBox.appendChild(br);
+				
+		//OBJECTIVES:
+		const objectives = document.createElement('div');
+		objectives.setAttribute(
+		'style',
+		'font-family:arial',
+		);
+		objectives.textContent = 'OBJECTIVES:';
+		opordBox.appendChild(objectives);						
+		
+		//BLANK LINE
+		var br = document.createElement("br")
+		opordBox.appendChild(br);		
+	
+		//LIST OBJECTIVES FROM THE RANDOM ROLL
+		randomSelection.forEach(CreateTextObjectives)
+		function CreateTextObjectives(item) {
+		 const objectiveslist = document.createElement('div');
+		objectiveslist.setAttribute(
+		'style',
+		'font-family:arial',
+		);
+		objectiveslist.textContent = item;
+		opordBox.appendChild(objectiveslist);
+		}
+		
+		//BLANK LINE
+		var br = document.createElement("br")
+		opordBox.appendChild(br);
+		
+		
+	}
+</script>
+
+<div id="opordBox"></div>
+<br>
+<hr>
+
+<br>
+<a href="https://www.swissgameguides.com/maps/ghost_recon_wildlands/world/interactive_map.html" id="interactivemap" style="font-family:arial; display:none;" target="_blank" rel="noopener noreferrer">CLICK HERE TO OPEN THE INTERACTIVE MAP TO HELP PINPOINT LOCATIONS</a>
+<br>
+</center> 
+
+</body>
+
+</html>
+
