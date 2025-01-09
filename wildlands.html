@@ -143,7 +143,7 @@ function off() {
     <option value="MONTE PUNCU">MONTE PUNCU</option>
     <option value="MONTUYOC">MONTUYOC</option>
     <option value="OCORO">OCORO</option>
-    <option value="PN AQUA VERDE">PN AQUA VERDE</option>
+    <option value="PN AGUA VERDE">PN AGUA VERDE</option>
     <option value="PUCARA">PUCARA</option>
     <option value="REMANZO">REMANZO</option>
     <option value="SAN MATEO">SAN MATEO</option>
@@ -640,7 +640,7 @@ const ocoro = [
   "Los Mosquitos"
 ];
 
-const pnaquaverde = [
+const pnaguaverde = [
   "Outpost",
   "La Torre de Arroyo Baya",
   "Arroyo Baya",
@@ -862,8 +862,8 @@ const villaverde = [
 			randomObjectives = randomObjectives.concat(ocoro)
 			}
 						
-			if (province == 'PN AQUA VERDE') {
-			randomObjectives = randomObjectives.concat(pnaquaverde)
+			if (province == 'PN AGUA VERDE') {
+			randomObjectives = randomObjectives.concat(pnaguaverde)
 			}
 						
 			if (province == 'PUCARA') {
@@ -1295,15 +1295,42 @@ opordBox.appendChild(img);
 }
 
 if (province == 'OCORO') {
-    
+  var text = document.createElement("p");
+text.textContent = "🗺️OCORO";
+text.style.fontWeight = "bold"; // Optional: Make the text bold
+text.style.fontFamily = "arial";
+opordBox.appendChild(text);
+var img = document.createElement("img");
+img.src = "images/OCORO.png"; // Correct relative path
+img.style.width = "600px"; // Optional: Set the width
+img.style.border = "5px solid black"
+opordBox.appendChild(img);
 }
 
-if (province == 'PN AQUA VERDE') {
-    
+if (province == 'PN AGUA VERDE') {
+  var text = document.createElement("p");
+text.textContent = "🗺️PN AGUA VERDE";
+text.style.fontWeight = "bold"; // Optional: Make the text bold
+text.style.fontFamily = "arial";
+opordBox.appendChild(text);
+var img = document.createElement("img");
+img.src = "images/PNAGUA.png"; // Correct relative path
+img.style.width = "600px"; // Optional: Set the width
+img.style.border = "5px solid black"
+opordBox.appendChild(img);
 }
 
 if (province == 'PUCARA') {
-    
+  var text = document.createElement("p");
+text.textContent = "🗺️PUCARA";
+text.style.fontWeight = "bold"; // Optional: Make the text bold
+text.style.fontFamily = "arial";
+opordBox.appendChild(text);
+var img = document.createElement("img");
+img.src = "images/PUCARA.png"; // Correct relative path
+img.style.width = "600px"; // Optional: Set the width
+img.style.border = "5px solid black"
+opordBox.appendChild(img);
 }
 
 if (province == 'REMANZO') {
