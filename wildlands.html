@@ -68,7 +68,7 @@ img {
 
 <br>
 <br>
-<button type="button" style="font-family: arial; font-size: 80%; background-color: black; color: white; border: 1px solid white; border-radius: 1px;" onclick="showInstructions()">Version  1.8 CLICK FOR INSTRUCTIONS</button>
+<button type="button" style="font-family: arial; font-size: 80%; background-color: black; color: white; border: 1px solid white; border-radius: 1px;" onclick="showInstructions()">Version  1.9 CLICK FOR INSTRUCTIONS</button>
 
 <br>
 <br>
@@ -84,7 +84,7 @@ img {
 <br><br>
 2. Choose one or more provinces, specify the number of locations/objectives you want to randomize, and then click the "Generate random operation" button.
 <br><br>
-3. A random operation will be generated below. If you haven’t fully explored the in-game map or need assistance pinpointing locations, click the interactive map link that appears at the very bottom of the page once you generate the operation.
+3. A random operation will be generated below. *THE MAPS SHOWING LOCATIONS ARE BEING ADDED SLOWLY (TAKES A LONG TIME TO DO), UNTIL THEY ARE ALL CREATED: If you haven’t fully explored the in-game map or need assistance pinpointing locations, click the interactive map link that appears at the very bottom of the page once you generate the operation.
 <br><br>
 4. Finally, you can click the "Copy ChatGPT prompt" button to copy to your clipboard a customized prompt that includes the randomized objectives. Paste the prompt into your personal AI tool (ChatGPT, Grok, Gemini, Copilot, Claude, etc.), and it will generate a fairly comprehensive operation template to use as a starting point. Fine tune the prompt as needed and regenerate a few times until you get good results/inspiration. This is very useful for sparking creativity.
 <br><br>
@@ -1098,6 +1098,9 @@ opordBoxT.appendChild(br2);
 		//BLANK LINE
 		var br = document.createElement("br")
 		opordBox.appendChild(br);
+
+   
+		
 		
   
     provincesSelected.forEach(function callback(province) {
@@ -1105,6 +1108,11 @@ opordBoxT.appendChild(br2);
 //SHOW CORRENSPONDING MAPS
 
   if (province == 'BARVECHOS') {
+    var text = document.createElement("p");
+  text.textContent = "🗺️BARVECHOS";
+  text.style.fontWeight = "bold"; // Optional: Make the text bold
+  text.style.fontFamily = "arial";
+  opordBox.appendChild(text);
     var img = document.createElement("img");
 img.src = "images/BARVECHOS.png"; // Correct relative path
 img.style.width = "600px"; // Optional: Set the width
@@ -1113,6 +1121,11 @@ opordBox.appendChild(img);
 }
 
 if (province == 'CAIMANES') {
+  var text = document.createElement("p");
+  text.textContent = "🗺️CAIMANES";
+  text.style.fontWeight = "bold"; // Optional: Make the text bold
+  text.style.fontFamily = "arial";
+  opordBox.appendChild(text);
   var img = document.createElement("img");
 img.src = "images/CAIMANES.png"; // Correct relative path
 img.style.width = "600px"; // Optional: Set the width
@@ -1121,6 +1134,11 @@ opordBox.appendChild(img);
 }
 
 if (province == 'ESPIRITU SANTO') {
+  var text = document.createElement("p");
+  text.textContent = "🗺️ESPIRITU SANTO";
+  text.style.fontWeight = "bold"; // Optional: Make the text bold
+  text.style.fontFamily = "arial";
+  opordBox.appendChild(text);
   var img = document.createElement("img");
 img.src = "images/ESPIRITUSANTO.png"; // Correct relative path
 img.style.width = "600px"; // Optional: Set the width
@@ -1130,15 +1148,30 @@ opordBox.appendChild(img);
 }
 
 if (province == 'FLOR DEL ORO') {
+  var text = document.createElement("p");
+  text.textContent = "🗺️FLOR DEL ORO";
+  text.style.fontWeight = "bold"; // Optional: Make the text bold
+  text.style.fontFamily = "arial";
+  opordBox.appendChild(text);
   var img = document.createElement("img");
-img.src = "images/FLORDELORO.png"; // Correct relative path
-img.style.width = "600px"; // Optional: Set the width
-img.style.border = "5px solid black"
-opordBox.appendChild(img);
+  img.src = "images/FLORDELORO.png"; // Correct relative path
+  img.style.width = "600px"; // Optional: Set the width
+  img.style.border = "5px solid black";
+  opordBox.appendChild(img);
 }
 
+
 if (province == 'INCA CAMINA') {
-    
+  var text = document.createElement("p");
+  text.textContent = "🗺️INCA CAMINA";
+  text.style.fontWeight = "bold"; // Optional: Make the text bold
+  text.style.fontFamily = "arial";
+  opordBox.appendChild(text);
+  var img = document.createElement("img");
+  img.src = "images/INCACAMINA.png"; // Correct relative path
+  img.style.width = "600px"; // Optional: Set the width
+  img.style.border = "5px solid black";
+  opordBox.appendChild(img);
 }
 
 if (province == 'ITACUA') {
@@ -1146,6 +1179,11 @@ if (province == 'ITACUA') {
 }
 
 if (province == 'KOANI') {
+  var text = document.createElement("p");
+  text.textContent = "🗺️KOANI";
+  text.style.fontWeight = "bold"; // Optional: Make the text bold
+  text.style.fontFamily = "arial";
+  opordBox.appendChild(text);
 var img = document.createElement("img");
 img.src = "images/koani.png"; // Correct relative path
 img.style.width = "600px"; // Optional: Set the width
