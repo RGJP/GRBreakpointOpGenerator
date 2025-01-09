@@ -1334,7 +1334,16 @@ opordBox.appendChild(img);
 }
 
 if (province == 'REMANZO') {
-    
+  var text = document.createElement("p");
+text.textContent = "🗺️REMANZO";
+text.style.fontWeight = "bold"; // Optional: Make the text bold
+text.style.fontFamily = "arial";
+opordBox.appendChild(text);
+var img = document.createElement("img");
+img.src = "images/REMANZO.png"; // Correct relative path
+img.style.width = "600px"; // Optional: Set the width
+img.style.border = "5px solid black"
+opordBox.appendChild(img); 
 }
 
 if (province == 'SAN MATEO') {
