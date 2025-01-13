@@ -99,15 +99,12 @@ img {
 
 
 
-<img src='./images/titlewl.png' alt="Ghost Recon Wildlands Operation Generator" style="width:300px;border:1px solid gray">
-
-<br>
-<br>
-<button type="button" style="font-family: arial; font-size: 80%; background-color: black; color: white; border: 1px solid white; border-radius: 1px;" onclick="showInstructions()">Version 2.3 CLICK FOR INSTRUCTIONS</button>
-
-<br>
-<br>
-
+<img src='./images/titlewl.png' alt="Ghost Recon Wildlands Operation Generator" style="width:350px;border:1px solid gray">
+<br><br>
+<button type="button" style="width:350px;height:30px;font-family: arial; font-size: 90%; background-color: black; color: white; border: 1px solid white; border-radius: 1px;" onclick="showInstructions()">Version 2.5 - Click for instructions</button>
+<br><br>
+<img src='./images/wlprovs.png' alt="fullmapover" style="width:350px;border:1px solid gray">
+<br><br>
 
 <div id="instructions-overlay" onclick="hideInstructions()">
   <div id="instructions-box">
@@ -115,16 +112,16 @@ img {
 <p style="font-family:arial;color:white"><u>Instructions (click again to close):</u></p>
 <p style="font-family:arial;color:white">
 
-1. Click on the underlined word "provinces" to view the locations of all regions on the map. This is helpful if you wish to select two provinces that are in close proximity. Also you can click 'Preview' all existing locations to see all 21 maps with the 500+ locations in advance if needed.
-<br><br>
-2. Choose one or more provinces, specify the number of locations/objectives you want to randomize, and then click the "Generate random operation" button.
+1. Look at the map image to visually locate each province, which is helpful if you want to select two nearby provinces. As needed, you can click 'Preview All Locations' to display full maps and locations, allowing you to see what's in each province before making a selection.
+  <br><br>
+2. Choose one or more provinces in the list, specify the number of locations/objectives you want to randomize, and then click the "Generate random operation" button.
 <br><br>
 3. A random operation will be generated below. Maps will also be shown to help you locate objectives and explore other locations around.
 <br><br>
-4. Finally, you can click the "Copy ChatGPT prompt" button to copy to your clipboard a customized prompt that includes the randomized objectives. Paste the prompt into your personal AI tool (ChatGPT, Grok, Gemini, Copilot, Claude, etc.), and it will generate a fairly comprehensive operation template to use as a starting point. Fine tune the prompt to your liking and regenerate a few times until you have a satisfying operation.
+4. Click the "Copy ChatGPT prompt" button to copy a custom prompt with the randomized objectives to your clipboard. Paste this prompt into your preferred AI tool (like ChatGPT, Grok, Gemini, Copilot, Claude, etc.) to generate a comprehensive operation template. Fine-tune the prompt as needed and regenerate it a few times until you're satisfied with the results.
 <br><br>
 
-Enjoy! 
+The resulting output is the mission you can deploy on in-game. Enjoy! 
 
 <br><br>
 Please feel free to share this tool.<br>I developed it with the intention of benefiting the entire Ghost Recon Wildlands community.<br><br>With love, Kairos.
@@ -132,9 +129,10 @@ Please feel free to share this tool.<br>I developed it with the intention of ben
   </div>
 </div>
 
-<h3 style="font-family:arial;font-size:100%" ><u onclick="previewlocs()"><b>Preview</b></u> all existing locations</u></h3> 
 
-<h3 style="font-family:arial">Select one or more <b><u onclick="on()" style="font-size:110%">provinces</b></u></h3> 
+<button type="button" style="width:350px;height:30px;font-family: arial; font-size: 90%; background-color: black; color: white; border: 1px solid white; border-radius: 1px;" onclick="previewlocs()">Preview All Locations</button>
+
+<h3 style="font-family:arial">Select one or more provinces</h3> 
 
 
 
@@ -289,7 +287,7 @@ function off() {
 </script>
 
 
-<select name="provinces" size='22' style="width: 286px;font-family:arial;background:black;color:white;border:1px solid gray" id="provinces" multiple>
+<select name="provinces" size='22' style="width: 350px;font-family:arial;background:black;color:white;border:1px solid gray" id="provinces" multiple>
     <option value="BARVECHOS">BARVECHOS</option>
     <option value="CAIMANES">CAIMANES</option>
     <option value="ESPIRITU SANTO">ESPIRITU SANTO</option>
