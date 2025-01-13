@@ -99,11 +99,11 @@ img {
 
 
 
-<img src='./images/titlewl.png' alt="Ghost Recon Wildlands Operation Generator" style="width:350px;border:1px solid rgb(0, 0, 0)">
+<img src='./images/titlewl.png' alt="Ghost Recon Wildlands Operation Generator" style="width:350px;border:1px solid rgb(63, 63, 63)">
 <br><br>
-<button type="button" style="width:350px;height:30px;font-family: arial; font-size: 90%; background-color: black; color: white; border: 1px solid rgb(0, 0, 0); border-radius: 1px;" onclick="showInstructions()">CLICK FOR INSTRUCTIONS</button>
+<button type="button" style="width:350px;height:30px;font-family: arial; font-size: 90%; background-color: black; color: white; border: 1px solid rgb(90, 90, 90); border-radius: 1px;" onclick="showInstructions()">📝 Instructions</button>
 <br><br>
-<img src='./images/wlprovs.png' alt="fullmapover" style="width:350px;border:1px solid rgb(0, 0, 0)">
+<img src='./images/wlprovs.png' alt="fullmapover" style="width:350px;border:1px solid rgb(63, 63, 63)">
 <br><br>
 
 <div id="instructions-overlay" onclick="hideInstructions()">
@@ -112,7 +112,7 @@ img {
 <p style="font-family:arial;color:white"><u>Instructions (click again to close):</u></p>
 <p style="font-family:arial;color:white">
 
-1. Look at the map image to visually locate each province, which is helpful if you want to select two nearby provinces. As needed, you can click 'Preview All Locations' to display full maps and locations (just zoom in and out on images), allowing you to see what's in each province before making a selection.
+1. Look at the map image to visually locate each province, which is helpful if you want to select two nearby provinces. As needed, you can click 'Preview all locations' to display full maps and locations (just zoom in and out on images), allowing you to see what's in each province before making a selection.
   <br><br>
 2. Choose one or more provinces in the list, specify the number of locations/objectives you want to randomize, and then click the "Generate random operation" button.
 <br><br>
@@ -121,7 +121,7 @@ img {
 4. Click the "Copy ChatGPT prompt" button to copy a custom prompt with the randomized objectives to your clipboard. Paste this prompt into your preferred AI tool (like ChatGPT, Grok, Gemini, Copilot, Claude, etc.) to generate a comprehensive operation template. Fine-tune the prompt as needed and regenerate it a few times until you're satisfied with the results.
 <br><br>
 
-The resulting output is the custom operation you can play in the game using a bit of roleplay. Enjoy! 
+The resulting output is the unique, custom operation you can play in the game using a bit of roleplay. Enjoy! 
 
 <br><br>
 Please feel free to share this tool.<br>I developed it with the intention of benefiting the entire Ghost Recon Wildlands community.<br><br>-Kairos
@@ -130,7 +130,7 @@ Please feel free to share this tool.<br>I developed it with the intention of ben
 </div>
 
 
-<button type="button" style="width:350px;height:30px;font-family: arial; font-size: 90%; background-color: black; color: white; border: 1px solid rgb(0, 0, 0); border-radius: 1px;" onclick="previewlocs()">Preview all locations</button>
+<button type="button" style="width:350px;height:30px;font-family: arial; font-size: 90%; background-color: black; color: white; border: 1px solid rgb(63, 63, 63); border-radius: 1px;" onclick="previewlocs()">🔎 Preview all locations</button>
 
 <h3 style="font-family:arial">Select one or more provinces</h3> 
 
@@ -287,7 +287,7 @@ function off() {
 </script>
 
 
-<select name="provinces" size='22' style="width: 350px;font-family:arial;background:black;color:white;border:1px solid rgb(0, 0, 0)" id="provinces" multiple>
+<select name="provinces" size='22' style="width: 350px;font-family:arial;background:black;color:white;border:1px solid rgb(63, 63, 63)" id="provinces" multiple>
     <option value="BARVECHOS">BARVECHOS</option>
     <option value="CAIMANES">CAIMANES</option>
     <option value="ESPIRITU SANTO">ESPIRITU SANTO</option>
@@ -317,8 +317,8 @@ function off() {
 
 
 <form id="formNbrLocs" action="">
-  <input type="text" style="width: 350px;height:20px;font-family:arial;background:black;color:white;border:1px solid rgb(0, 0, 0)" id="inputNumberOfLoc"><br><br><br>
-  <input type="button" id='generateButton' style="width: 350px;height:40px;font-family:arial;font-size:110%;background:black;color:white;border:1px solid rgb(0, 0, 0)" onclick="generateOp()" value="Generate random operation  ⚄">
+  <input type="text" style="width: 350px;height:20px;font-family:arial;background:black;color:white;border:1px solid rgb(63, 63, 63)" id="inputNumberOfLoc"><br><br><br>
+  <input type="button" id='generateButton' style="width: 350px;height:40px;font-family:arial;font-size:110%;background:black;color:white;border:1px solid rgb(63, 63, 63)" onclick="generateOp()" value="🔀 Generate random operation">
 </form>
 
 
