@@ -10,6 +10,41 @@ img {
 }
 </style>
 <style>
+
+.locationsoverlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .locationsoverlay-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .locationsoverlay-content img {
+            max-width: 150px;
+            max-height: 150px;
+            border: 2px solid white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .locationsoverlay-content img:hover {
+            transform: scale(1.1);
+            transition: transform 0.3s;
+        }
+        
 #overlay {
   position: fixed;
   display: none;
@@ -68,7 +103,7 @@ img {
 
 <br>
 <br>
-<button type="button" style="font-family: arial; font-size: 80%; background-color: black; color: white; border: 1px solid white; border-radius: 1px;" onclick="showInstructions()">Version 2.1 CLICK FOR INSTRUCTIONS</button>
+<button type="button" style="font-family: arial; font-size: 80%; background-color: black; color: white; border: 1px solid white; border-radius: 1px;" onclick="showInstructions()">Version 2.3 CLICK FOR INSTRUCTIONS</button>
 
 <br>
 <br>
@@ -80,13 +115,13 @@ img {
 <p style="font-family:arial;color:white"><u>Instructions (click again to close):</u></p>
 <p style="font-family:arial;color:white">
 
-1. Click on the underlined word "provinces" to view the locations of all regions on the map. This is helpful if you wish to select two provinces that are in close proximity.
+1. Click on the underlined word "provinces" to view the locations of all regions on the map. This is helpful if you wish to select two provinces that are in close proximity. Also you can click 'Preview' all existing locations to see all 21 maps with the 500+ locations in advance if needed.
 <br><br>
 2. Choose one or more provinces, specify the number of locations/objectives you want to randomize, and then click the "Generate random operation" button.
 <br><br>
-3. A random operation will be generated below. Maps will also be shown to help you locate objectives and explore all possible locations within the provinces.
+3. A random operation will be generated below. Maps will also be shown to help you locate objectives and explore other locations around.
 <br><br>
-4. Finally, you can click the "Copy ChatGPT prompt" button to copy to your clipboard a customized prompt that includes the randomized objectives. Paste the prompt into your personal AI tool (ChatGPT, Grok, Gemini, Copilot, Claude, etc.), and it will generate a fairly comprehensive operation template to use as a starting point. Fine tune the prompt as needed and regenerate a few times until you get good results/inspiration. This is very useful for sparking creativity.
+4. Finally, you can click the "Copy ChatGPT prompt" button to copy to your clipboard a customized prompt that includes the randomized objectives. Paste the prompt into your personal AI tool (ChatGPT, Grok, Gemini, Copilot, Claude, etc.), and it will generate a fairly comprehensive operation template to use as a starting point. Fine tune the prompt to your liking and regenerate a few times until you have a satisfying operation.
 <br><br>
 
 Enjoy! 
@@ -97,16 +132,143 @@ Please feel free to share this tool.<br>I developed it with the intention of ben
   </div>
 </div>
 
+<h3 style="font-family:arial;font-size:100%" ><u onclick="previewlocs()"><b>Preview</b></u> all existing locations</u></h3> 
 
 <h3 style="font-family:arial">Select one or more <b><u onclick="on()" style="font-size:110%">provinces</b></u></h3> 
+
+
 
 <div id="overlay" onclick="off()">
 <br><br><br>
 <img hidden id='provincesMap' src='./images/wlprovs.png' alt="provincesMap" style="width:600px;border:5px solid black">
 </div>
 
+<div id="locationsoverlay" class="locationsoverlay" onclick="closeLocationsoverlay()">
+  <div class="locationsoverlay-content">
+      <div>
+          <img src="./images/BARVECHOS.png" alt="Barvechos">
+          <br>
+          <span style="font-family: Arial;">BARVECHOS</span>
+      </div>
+      <div>
+          <img src="./images/CAIMANES.png" alt="Caimanes">
+          <br>
+          <span style="font-family: Arial;">CAIMANES</span>
+      </div>
+      <div>
+          <img src="./images/ESPIRITUSANTO.png" alt="Espiritu Santo">
+          <br>
+          <span style="font-family: Arial;">ESPIRITU SANTO</span>
+      </div>
+      <div>
+          <img src="./images/FLORDELORO.png" alt="Flor del Oro">
+          <br>
+          <span style="font-family: Arial;">FLOR DEL ORO</span>
+      </div>
+      <div>
+          <img src="./images/INCACAMINA.png" alt="Inca Camina">
+          <br>
+          <span style="font-family: Arial;">INCA CAMINA</span>
+      </div>
+      <div>
+          <img src="./images/ITACUA.png" alt="Itacua">
+          <br>
+          <span style="font-family: Arial;">ITACUA</span>
+      </div>
+      <div>
+          <img src="./images/KOANI.png" alt="KOANI">
+          <br>
+          <span style="font-family: Arial;">KOANI</span>
+      </div>
+      <div>
+          <img src="./images/LACRUZ.png" alt="La Cruz">
+          <br>
+          <span style="font-family: Arial;">LA CRUZ</span>
+      </div>
+      <div>
+          <img src="./images/LIBERTAD.png" alt="Libertad">
+          <br>
+          <span style="font-family: Arial;">LIBERTAD</span>
+      </div>
+      <div>
+          <img src="./images/MALCA.png" alt="Malca">
+          <br>
+          <span style="font-family: Arial;">MALCA</span>
+      </div>
+      <div>
+          <img src="./images/MEDIALUNA.png" alt="Media Luna">
+          <br>
+          <span style="font-family: Arial;">MEDIA LUNA</span>
+      </div>
+      <div>
+          <img src="./images/MOJOCOYO.png" alt="Mojocoyo">
+          <br>
+          <span style="font-family: Arial;">MOJOCOYO</span>
+      </div>
+      <div>
+          <img src="./images/MONTEPUNCU.png" alt="Monte Puncu">
+          <br>
+          <span style="font-family: Arial;">MONTE PUNCU</span>
+      </div>
+      <div>
+          <img src="./images/MONTUYOC.png" alt="Montuyoc">
+          <br>
+          <span style="font-family: Arial;">MONTUYOC</span>
+      </div>
+      <div>
+          <img src="./images/OCORO.png" alt="Ocor">
+          <br>
+          <span style="font-family: Arial;">OCORO</span>
+      </div>
+      <div>
+          <img src="./images/PNAGUA.png" alt="PNA Gua">
+          <br>
+          <span style="font-family: Arial;">PN AGUA VERDE</span>
+      </div>
+      <div>
+          <img src="./images/PUCARA.png" alt="Pucara">
+          <br>
+          <span style="font-family: Arial;">PUCARA</span>
+      </div>
+      <div>
+          <img src="./images/REMANZO.png" alt="Remanzo">
+          <br>
+          <span style="font-family: Arial;">REMANZO</span>
+      </div>
+      <div>
+          <img src="./images/SANMATEO.png" alt="San Mateo">
+          <br>
+          <span style="font-family: Arial;">SAN MATEO</span>
+      </div>
+      <div>
+          <img src="./images/TABACAL.png" alt="Tabacal">
+          <br>
+          <span style="font-family: Arial;">TABACAL</span>
+      </div>
+      <div>
+          <img src="./images/VILLAVERDE.png" alt="Villa Verde">
+          <br>
+          <span style="font-family: Arial;">VILLA VERDE</span>
+      </div>
+  </div>
+</div>
+
+
+
+
+
+
 <script>
 
+function previewlocs() {
+        const locationsoverlay = document.getElementById('locationsoverlay');
+        locationsoverlay.style.display = 'flex';
+    }
+
+    function closeLocationsoverlay() {
+        const locationsoverlay = document.getElementById('locationsoverlay');
+        locationsoverlay.style.display = 'none';
+    }
 
 function on() {
   document.getElementById("overlay").style.display = "block";
@@ -1196,7 +1358,7 @@ if (province == 'KOANI') {
   text.style.fontFamily = "arial";
   opordBox.appendChild(text);
 var img = document.createElement("img");
-img.src = "images/koani.png"; // Correct relative path
+img.src = "images/KOANI.png"; // Correct relative path
 img.style.width = "600px"; // Optional: Set the width
 img.style.border = "5px solid black"
 opordBox.appendChild(img);
